@@ -8,27 +8,6 @@
 
 import UIKit
 
-class ImageDto {
-    var full: String?
-    var group: String?
-    var h: Int?
-    var spite: String?
-    var w: Int?
-    var x: Int?
-    var y: Int?
-    
-    
-}
-
-class InfoDto {
-    
-    
-    var attack:	Int?
-    var defense: Int?
-    var difficulty:	Int?
-    var magic:	Int?
-
-}
 class SkinDto {
 
 
