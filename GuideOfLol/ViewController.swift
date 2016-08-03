@@ -10,20 +10,19 @@ import UIKit
 import SwiftyJSON
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    
+    @IBOutlet weak var myCollection: UICollectionView!
     var champions = [ChampionDto]()
+    var count : Int? = nil
     
-    @IBOutlet weak var image: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        
     }
     
     func getData() {
@@ -37,38 +36,58 @@ class ViewController: UIViewController {
                 print(error.localizedDescription)
             }else{
                 if let responseHTTP = response as? NSHTTPURLResponse{
-                    if responseHTTP.statusCode == 200{
+                    if responseHTTP.statusCode == 200 {
                         
                         let json = JSON(data:data!)
-                        print(json)
-
-//                        let data = json["data"]
-////                        print(data)
-//                        
-//                        
-//                        for (key,subJson):(String, JSON) in data {
-//                            //Do something you want
-//                            print(key)
-//                            print(subJson)
-//                            
-//                            let champion = ChampionDto(id: 0, image: nil, name: key)
-//                            
-//                            self.champions.append(champion)
-//                            
-//                        }
-//                        
-//                        print(self.champions)
-//                        
-//                        for championName in self.champions{
-//                            print("Champion name : \(championName.name)")
-//                        }
-
+                        let data = json["data"]
+                        var nameImage = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
+                        for (key,subJson):(String, JSON) in data {
+                            //
+                            let image = subJson["image"]["full"]
+                            //
+                            let champion =  ChampionDto(id: 0, image: nameImage+String(image), name: key)
+                            self.champions.append(champion)
+                            
+                        }
+                        
+                        self.count = self.champions.count
+                        self.printChampions(self.champions)
+                        
+                        dispatch_async(dispatch_get_main_queue(), { 
+                            self.myCollection.reloadData()
+                        })
+                        
                     }
                 }
             }
             
-        }.resume()
+            }.resume()
         
     }
+    func printChampions(champs: [ChampionDto])
+    {
+        champions = champs
+        
+
+    }
     
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(champions.count)
+//        return champions.count
+        return 3
+    }
+    
+    
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CellItem
+//        var imageURL = champions[indexPath.item].image
+        var imageURL : String = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/TwistedFate.png"
+        print(imageURL)
+        let url = NSURL(string: imageURL)
+        let data = NSData(contentsOfURL: url!)
+       cell.imageView.image = UIImage(data: data!)
+        cell.backgroundColor = UIColor.whiteColor()
+        return cell
+    }
 }

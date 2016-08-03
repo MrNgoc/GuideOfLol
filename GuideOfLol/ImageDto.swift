@@ -15,9 +15,8 @@ class ImageDto {
     var x: Int?
     var y: Int?
     
-    init(full: String, group: String) {
-    self.full = full
-        self.group = group
+    init(full: String) {
+        self.full = full
     }
     
 }

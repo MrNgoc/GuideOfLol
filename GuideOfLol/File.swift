@@ -47,7 +47,7 @@ class ChampionDto {
     var name : String?
     var allytips : [String]?
     
-    var image: ImageDto?
+    var image: String
     var info: InfoDto?
     var skins : [SkinDto]?
     
@@ -55,7 +55,7 @@ class ChampionDto {
     var stats:	StatsDto?
     var tags:	[String]?
 
-    init(id: Int,image: ImageDto?, name: String) {
+    init(id: Int,image: String, name: String) {
         self.id = id
         self.image = image
         self.name = name
