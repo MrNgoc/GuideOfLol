@@ -55,7 +55,7 @@ class ChampionDto {
     var stats:	StatsDto?
     var tags:	[String]?
 
-    init(id: Int,image: ImageDto, name: String) {
+    init(id: Int,image: ImageDto?, name: String) {
         self.id = id
         self.image = image
         self.name = name

@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import SwiftyJSON
+
 
 class ViewController: UIViewController {
+    
+    var champions = [ChampionDto]()
     
     @IBOutlet weak var image: UIImageView!
     
@@ -34,15 +38,31 @@ class ViewController: UIViewController {
             }else{
                 if let responseHTTP = response as? NSHTTPURLResponse{
                     if responseHTTP.statusCode == 200{
-                        guard let imageInformation = data else {return}
                         
-                        do{
-                            let result = try NSJSONSerialization.JSONObjectWithData(imageInformation, options: NSJSONReadingOptions.AllowFragments)
-                            
-                            print(result)
-                        }catch {
-                        
-                        }
+                        let json = JSON(data:data!)
+                        print(json)
+
+//                        let data = json["data"]
+////                        print(data)
+//                        
+//                        
+//                        for (key,subJson):(String, JSON) in data {
+//                            //Do something you want
+//                            print(key)
+//                            print(subJson)
+//                            
+//                            let champion = ChampionDto(id: 0, image: nil, name: key)
+//                            
+//                            self.champions.append(champion)
+//                            
+//                        }
+//                        
+//                        print(self.champions)
+//                        
+//                        for championName in self.champions{
+//                            print("Champion name : \(championName.name)")
+//                        }
+
                     }
                 }
             }

@@ -15,9 +15,12 @@
 		8475AEA81D5196B900FECC5D /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475AEA71D5196B900FECC5D /* File.swift */; };
 		C79957021D51A9CA00F4615D /* ImageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79957011D51A9CA00F4615D /* ImageDto.swift */; };
 		C79957041D51AA0300F4615D /* InfoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79957031D51AA0300F4615D /* InfoDto.swift */; };
+		C945F504BB6E7BA6F54609A2 /* Pods_GuideOfLol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DBE99A54E304958CE9B541 /* Pods_GuideOfLol.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		133DFCFB0CFCCB02A0D57EF8 /* Pods-GuideOfLol.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuideOfLol.release.xcconfig"; path = "Pods/Target Support Files/Pods-GuideOfLol/Pods-GuideOfLol.release.xcconfig"; sourceTree = "<group>"; };
+		6C2A01A8180BB4EF966BBF37 /* Pods-GuideOfLol.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuideOfLol.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GuideOfLol/Pods-GuideOfLol.debug.xcconfig"; sourceTree = "<group>"; };
 		842374821D5083F900FFFE04 /* GuideOfLol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuideOfLol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842374851D5083F900FFFE04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		842374871D5083F900FFFE04 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +29,7 @@
 		8423748F1D5083FA00FFFE04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		842374911D5083FA00FFFE04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8475AEA71D5196B900FECC5D /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		B3DBE99A54E304958CE9B541 /* Pods_GuideOfLol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GuideOfLol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79957011D51A9CA00F4615D /* ImageDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDto.swift; sourceTree = "<group>"; };
 		C79957031D51AA0300F4615D /* InfoDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoDto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -35,17 +39,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C945F504BB6E7BA6F54609A2 /* Pods_GuideOfLol.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42C9F5BB473C815C06CCEF06 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3DBE99A54E304958CE9B541 /* Pods_GuideOfLol.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		842374791D5083F900FFFE04 = {
 			isa = PBXGroup;
 			children = (
 				842374841D5083F900FFFE04 /* GuideOfLol */,
 				842374831D5083F900FFFE04 /* Products */,
+				9DA86DB6CD77776B22D40821 /* Pods */,
+				42C9F5BB473C815C06CCEF06 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +96,15 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		9DA86DB6CD77776B22D40821 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6C2A01A8180BB4EF966BBF37 /* Pods-GuideOfLol.debug.xcconfig */,
+				133DFCFB0CFCCB02A0D57EF8 /* Pods-GuideOfLol.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -88,9 +112,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 842374941D5083FA00FFFE04 /* Build configuration list for PBXNativeTarget "GuideOfLol" */;
 			buildPhases = (
+				33B995EFFB2E5717EA7BD908 /* [CP] Check Pods Manifest.lock */,
 				8423747E1D5083F900FFFE04 /* Sources */,
 				8423747F1D5083F900FFFE04 /* Frameworks */,
 				842374801D5083F900FFFE04 /* Resources */,
+				821CFA494C7D7DFFFF28F1BA /* [CP] Embed Pods Frameworks */,
+				D8770F3FACDBEDB689F7FF0F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -146,6 +173,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		33B995EFFB2E5717EA7BD908 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		821CFA494C7D7DFFFF28F1BA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GuideOfLol/Pods-GuideOfLol-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8770F3FACDBEDB689F7FF0F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GuideOfLol/Pods-GuideOfLol-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8423747E1D5083F900FFFE04 /* Sources */ = {
@@ -267,6 +342,7 @@
 		};
 		842374951D5083FA00FFFE04 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C2A01A8180BB4EF966BBF37 /* Pods-GuideOfLol.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GuideOfLol/Info.plist;
@@ -278,6 +354,7 @@
 		};
 		842374961D5083FA00FFFE04 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 133DFCFB0CFCCB02A0D57EF8 /* Pods-GuideOfLol.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GuideOfLol/Info.plist;
