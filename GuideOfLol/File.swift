@@ -42,7 +42,7 @@ class StatsDto {
 }
 
 
-class ChampionDto: NSObject {
+class ChampionDto {
     var id: Int?
     var name : String?
     var allytips : [String]?
