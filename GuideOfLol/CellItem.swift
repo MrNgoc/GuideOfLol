@@ -43,24 +43,24 @@ class  CellItem: UICollectionViewCell {
         
         
         if (nameLabel == nil) {
-                nameLabel = UILabel(frame: CGRectMake(0, 100, kCellWidth, kLabelHeight))
-                nameLabel.textAlignment = .Center
-                nameLabel.textColor = UIColor.blueColor()
-                    nameLabel.highlightedTextColor = tintColor
-                nameLabel.font = UIFont.boldSystemFontOfSize(12)
-                //nameLabel.numberOfLines = 2
-                contentView.addSubview(nameLabel)
-                
-            }
-//
-//            if (price == nil) {
-//                price = UILabel(frame: CGRectMake(0, kCellWidth + kLabelHeight, kCellWidth, kPriceLabelHight))
-//                price.textAlignment = .Left
-//                price.textColor = UIColor(red: 255/255, green: 116/255, blue: 35/255, alpha: 1)
-//                price.font = UIFont.boldSystemFontOfSize(12)
-//                contentView.addSubview(price)
-//            }
-//        }
+            nameLabel = UILabel(frame: CGRectMake(0, 100, kCellWidth, kLabelHeight))
+            nameLabel.textAlignment = .Center
+            nameLabel.textColor = UIColor.blueColor()
+            nameLabel.highlightedTextColor = tintColor
+            nameLabel.font = UIFont.boldSystemFontOfSize(12)
+            //nameLabel.numberOfLines = 2
+            contentView.addSubview(nameLabel)
+            
+        }
+        //
+        //            if (price == nil) {
+        //                price = UILabel(frame: CGRectMake(0, kCellWidth + kLabelHeight, kCellWidth, kPriceLabelHight))
+        //                price.textAlignment = .Left
+        //                price.textColor = UIColor(red: 255/255, green: 116/255, blue: 35/255, alpha: 1)
+        //                price.font = UIFont.boldSystemFontOfSize(12)
+        //                contentView.addSubview(price)
+        //            }
+        //        }
     }
     
     
