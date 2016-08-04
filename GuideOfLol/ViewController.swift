@@ -15,8 +15,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var myCollection: UICollectionView!
     var champions = [ChampionDto]()
-    var count : Int? = nil
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +22,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         myCollection.backgroundColor = UIColor.whiteColor()
         
     }
+    
+    // lay anh + ten + id
+    
     
     func getData() {
         
@@ -42,15 +43,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         let data = json["data"]
                         var nameImage = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
                         for (key,subJson):(String, JSON) in data {
-                            //
-                            let image = subJson["image"]["full"]
-                            //
-                            let champion =  ChampionDto(id: 0, image: nameImage+String(image), name: key)
+                            let idChamp = subJson["id"].intValue
+                            // let image = subJson["image"]["full"]
+                            
+                            // for (key, subJson
+                            
+                            // let champion =  ChampionDto(id: idChamp, name: key, image: nameImage+String(image))
+                            let champion =  ChampionDto(id: idChamp, name: key, image: nameImage+String(key)+".png")
                             self.champions.append(champion)
                             
                         }
                         
-                        self.count = self.champions.count
                         self.printChampions(self.champions)
                         
                         dispatch_async(dispatch_get_main_queue(), {
@@ -84,7 +87,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CellItem
         var imageURL = champions[indexPath.item].image
         //        var imageURL : String = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/TwistedFate.png"
-        print(imageURL)
+        //        print(imageURL)
         let url = NSURL(string: imageURL)
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
@@ -98,7 +101,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
         
-       
+        
         
         if let name = champions[indexPath.item].name {
             cell.nameLabel.text = name
@@ -109,7 +112,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let v1 = storyboard?.instantiateViewControllerWithIdentifier("Master")
+        let v1 = storyboard?.instantiateViewControllerWithIdentifier("Master") as? MasterTableVC
         self.navigationController?.pushViewController(v1!, animated: true)
+        v1?.champ = champions[indexPath.item]
+        print(v1)
     }
 }

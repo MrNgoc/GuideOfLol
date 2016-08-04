@@ -15,9 +15,19 @@ class MasterTableVC: UIViewController {
     @IBOutlet weak var storyView: UIView!
     @IBOutlet weak var skinsView: UIView!
     
+    var champ : ChampionDto?
+    
+    @IBOutlet weak var champImage: UIImageView!
+    @IBOutlet weak var champName: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        champName.text = champ?.name
+//        print(champ?.image)
+//        print(champ?.name)
+        print(champ?.id)
     }
 
     @IBAction func actionSegement(sender: AnyObject) {

@@ -35,7 +35,7 @@ class StatsDto {
     var armorperlevel: Double?
     var attackdamage: Double?
     var attackdamageperlevel: Double?
-    var  spellblock: Double?
+    var spellblock: Double?
     var spellblockperlevel: Double?
     var movespeed: Double?
 
@@ -46,22 +46,28 @@ class ChampionDto {
     var id: Int?
     var name : String?
     var allytips : [String]?
-    
     var image: String
     var info: InfoDto?
     var skins : [SkinDto]?
-    
     var spells:	[ChampionSpellDto]?
     var stats:	StatsDto?
     var tags:	[String]?
+    
 
-    init(id: Int,image: String, name: String) {
+    init(id: Int, name: String ,image: String, info : InfoDto?) {
         self.id = id
         self.image = image
         self.name = name
+        self.info = info
     
     }
 
+    init(id: Int, name: String ,image: String) {
+        self.id = id
+        self.image = image
+        self.name = name
+        
+    }
 
 
 
