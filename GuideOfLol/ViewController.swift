@@ -21,7 +21,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
-        
+        myCollection.backgroundColor = UIColor.whiteColor()
         
     }
     
@@ -53,7 +53,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         self.count = self.champions.count
                         self.printChampions(self.champions)
                         
-                        dispatch_async(dispatch_get_main_queue(), { 
+                        dispatch_async(dispatch_get_main_queue(), {
                             self.myCollection.reloadData()
                         })
                         
@@ -68,26 +68,43 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     {
         champions = champs
         
-
+        
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(champions.count)
-//        return champions.count
-        return 3
+        // print(champions.count)
+        return champions.count
+        
     }
     
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CellItem
-//        var imageURL = champions[indexPath.item].image
-        var imageURL : String = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/TwistedFate.png"
+        var imageURL = champions[indexPath.item].image
+        //        var imageURL : String = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/TwistedFate.png"
         print(imageURL)
         let url = NSURL(string: imageURL)
-        let data = NSData(contentsOfURL: url!)
-       cell.imageView.image = UIImage(data: data!)
-        cell.backgroundColor = UIColor.whiteColor()
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+            let data = NSData(contentsOfURL: url!)
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                if let realData = data  {
+                    cell.imageView.image = UIImage(data: realData)
+                }
+            })
+        }
+        
+        
+       
+        
+        if let name = champions[indexPath.item].name {
+            cell.nameLabel.text = name
+        }
+        
+        
         return cell
     }
 }
