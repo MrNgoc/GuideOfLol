@@ -107,4 +107,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         return cell
     }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let v1 = storyboard?.instantiateViewControllerWithIdentifier("Master")
+        self.navigationController?.pushViewController(v1!, animated: true)
+    }
 }
