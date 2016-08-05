@@ -17,6 +17,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var champions = [ChampionDto]()
     
     override func viewDidLoad() {
+        
+        
         super.viewDidLoad()
         getData()
         myCollection.backgroundColor = UIColor.whiteColor()
@@ -25,6 +27,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // lay anh + ten + id
     
+    public func getDataAll() {
+    
+    
+    
+    }
     
     func getData() {
         
