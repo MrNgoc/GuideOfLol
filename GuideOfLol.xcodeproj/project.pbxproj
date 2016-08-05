@@ -12,7 +12,7 @@
 		8423748B1D5083FA00FFFE04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842374891D5083FA00FFFE04 /* Main.storyboard */; };
 		8423748D1D5083FA00FFFE04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8423748C1D5083FA00FFFE04 /* Assets.xcassets */; };
 		842374901D5083FA00FFFE04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8423748E1D5083FA00FFFE04 /* LaunchScreen.storyboard */; };
-		8475AEA81D5196B900FECC5D /* ChampionDto .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475AEA71D5196B900FECC5D /* ChampionDto .swift */; };
+		8475AEA81D5196B900FECC5D /* ChampionDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475AEA71D5196B900FECC5D /* ChampionDto.swift */; };
 		847767FE1D5437D2006E6E2B /* StatsDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847767FD1D5437D2006E6E2B /* StatsDto.swift */; };
 		847768001D5437F9006E6E2B /* ChampionSpellDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847767FF1D5437F9006E6E2B /* ChampionSpellDto.swift */; };
 		847768021D54381E006E6E2B /* SkinDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847768011D54381E006E6E2B /* SkinDto.swift */; };
@@ -34,7 +34,7 @@
 		8423748C1D5083FA00FFFE04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8423748F1D5083FA00FFFE04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		842374911D5083FA00FFFE04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8475AEA71D5196B900FECC5D /* ChampionDto .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChampionDto .swift"; sourceTree = "<group>"; };
+		8475AEA71D5196B900FECC5D /* ChampionDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChampionDto.swift; sourceTree = "<group>"; };
 		847767FD1D5437D2006E6E2B /* StatsDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsDto.swift; sourceTree = "<group>"; };
 		847767FF1D5437F9006E6E2B /* ChampionSpellDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChampionSpellDto.swift; sourceTree = "<group>"; };
 		847768011D54381E006E6E2B /* SkinDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinDto.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		8475AEA61D5195DD00FECC5D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8475AEA71D5196B900FECC5D /* ChampionDto .swift */,
+				8475AEA71D5196B900FECC5D /* ChampionDto.swift */,
 				847768011D54381E006E6E2B /* SkinDto.swift */,
 				847767FF1D5437F9006E6E2B /* ChampionSpellDto.swift */,
 				C79957031D51AA0300F4615D /* InfoDto.swift */,
@@ -249,7 +249,7 @@
 				842374881D5083F900FFFE04 /* ViewController.swift in Sources */,
 				847767FE1D5437D2006E6E2B /* StatsDto.swift in Sources */,
 				847768021D54381E006E6E2B /* SkinDto.swift in Sources */,
-				8475AEA81D5196B900FECC5D /* ChampionDto .swift in Sources */,
+				8475AEA81D5196B900FECC5D /* ChampionDto.swift in Sources */,
 				847768041D544562006E6E2B /* OverviewController.swift in Sources */,
 				847768001D5437F9006E6E2B /* ChampionSpellDto.swift in Sources */,
 				842374861D5083F900FFFE04 /* AppDelegate.swift in Sources */,

@@ -19,7 +19,9 @@ class OverviewController: UIViewController {
     
     @IBOutlet weak var lblSpells: UILabel!
     
-    
     @IBOutlet weak var tvAllytips: UITextView!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }

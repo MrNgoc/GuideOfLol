@@ -17,21 +17,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var champions = [ChampionDto]()
     
     override func viewDidLoad() {
-        
-        
         super.viewDidLoad()
+        print("abc")
         getData()
         myCollection.backgroundColor = UIColor.whiteColor()
         
     }
     
     // lay anh + ten + id
-    
-    public func getDataAll() {
-    
-    
-    
-    }
     
     func getData() {
         
@@ -48,7 +41,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         
                         let json = JSON(data:data!)
                         let data = json["data"]
-                        var nameImage = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
+                        let nameImage = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
                         for (key,subJson):(String, JSON) in data {
                             let idChamp = subJson["id"].intValue
                             let champion =  ChampionDto(id: idChamp, name: key, image: nameImage+String(key)+".png")
@@ -58,10 +51,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         
                         self.printChampions(self.champions)
                         
-                        dispatch_async(dispatch_get_main_queue(), {
-                            self.myCollection.reloadData()
-                        })
-                        
+                        dispatch_async(dispatch_get_main_queue(),{self.myCollection.reloadData()})
                     }
                 }
             }
@@ -87,10 +77,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CellItem
-
-        var imageURL = champions[indexPath.item].image
-
-//        var imageURL = champions[indexPath.item].nameImg
+        
+        let imageURL = champions[indexPath.item].image
+        
+        //        var imageURL = champions[indexPath.item].nameImg
         let url = NSURL(string: imageURL!)
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
@@ -103,9 +93,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             })
         }
         
-        
-        
-        
         if let name = champions[indexPath.item].name {
             cell.nameLabel.text = name
         }
@@ -117,7 +104,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let v1 = storyboard?.instantiateViewControllerWithIdentifier("Master") as? MasterTableVC
         self.navigationController?.pushViewController(v1!, animated: true)
         v1?.champ = champions[indexPath.item]
-
+        
     }
     
 }

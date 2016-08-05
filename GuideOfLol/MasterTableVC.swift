@@ -21,10 +21,10 @@ class MasterTableVC: UIViewController {
     
     var id: Int?
     
-
+    
     
     var infoChamp : InfoDto?
-
+    
     
     @IBOutlet weak var champImage: UIImageView!
     @IBOutlet weak var champName: UILabel!
@@ -35,9 +35,10 @@ class MasterTableVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         champName.text = champ?.name
+        
         guard let id = champ?.id else  {return}
         getDataOfChampion(id)
-
+        
     }
     
     func getDataOfChampion(idChamp : Int) {
@@ -59,9 +60,6 @@ class MasterTableVC: UIViewController {
                         
                         // lay allytips
                         let allytipsChamp  = json["allytips"]
-                        //                            for allytipsChamp1 in allytipsChamp {
-                        //                            print(allytipsChamp1)
-                        //                            }
                         
                         
                         let infoJSON  = json["info"]
@@ -71,38 +69,16 @@ class MasterTableVC: UIViewController {
                         let difficulty = infoJSON["difficulty"].intValue
                         
                         let infoChamp = InfoDto(attack: attack, defense: defense, difficulty: difficulty, magic: magic)
-                        
-
-
-//                        self.infoChamp!.attack = infoJSON["attack"].intValue
-//                       self.infoChamp!.defense = infoJSON["defense"].intValue
-//                        self.infoChamp!.magic = infoJSON["magic"].intValue
-//                        self.infoChamp!.difficulty = infoJSON["difficulty"].intValue
-//                        print(self.infoChamp)
-                        
-                        
-                        
-
                         let tagsChamp = json["tags"]
                         
+                        var tag : [String] = []
+                        for i in tagsChamp {
+                            tag.append(i.1.string!)
+                        }
                         
-                        
-                        
-                        
-                        
-                        //                            for (key,subJson):(String, JSON) in data {
-                        //                               // let title = subJson["title"].stringValue
-                        //
-                        //                                // let image = subJson["image"]["full"]
-                        //
-                        //                                // for (key, subJson
-                        //
-                        //                                // let champion =  ChampionDto(id: idChamp, name: key, image: nameImage+String(image))
-                        //                                                            }
+                        self.champ = ChampionDto(title: titleChamp, tags: tag)
                         
                         self.printChampions(self.champ!)
-                        
-                        
                     }
                 }
             }
@@ -117,7 +93,12 @@ class MasterTableVC: UIViewController {
     func printChampions(champs: ChampionDto)
     {
         champ = champs
-        
+        champTitle.text = champ?.title
+        var tagLabel : String = ""
+        for i in (champ?.tags)! {
+            tagLabel = tagLabel  + i + ", "
+        }
+        champTags.text = tagLabel
         
     }
     
