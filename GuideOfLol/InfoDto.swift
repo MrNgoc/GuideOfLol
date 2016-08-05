@@ -14,10 +14,9 @@ class InfoDto {
     var defense: Int?
     var difficulty:	Int?
     var magic:	Int?
-<<<<<<< Updated upstream
-=======
+
+
     
->>>>>>> Stashed changes
     init(attack : Int, defense: Int, difficulty: Int, magic : Int){
         self.attack = attack
         self.defense = defense

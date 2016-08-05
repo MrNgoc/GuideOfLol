@@ -21,11 +21,10 @@ class MasterTableVC: UIViewController {
     
     var id: Int?
     
-<<<<<<< Updated upstream
-=======
+
     
     var infoChamp : InfoDto?
->>>>>>> Stashed changes
+
     
     @IBOutlet weak var champImage: UIImageView!
     @IBOutlet weak var champName: UILabel!
@@ -73,8 +72,8 @@ class MasterTableVC: UIViewController {
                         
                         let infoChamp = InfoDto(attack: attack, defense: defense, difficulty: difficulty, magic: magic)
                         
-<<<<<<< Updated upstream
-=======
+
+
 //                        self.infoChamp!.attack = infoJSON["attack"].intValue
 //                       self.infoChamp!.defense = infoJSON["defense"].intValue
 //                        self.infoChamp!.magic = infoJSON["magic"].intValue
@@ -83,7 +82,7 @@ class MasterTableVC: UIViewController {
                         
                         
                         
->>>>>>> Stashed changes
+
                         let tagsChamp = json["tags"]
                         
                         
