@@ -78,6 +78,7 @@ class MasterTableVC: UIViewController {
                         
                         self.champ = ChampionDto(title: titleChamp, tags: tag)
                         
+                        
                         self.printChampions(self.champ!)
                     }
                 }

@@ -14,6 +14,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     @IBOutlet weak var myCollection: UICollectionView!
+    
     var champions = [ChampionDto]()
     
     override func viewDidLoad() {
@@ -41,7 +42,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         
                         let json = JSON(data:data!)
                         let data = json["data"]
-                        let nameImage = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
+
+                        var nameImage = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
+
                         for (key,subJson):(String, JSON) in data {
                             let idChamp = subJson["id"].intValue
                             let champion =  ChampionDto(id: idChamp, name: key, image: nameImage+String(key)+".png")
