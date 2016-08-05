@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e0g-ep-wv1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e0g-ep-wv1">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -173,6 +173,8 @@
                     <connections>
                         <outlet property="champImage" destination="KKH-ah-S9P" id="kn2-hy-J3c"/>
                         <outlet property="champName" destination="zpJ-pz-dxo" id="pPD-R6-OyI"/>
+                        <outlet property="champTags" destination="eBk-8K-L0Z" id="Wz6-fT-ahA"/>
+                        <outlet property="champTitle" destination="z6f-nw-CjE" id="eZi-sK-Ug5"/>
                         <outlet property="overView" destination="MZw-DK-zHP" id="AS7-XK-h0s"/>
                         <outlet property="skinsView" destination="fVx-K7-ieF" id="Eo6-po-11d"/>
                         <outlet property="spellsView" destination="T7p-2x-j6G" id="z25-iK-8oX"/>

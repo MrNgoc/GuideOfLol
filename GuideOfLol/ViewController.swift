@@ -88,7 +88,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         var imageURL = champions[indexPath.item].image
         //        var imageURL : String = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/TwistedFate.png"
         //        print(imageURL)
-        let url = NSURL(string: imageURL)
+        let url = NSURL(string: imageURL!)
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             let data = NSData(contentsOfURL: url!)
@@ -107,7 +107,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             cell.nameLabel.text = name
         }
         
-        
         return cell
     }
     
@@ -115,6 +114,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let v1 = storyboard?.instantiateViewControllerWithIdentifier("Master") as? MasterTableVC
         self.navigationController?.pushViewController(v1!, animated: true)
         v1?.champ = champions[indexPath.item]
-        print(v1)
+
     }
+    
 }

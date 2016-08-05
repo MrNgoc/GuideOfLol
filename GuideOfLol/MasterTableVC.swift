@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class MasterTableVC: UIViewController {
     @IBOutlet weak var overView: UIView!
@@ -16,20 +17,96 @@ class MasterTableVC: UIViewController {
     @IBOutlet weak var skinsView: UIView!
     
     var champ : ChampionDto?
+    var id: Int?
+    var infoChamp : InfoDto?
     
     @IBOutlet weak var champImage: UIImageView!
     @IBOutlet weak var champName: UILabel!
     
+    @IBOutlet weak var champTitle: UILabel!
+    @IBOutlet weak var champTags: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         champName.text = champ?.name
-//        print(champ?.image)
-//        print(champ?.name)
-        print(champ?.id)
+        //        print(champ?.image)
+        //        print(champ?.name)
+        guard let id = champ?.id else  {return}
+        getDataOfChampion(id)
     }
-
+    
+    func getDataOfChampion(idChamp : Int) {
+        let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/\(idChamp)?champData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
+        
+        let session = NSURLSession.sharedSession()
+        
+        session.dataTaskWithRequest(urlRequest) { (data, response, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }else{
+                if let responseHTTP = response as? NSHTTPURLResponse{
+                    if responseHTTP.statusCode == 200 {
+                        
+                        let json = JSON(data:data!)
+                        // print(json)
+                        // lay title
+                        let titleChamp = json["title"].stringValue
+                        
+                        // lay allytips
+                        let allytipsChamp  = json["allytips"]
+                        //                            for allytipsChamp1 in allytipsChamp {
+                        //                            print(allytipsChamp1)
+                        //                            }
+                        
+                        let infoJSON  = json["info"]
+                        
+                        
+                        print(infoJSON["attack"].intValue)
+                        
+                        self.infoChamp!.attack = infoJSON["attack"].intValue
+                       self.infoChamp!.defense = infoJSON["defense"].intValue
+                        self.infoChamp!.magic = infoJSON["magic"].intValue
+                        self.infoChamp!.difficulty = infoJSON["difficulty"].intValue
+                        print(self.infoChamp)
+                        let tagsChamp = json["tags"]
+                        
+                        
+                        
+                        
+                        
+                        
+                        //                            for (key,subJson):(String, JSON) in data {
+                        //                               // let title = subJson["title"].stringValue
+                        //
+                        //                                // let image = subJson["image"]["full"]
+                        //
+                        //                                // for (key, subJson
+                        //
+                        //                                // let champion =  ChampionDto(id: idChamp, name: key, image: nameImage+String(image))
+                        //                                                            }
+                        
+                        self.printChampions(self.champ!)
+                        
+                        
+                    }
+                }
+            }
+            
+            }.resume()
+        
+    }
+    
+    
+    
+    
+    func printChampions(champs: ChampionDto)
+    {
+        champ = champs
+        
+        
+    }
+    
     @IBAction func actionSegement(sender: AnyObject) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -45,7 +122,7 @@ class MasterTableVC: UIViewController {
             statsView.hidden = true
             storyView.hidden = true
             skinsView.hidden = true
-            print("overview")
+            
             
         case 2:
             overView.hidden = true
