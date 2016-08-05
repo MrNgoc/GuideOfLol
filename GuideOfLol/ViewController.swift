@@ -16,10 +16,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var myCollection: UICollectionView!
     
     var champions = [ChampionDto]()
+    var champ : ChampionDto?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("abc")
         getData()
         myCollection.backgroundColor = UIColor.whiteColor()
         
@@ -65,8 +65,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func printChampions(champs: [ChampionDto])
     {
         champions = champs
-        
-        
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -105,9 +103,72 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let v1 = storyboard?.instantiateViewControllerWithIdentifier("Master") as? MasterTableVC
-        self.navigationController?.pushViewController(v1!, animated: true)
-        v1?.champ = champions[indexPath.item]
+        
+        getDataOfChampion(champions[indexPath.item].id!, masterVC: v1!)
+    }
+    
+    func getDataOfChampion(idChamp : Int, masterVC : MasterTableVC) {
+        let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/\(idChamp)?champData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
+        
+        let session = NSURLSession.sharedSession()
+        
+        session.dataTaskWithRequest(urlRequest) { (data, response, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }else{
+                if let responseHTTP = response as? NSHTTPURLResponse{
+                    if responseHTTP.statusCode == 200 {
+                        
+                        let json = JSON(data:data!)
+                        // print(json)
+                        // lay title
+                        let titleChamp = json["title"].stringValue
+                        
+                        // lay allytips
+                        let allytipsChamp = self.toString(json["allytips"])
+                        
+                        
+                        
+                        
+                        let infoJSON  = json["info"]
+                        let attack = infoJSON["attack"].intValue
+                        let defense = infoJSON["defense"].intValue
+                        let magic = infoJSON["magic"].intValue
+                        let difficulty = infoJSON["difficulty"].intValue
+                        
+                        let infoChamp = InfoDto(attack: attack, defense: defense, difficulty: difficulty, magic: magic)
+                        let tagsChamp = json["tags"]
+                        
+                        var tag : [String] = []
+                        for i in tagsChamp {
+                            tag.append(i.1.string!)
+                        }
+                        
+                        self.champ = ChampionDto(title: titleChamp, tags: tag, info: infoChamp, allytips: allytipsChamp)
+                        
+                        masterVC.champ = self.champ
+                        
+                        dispatch_async(dispatch_get_main_queue(), { 
+                            self.navigationController?.pushViewController(masterVC, animated: true)
+                        })
+                        
+                    
+                    }
+                }
+            }
+            
+            }.resume()
         
     }
     
+    func toString(des: JSON) -> [String] {
+        var text : [String] = []
+        for i in des {
+            text.append(i.1.string!)
+        }
+        
+        return text
+    }
+    
+
 }

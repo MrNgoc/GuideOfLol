@@ -9,7 +9,7 @@
 import UIKit
 
 class OverviewController: UIViewController {
-    
+    var champ : ChampionDto?
     
     @IBOutlet weak var lblAttack: UILabel!
     
@@ -22,6 +22,28 @@ class OverviewController: UIViewController {
     @IBOutlet weak var tvAllytips: UITextView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        if let attackValue = champ?.info?.attack {
+            lblAttack.text = String(attackValue)
+        }
+        if let healthValue = champ?.info?.defense {
+            lblHealth.text = String(healthValue)
+        }
+        if let difficultValue = champ?.info?.difficulty {
+            lblDifficult.text = String(difficultValue)
+        }
+        if let spellsValue = champ?.info?.magic {
+            lblSpells.text = String(spellsValue)
+        }
+        
+            print(champ?.allytips)
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
     }
 }

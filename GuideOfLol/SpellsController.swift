@@ -10,12 +10,4 @@ import UIKit
 
 class SpellsController: UIViewController {
     
-    
-    
-    
-    
-    
-    
-    
-
 }

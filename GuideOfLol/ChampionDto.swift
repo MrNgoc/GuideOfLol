@@ -43,19 +43,12 @@ class ChampionDto {
         
     }
     
-    init(title : String, tags: [String]) {
+    init(title : String, tags: [String], info : InfoDto, allytips :  [String]) {
         self.title = title
         self.tags = tags
+        self.info = info
+        self.allytips = allytips
         
-    }
-    
-    
-    func getTag() -> String{
-        var tag : String = ""
-        for i in self.tags! {
-            tag += i
-        }
-        return tag
     }
     
     

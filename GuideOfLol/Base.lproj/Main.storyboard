@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e0g-ep-wv1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e0g-ep-wv1">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -112,13 +112,13 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MZw-DK-zHP">
                                         <rect key="frame" x="0.0" y="130" width="320" height="438"/>
                                         <connections>
-                                            <segue destination="IUy-rz-geS" kind="embed" id="mQT-WT-TlL"/>
+                                            <segue destination="IUy-rz-geS" kind="embed" identifier="view0Segue" id="mQT-WT-TlL"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T7p-2x-j6G">
                                         <rect key="frame" x="0.0" y="130" width="320" height="438"/>
                                         <connections>
-                                            <segue destination="Sp4-1F-hdU" kind="embed" id="mMZ-MZ-vZO"/>
+                                            <segue destination="Sp4-1F-hdU" kind="embed" identifier="" id="mMZ-MZ-vZO"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XV8-4h-3de">
@@ -182,7 +182,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DHJ-9d-aTT" id="9vg-9P-sGr">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="139"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="139.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PE4-A0-9ne">
@@ -255,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="po7-OO-WTU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1997" y="-1752"/>
+            <point key="canvasLocation" x="2034" y="-1734"/>
         </scene>
         <!--Champion-->
         <scene sceneID="2we-Wb-1WQ">
@@ -279,7 +279,7 @@
         <!--Overview Controller-->
         <scene sceneID="Y8O-Tm-Cub">
             <objects>
-                <viewController storyboardIdentifier="OverView" id="IUy-rz-geS" customClass="OverviewController" customModule="GuideOfLol" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OverView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IUy-rz-geS" customClass="OverviewController" customModule="GuideOfLol" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Oor-Jw-JfN"/>
                         <viewControllerLayoutGuide type="bottom" id="n36-tZ-ZXr"/>
@@ -386,7 +386,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPM-p0-m7X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2016" y="-2275"/>
+            <point key="canvasLocation" x="2034" y="-2315"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="EKh-PA-jcf">

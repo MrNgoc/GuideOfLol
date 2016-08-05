@@ -18,11 +18,7 @@ class MasterTableVC: UIViewController {
     
     var champ : ChampionDto?
     
-    
     var id: Int?
-    
-    
-    
     var infoChamp : InfoDto?
     
     
@@ -35,73 +31,11 @@ class MasterTableVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         champName.text = champ?.name
-        
-        guard let id = champ?.id else  {return}
-        getDataOfChampion(id)
+    
+        print("champ name :\(champ?.title)")
         
     }
     
-    func getDataOfChampion(idChamp : Int) {
-        let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/\(idChamp)?champData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
-        
-        let session = NSURLSession.sharedSession()
-        
-        session.dataTaskWithRequest(urlRequest) { (data, response, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            }else{
-                if let responseHTTP = response as? NSHTTPURLResponse{
-                    if responseHTTP.statusCode == 200 {
-                        
-                        let json = JSON(data:data!)
-                        // print(json)
-                        // lay title
-                        let titleChamp = json["title"].stringValue
-                        
-                        // lay allytips
-                        let allytipsChamp  = json["allytips"]
-                        
-                        
-                        let infoJSON  = json["info"]
-                        let attack = infoJSON["attack"].intValue
-                        let defense = infoJSON["defense"].intValue
-                        let magic = infoJSON["magic"].intValue
-                        let difficulty = infoJSON["difficulty"].intValue
-                        
-                        let infoChamp = InfoDto(attack: attack, defense: defense, difficulty: difficulty, magic: magic)
-                        let tagsChamp = json["tags"]
-                        
-                        var tag : [String] = []
-                        for i in tagsChamp {
-                            tag.append(i.1.string!)
-                        }
-                        
-                        self.champ = ChampionDto(title: titleChamp, tags: tag)
-                        
-                        
-                        self.printChampions(self.champ!)
-                    }
-                }
-            }
-            
-            }.resume()
-        
-    }
-    
-    
-    
-    
-    func printChampions(champs: ChampionDto)
-    {
-        champ = champs
-        champTitle.text = champ?.title
-        var tagLabel : String = ""
-        for i in (champ?.tags)! {
-            tagLabel = tagLabel  + i + ", "
-        }
-        champTags.text = tagLabel
-        
-    }
     
     @IBAction func actionSegement(sender: AnyObject) {
         switch sender.selectedSegmentIndex {
@@ -111,6 +45,10 @@ class MasterTableVC: UIViewController {
             statsView.hidden = true
             storyView.hidden = true
             skinsView.hidden = true
+            
+            let overviewcontroller = storyboard?.instantiateViewControllerWithIdentifier("OverView") as! OverviewController
+            
+            overviewcontroller.champ = self.champ
             
         case 1:
             overView.hidden = true
@@ -140,6 +78,13 @@ class MasterTableVC: UIViewController {
         default:
             break
         }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+            if segue.identifier == "view0Segue" {
+                let view0 = segue.destinationViewController as? OverviewController
+                view0?.champ = champ
+            }
     }
     
 }
