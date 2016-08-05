@@ -80,13 +80,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CellItem
-<<<<<<< Updated upstream
+
         var imageURL = champions[indexPath.item].image
-        //        var imageURL : String = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/TwistedFate.png"
-        //        print(imageURL)
-=======
-        var imageURL = champions[indexPath.item].nameImg
->>>>>>> Stashed changes
+
+//        var imageURL = champions[indexPath.item].nameImg
         let url = NSURL(string: imageURL!)
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {

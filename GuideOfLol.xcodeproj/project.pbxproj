@@ -17,7 +17,6 @@
 		847768001D5437F9006E6E2B /* ChampionSpellDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847767FF1D5437F9006E6E2B /* ChampionSpellDto.swift */; };
 		847768021D54381E006E6E2B /* SkinDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847768011D54381E006E6E2B /* SkinDto.swift */; };
 		84D94DD81D51E79B0012D8C8 /* CellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D94DD71D51E79B0012D8C8 /* CellItem.swift */; };
-		C76876391D534D90000812D6 /* SpellsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76876381D534D90000812D6 /* SpellsVC.swift */; };
 		C784EA9B1D52FDCD003F930C /* MasterTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EA9A1D52FDCD003F930C /* MasterTableVC.swift */; };
 		C79957021D51A9CA00F4615D /* ImageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79957011D51A9CA00F4615D /* ImageDto.swift */; };
 		C79957041D51AA0300F4615D /* InfoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79957031D51AA0300F4615D /* InfoDto.swift */; };
@@ -40,7 +39,6 @@
 		847768011D54381E006E6E2B /* SkinDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinDto.swift; sourceTree = "<group>"; };
 		84D94DD71D51E79B0012D8C8 /* CellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellItem.swift; sourceTree = "<group>"; };
 		B3DBE99A54E304958CE9B541 /* Pods_GuideOfLol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GuideOfLol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C76876381D534D90000812D6 /* SpellsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellsVC.swift; sourceTree = "<group>"; };
 		C784EA9A1D52FDCD003F930C /* MasterTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableVC.swift; sourceTree = "<group>"; };
 		C79957011D51A9CA00F4615D /* ImageDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDto.swift; sourceTree = "<group>"; };
 		C79957031D51AA0300F4615D /* InfoDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoDto.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 				8423748C1D5083FA00FFFE04 /* Assets.xcassets */,
 				8423748E1D5083FA00FFFE04 /* LaunchScreen.storyboard */,
 				842374911D5083FA00FFFE04 /* Info.plist */,
-				C76876381D534D90000812D6 /* SpellsVC.swift */,
 			);
 			path = GuideOfLol;
 			sourceTree = "<group>";
@@ -253,7 +250,6 @@
 				847768001D5437F9006E6E2B /* ChampionSpellDto.swift in Sources */,
 				842374861D5083F900FFFE04 /* AppDelegate.swift in Sources */,
 				C79957041D51AA0300F4615D /* InfoDto.swift in Sources */,
-				C76876391D534D90000812D6 /* SpellsVC.swift in Sources */,
 				84D94DD81D51E79B0012D8C8 /* CellItem.swift in Sources */,
 				C79957021D51A9CA00F4615D /* ImageDto.swift in Sources */,
 			);

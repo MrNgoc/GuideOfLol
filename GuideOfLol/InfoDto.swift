@@ -14,10 +14,10 @@ class InfoDto {
     var defense: Int?
     var difficulty:	Int?
     var magic:	Int?
-//    init(attack : Int, defense: Int, difficulty: Int, magic : Int){
-//        self.attack = attack
-//        self.defense = defense
-//        self.difficulty = difficulty
-//        self.magic = magic
-//    }
+    init(attack : Int, defense: Int, difficulty: Int, magic : Int){
+        self.attack = attack
+        self.defense = defense
+        self.difficulty = difficulty
+        self.magic = magic
+    }
 }

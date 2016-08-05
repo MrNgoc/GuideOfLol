@@ -19,6 +19,7 @@ class ChampionDto {
     var stats:	StatsDto?
     var tags:	[String]?
     var title : String?
+    var nameImg : String?
     
     
     init(id: Int, name: String , allytips: [String],spells: [ChampionSpellDto], info : InfoDto, stats: StatsDto, tags: [String],skins: [SkinDto], image: String, title : String) {

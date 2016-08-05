@@ -18,7 +18,7 @@ class MasterTableVC: UIViewController {
     
     var champ : ChampionDto?
     var id: Int?
-    var infoChamp : InfoDto?
+    
     
     @IBOutlet weak var champImage: UIImageView!
     @IBOutlet weak var champName: UILabel!
@@ -29,14 +29,9 @@ class MasterTableVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         champName.text = champ?.name
-<<<<<<< Updated upstream
-        //        print(champ?.image)
-        //        print(champ?.name)
         guard let id = champ?.id else  {return}
         getDataOfChampion(id)
-=======
-        print(champ?.id)
->>>>>>> Stashed changes
+
     }
     
     func getDataOfChampion(idChamp : Int) {
@@ -62,16 +57,15 @@ class MasterTableVC: UIViewController {
                         //                            print(allytipsChamp1)
                         //                            }
                         
+                        
                         let infoJSON  = json["info"]
+                        let attack = infoJSON["attack"].intValue
+                        let defense = infoJSON["defense"].intValue
+                        let magic = infoJSON["magic"].intValue
+                        let difficulty = infoJSON["difficulty"].intValue
                         
+                        let infoChamp = InfoDto(attack: attack, defense: defense, difficulty: difficulty, magic: magic)
                         
-                        print(infoJSON["attack"].intValue)
-                        
-                        self.infoChamp!.attack = infoJSON["attack"].intValue
-                       self.infoChamp!.defense = infoJSON["defense"].intValue
-                        self.infoChamp!.magic = infoJSON["magic"].intValue
-                        self.infoChamp!.difficulty = infoJSON["difficulty"].intValue
-                        print(self.infoChamp)
                         let tagsChamp = json["tags"]
                         
                         
@@ -118,17 +112,13 @@ class MasterTableVC: UIViewController {
             statsView.hidden = true
             storyView.hidden = true
             skinsView.hidden = true
+            
         case 1:
             overView.hidden = true
             spellsView.hidden = false
             statsView.hidden = true
             storyView.hidden = true
             skinsView.hidden = true
-<<<<<<< Updated upstream
-            
-=======
->>>>>>> Stashed changes
-            
         case 2:
             overView.hidden = true
             spellsView.hidden = true
