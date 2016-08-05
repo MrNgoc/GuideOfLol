@@ -44,11 +44,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         var nameImage = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
                         for (key,subJson):(String, JSON) in data {
                             let idChamp = subJson["id"].intValue
-                            // let image = subJson["image"]["full"]
-                            
-                            // for (key, subJson
-                            
-                            // let champion =  ChampionDto(id: idChamp, name: key, image: nameImage+String(image))
                             let champion =  ChampionDto(id: idChamp, name: key, image: nameImage+String(key)+".png")
                             self.champions.append(champion)
                             
@@ -85,9 +80,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CellItem
+<<<<<<< Updated upstream
         var imageURL = champions[indexPath.item].image
         //        var imageURL : String = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/TwistedFate.png"
         //        print(imageURL)
+=======
+        var imageURL = champions[indexPath.item].nameImg
+>>>>>>> Stashed changes
         let url = NSURL(string: imageURL!)
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {

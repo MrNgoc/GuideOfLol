@@ -28,12 +28,15 @@ class MasterTableVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         champName.text = champ?.name
+<<<<<<< Updated upstream
         //        print(champ?.image)
         //        print(champ?.name)
         guard let id = champ?.id else  {return}
         getDataOfChampion(id)
+=======
+        print(champ?.id)
+>>>>>>> Stashed changes
     }
     
     func getDataOfChampion(idChamp : Int) {
@@ -115,14 +118,16 @@ class MasterTableVC: UIViewController {
             statsView.hidden = true
             storyView.hidden = true
             skinsView.hidden = true
-            print("overview")
         case 1:
             overView.hidden = true
             spellsView.hidden = false
             statsView.hidden = true
             storyView.hidden = true
             skinsView.hidden = true
+<<<<<<< Updated upstream
             
+=======
+>>>>>>> Stashed changes
             
         case 2:
             overView.hidden = true
@@ -147,4 +152,5 @@ class MasterTableVC: UIViewController {
             break
         }
     }
+    
 }
