@@ -42,9 +42,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         
                         let json = JSON(data:data!)
                         let data = json["data"]
-
+                        
                         var nameImage = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
-
+                        
                         for (key,subJson):(String, JSON) in data {
                             let idChamp = subJson["id"].intValue
                             let champion =  ChampionDto(id: idChamp, name: key, image: nameImage+String(key)+".png")
@@ -120,39 +120,79 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     if responseHTTP.statusCode == 200 {
                         
                         let json = JSON(data:data!)
-                        // print(json)
+                        
+                        // lay name + tag
+                        guard let name = json["name"].string else { return }
+                        
+                        
+                        
+                        
                         // lay title
-                        let titleChamp = json["title"].stringValue
+                        guard let titleChamp = json["title"].string else {return}
+                        
                         
                         // lay allytips
                         let allytipsChamp = self.toString(json["allytips"])
-                        
-                        
-                        
+                        print(allytipsChamp)
                         
                         let infoJSON  = json["info"]
-                        let attack = infoJSON["attack"].intValue
+                        guard let attack = infoJSON["attack"].int else {return}
                         let defense = infoJSON["defense"].intValue
                         let magic = infoJSON["magic"].intValue
                         let difficulty = infoJSON["difficulty"].intValue
                         
                         let infoChamp = InfoDto(attack: attack, defense: defense, difficulty: difficulty, magic: magic)
-                        let tagsChamp = json["tags"]
+                        let tagsChamp = self.toString(json["tags"])
                         
-                        var tag : [String] = []
-                        for i in tagsChamp {
-                            tag.append(i.1.string!)
+                        //---------------------------------------- xong overview
+                        
+                        
+                        for (key, spellJSON) in json["spells"] {
+                            guard let name = spellJSON["name"].string else {return}
+                            let costValue = self.toInt(spellJSON["cost"])
+                            guard var cooldownBurnValue = spellJSON["cooldownBurn"].string else {return}
+                            var rangeValue = self.toDouble(spellJSON["range"])
+                            guard var descriptionValue = spellJSON["description"].string else {return}
+                            
+                            let spellsChamp = ChampionSpellDto(name: name, cost: costValue, cooldownBurn: cooldownBurnValue, range: rangeValue, description: descriptionValue)
+                            
+                            
                         }
                         
-                        self.champ = ChampionDto(title: titleChamp, tags: tag, info: infoChamp, allytips: allytipsChamp)
+                        
+                        self.champ = ChampionDto(title: titleChamp, tags: tagsChamp, info: infoChamp, allytips: allytipsChamp)
+                        
+                        
+                        //---------------------------------------- xong spells
+                        let statsJSON = json["stats"]
+                        
+                        guard let hpValue = statsJSON["hp"].double else {return}
+                        guard let hpperlevelValue = statsJSON["hpperlevel"].double else {return}
+                        guard let hpregenValue = statsJSON["hpregen"].double else {return}
+                        guard let hpregenperlevelValue = statsJSON["hpregenperlevel"].double else {return}
+                        guard let armorValue = statsJSON["armor"].double else {return}
+                        guard let armorperlevelValue = statsJSON["armorperlevel"].double else {return}
+                        guard let attackdamageValue = statsJSON["attackdamage"].double else {return}
+                        
+                        guard let attackdamageperlevelValue = statsJSON["attackdamageperlevel"].double else {return}
+                        guard let spellblockValue = statsJSON["spellblock"].double else {return}
+                        guard let spellblockperlevelValue = statsJSON["spellblockperlevel"].double else {return}
+                        guard let movespeedValue = statsJSON["movespeed"].double else {return}
+                        
+                        let statsChamp = StatsDto(hp: hpValue, hpperlevel: hpperlevelValue,
+                                                  hpregen: hpregenValue, hpregenperlevel: hpregenperlevelValue,
+                                                  armor: armorValue, armorperlevel: armorperlevelValue,
+                                                  attackdamage: attackdamageValue, attackdamageperlevel: attackdamageperlevelValue,
+                                                  spellblock: spellblockValue, spellblockperlevel: spellblockValue,
+                                                  movespeed: movespeedValue)
                         
                         masterVC.champ = self.champ
                         
-                        dispatch_async(dispatch_get_main_queue(), { 
+                        dispatch_async(dispatch_get_main_queue(), {
                             self.navigationController?.pushViewController(masterVC, animated: true)
                         })
                         
-                    
+                        
                     }
                 }
             }
@@ -164,11 +204,35 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func toString(des: JSON) -> [String] {
         var text : [String] = []
         for i in des {
-            text.append(i.1.string!)
+            if let string = i.1.string {
+                text.append(string)
+            }
+        }
+        print(text)
+        
+        return text
+    }
+    
+    func toInt(des: JSON) -> [Int] {
+        var numbers : [Int] = []
+        for i in des {
+            if let num = i.1.int {
+                numbers.append(num)
+            }
+        }
+        
+        return numbers
+    }
+    
+    func toDouble(des: JSON) -> [Double] {
+        var text : [Double] = []
+        for i in des {
+            if 
+            text.append(i.1.double!)
         }
         
         return text
     }
     
-
+    
 }
