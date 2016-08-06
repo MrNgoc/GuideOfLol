@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		842374861D5083F900FFFE04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842374851D5083F900FFFE04 /* AppDelegate.swift */; };
-		842374881D5083F900FFFE04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842374871D5083F900FFFE04 /* ViewController.swift */; };
 		8423748B1D5083FA00FFFE04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842374891D5083FA00FFFE04 /* Main.storyboard */; };
 		8423748D1D5083FA00FFFE04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8423748C1D5083FA00FFFE04 /* Assets.xcassets */; };
 		842374901D5083FA00FFFE04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8423748E1D5083FA00FFFE04 /* LaunchScreen.storyboard */; };
@@ -18,6 +17,8 @@
 		847768021D54381E006E6E2B /* SkinDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847768011D54381E006E6E2B /* SkinDto.swift */; };
 		847768041D544562006E6E2B /* OverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847768031D544562006E6E2B /* OverviewController.swift */; };
 		847768061D545661006E6E2B /* SpellsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847768051D545661006E6E2B /* SpellsController.swift */; };
+		84908A8D1D5585CB00335C90 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84908A8C1D5585CB00335C90 /* StatsViewController.swift */; };
+		84908A8F1D558FE400335C90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84908A8E1D558FE400335C90 /* ViewController.swift */; };
 		84D94DD81D51E79B0012D8C8 /* CellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D94DD71D51E79B0012D8C8 /* CellItem.swift */; };
 		C784EA9B1D52FDCD003F930C /* MasterTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EA9A1D52FDCD003F930C /* MasterTableVC.swift */; };
 		C79957021D51A9CA00F4615D /* ImageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79957011D51A9CA00F4615D /* ImageDto.swift */; };
@@ -30,7 +31,6 @@
 		6C2A01A8180BB4EF966BBF37 /* Pods-GuideOfLol.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuideOfLol.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GuideOfLol/Pods-GuideOfLol.debug.xcconfig"; sourceTree = "<group>"; };
 		842374821D5083F900FFFE04 /* GuideOfLol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuideOfLol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842374851D5083F900FFFE04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		842374871D5083F900FFFE04 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8423748A1D5083FA00FFFE04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8423748C1D5083FA00FFFE04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8423748F1D5083FA00FFFE04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -41,6 +41,8 @@
 		847768011D54381E006E6E2B /* SkinDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinDto.swift; sourceTree = "<group>"; };
 		847768031D544562006E6E2B /* OverviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewController.swift; sourceTree = "<group>"; };
 		847768051D545661006E6E2B /* SpellsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellsController.swift; sourceTree = "<group>"; };
+		84908A8C1D5585CB00335C90 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		84908A8E1D558FE400335C90 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		84D94DD71D51E79B0012D8C8 /* CellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellItem.swift; sourceTree = "<group>"; };
 		B3DBE99A54E304958CE9B541 /* Pods_GuideOfLol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GuideOfLol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C784EA9A1D52FDCD003F930C /* MasterTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableVC.swift; sourceTree = "<group>"; };
@@ -91,9 +93,10 @@
 			children = (
 				8475AEA61D5195DD00FECC5D /* Model */,
 				84D94DD71D51E79B0012D8C8 /* CellItem.swift */,
+				84908A8E1D558FE400335C90 /* ViewController.swift */,
+				84908A8C1D5585CB00335C90 /* StatsViewController.swift */,
 				847768031D544562006E6E2B /* OverviewController.swift */,
 				C784EA9A1D52FDCD003F930C /* MasterTableVC.swift */,
-				842374871D5083F900FFFE04 /* ViewController.swift */,
 				842374851D5083F900FFFE04 /* AppDelegate.swift */,
 				847768051D545661006E6E2B /* SpellsController.swift */,
 				842374891D5083FA00FFFE04 /* Main.storyboard */,
@@ -249,13 +252,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C784EA9B1D52FDCD003F930C /* MasterTableVC.swift in Sources */,
-				842374881D5083F900FFFE04 /* ViewController.swift in Sources */,
 				847767FE1D5437D2006E6E2B /* StatsDto.swift in Sources */,
 				847768021D54381E006E6E2B /* SkinDto.swift in Sources */,
 				8475AEA81D5196B900FECC5D /* ChampionDto.swift in Sources */,
 				847768041D544562006E6E2B /* OverviewController.swift in Sources */,
 				847768001D5437F9006E6E2B /* ChampionSpellDto.swift in Sources */,
 				842374861D5083F900FFFE04 /* AppDelegate.swift in Sources */,
+				84908A8D1D5585CB00335C90 /* StatsViewController.swift in Sources */,
+				84908A8F1D558FE400335C90 /* ViewController.swift in Sources */,
 				847768061D545661006E6E2B /* SpellsController.swift in Sources */,
 				C79957041D51AA0300F4615D /* InfoDto.swift in Sources */,
 				84D94DD81D51E79B0012D8C8 /* CellItem.swift in Sources */,

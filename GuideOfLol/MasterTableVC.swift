@@ -28,16 +28,21 @@ class MasterTableVC: UIViewController {
     @IBOutlet weak var champTitle: UILabel!
     @IBOutlet weak var champTags: UILabel!
     
+    @IBOutlet weak var segmentTitle: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         champName.text = champ?.name
-    
-        print("champ name :\(champ?.title)")
+        overView.hidden = false
+        spellsView.hidden = true
+        statsView.hidden = true
+        storyView.hidden = true
+        skinsView.hidden = true
         
     }
     
     
     @IBAction func actionSegement(sender: AnyObject) {
+        sender.selected
         switch sender.selectedSegmentIndex {
         case 0:
             overView.hidden = false
@@ -45,10 +50,6 @@ class MasterTableVC: UIViewController {
             statsView.hidden = true
             storyView.hidden = true
             skinsView.hidden = true
-            
-            let overviewcontroller = storyboard?.instantiateViewControllerWithIdentifier("OverView") as! OverviewController
-            
-            overviewcontroller.champ = self.champ
             
         case 1:
             overView.hidden = true
@@ -69,22 +70,27 @@ class MasterTableVC: UIViewController {
             statsView.hidden = true
             storyView.hidden = false
             skinsView.hidden = true
-        case 4:
+        default:
             overView.hidden = true
             spellsView.hidden = true
             statsView.hidden = true
             storyView.hidden = true
             skinsView.hidden = false
-        default:
-            break
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-            if segue.identifier == "view0Segue" {
-                let view0 = segue.destinationViewController as? OverviewController
-                view0?.champ = champ
-            }
+        if segue.identifier == "view0Segue" {
+            let view0 = segue.destinationViewController as? OverviewController
+            view0?.champ = champ
+        }
+        if segue.identifier == "stats" {
+            let stats = segue.destinationViewController as! StatsViewController
+            stats.champ = champ
+            print(stats.champ)
+            
+            
+        }
     }
     
 }

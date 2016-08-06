@@ -157,10 +157,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                             let spellsChamp = ChampionSpellDto(name: name, cost: costValue, cooldownBurn: cooldownBurnValue, range: rangeValue, description: descriptionValue)
                             
                             
+                            
                         }
                         
-                        
-                        self.champ = ChampionDto(title: titleChamp, tags: tagsChamp, info: infoChamp, allytips: allytipsChamp)
                         
                         
                         //---------------------------------------- xong spells
@@ -183,9 +182,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                                                   hpregen: hpregenValue, hpregenperlevel: hpregenperlevelValue,
                                                   armor: armorValue, armorperlevel: armorperlevelValue,
                                                   attackdamage: attackdamageValue, attackdamageperlevel: attackdamageperlevelValue,
-                                                  spellblock: spellblockValue, spellblockperlevel: spellblockValue,
+                                                  spellblock: spellblockValue, spellblockperlevel: spellblockperlevelValue,
                                                   movespeed: movespeedValue)
                         
+                        
+                        self.champ = ChampionDto(title: titleChamp, tags: tagsChamp, info: infoChamp, allytips: allytipsChamp, stats: statsChamp)
                         masterVC.champ = self.champ
                         
                         dispatch_async(dispatch_get_main_queue(), {
@@ -227,8 +228,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func toDouble(des: JSON) -> [Double] {
         var text : [Double] = []
         for i in des {
-            if 
+            if let douleNum = i.1.double {
             text.append(i.1.double!)
+        }
         }
         
         return text

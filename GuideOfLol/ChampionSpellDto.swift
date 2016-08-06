@@ -18,4 +18,12 @@ class ChampionSpellDto {
     
     //  var tooltip: String?
     
+    init(name: String, cost: [Int], cooldownBurn: String, range: [Double], description: String) {
+        self.name = name
+//        self.altimages = altimages
+        self.cost = cost
+        self.cooldownBurn = cooldownBurn
+        self.range = range
+        self.description = description
+    }
 }

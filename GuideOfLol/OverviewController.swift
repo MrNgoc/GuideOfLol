@@ -37,7 +37,13 @@ class OverviewController: UIViewController {
             lblSpells.text = String(spellsValue)
         }
         
-            print(champ?.allytips)
+        if let allytipsValue = champ?.allytips {
+            var text : String = ""
+            for i in allytipsValue {
+                text += i + " "
+            }
+            tvAllytips.text = text
+        }
         
     }
     

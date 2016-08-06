@@ -43,11 +43,12 @@ class ChampionDto {
         
     }
     
-    init(title : String, tags: [String], info : InfoDto, allytips :  [String]) {
+    init(title : String, tags: [String], info : InfoDto, allytips :  [String],stats: StatsDto) {
         self.title = title
         self.tags = tags
         self.info = info
         self.allytips = allytips
+        self.stats = stats
         
     }
     
