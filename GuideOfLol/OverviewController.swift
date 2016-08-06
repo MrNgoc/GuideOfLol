@@ -24,20 +24,15 @@ class OverviewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        if let attackValue = champ?.info?.attack {
+        if  let attackValue     = champ?.info?.attack,      healthValue = champ?.info?.defense,
+                difficultValue  = champ?.info?.difficulty,  spellsValue = champ?.info?.magic,
+                allytipsValue   = champ?.allytips
+        {
             lblAttack.text = String(attackValue)
-        }
-        if let healthValue = champ?.info?.defense {
             lblHealth.text = String(healthValue)
-        }
-        if let difficultValue = champ?.info?.difficulty {
             lblDifficult.text = String(difficultValue)
-        }
-        if let spellsValue = champ?.info?.magic {
             lblSpells.text = String(spellsValue)
-        }
-        
-        if let allytipsValue = champ?.allytips {
+            
             var text : String = ""
             for i in allytipsValue {
                 text += i + " "

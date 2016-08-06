@@ -84,6 +84,7 @@ class MasterTableVC: UIViewController {
             let view0 = segue.destinationViewController as? OverviewController
             view0?.champ = champ
         }
+
         if segue.identifier == "stats" {
             let stats = segue.destinationViewController as! StatsViewController
             stats.champ = champ

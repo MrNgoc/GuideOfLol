@@ -68,9 +68,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // print(champions.count)
         return champions.count
-        
     }
     
     
@@ -81,7 +79,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let imageURL = champions[indexPath.item].image
         
-        //        var imageURL = champions[indexPath.item].nameImg
         let url = NSURL(string: imageURL!)
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
@@ -113,18 +110,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let session = NSURLSession.sharedSession()
         
         session.dataTaskWithRequest(urlRequest) { (data, response, error) in
-            if let error = error {
+            if let error = error
+            {
                 print(error.localizedDescription)
-            }else{
-                if let responseHTTP = response as? NSHTTPURLResponse{
-                    if responseHTTP.statusCode == 200 {
+            } else {
+                if let responseHTTP = response as? NSHTTPURLResponse
+                {
+                    if responseHTTP.statusCode == 200
+                    {
                         
                         let json = JSON(data:data!)
                         
                         // lay name + tag
                         guard let name = json["name"].string else { return }
                         
-                        
+//                        self.champ = ChampionDto(id: idChamp, name: name, image: name)
                         
                         
                         // lay title
@@ -133,28 +133,30 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         
                         // lay allytips
                         let allytipsChamp = self.toString(json["allytips"])
-                        print(allytipsChamp)
                         
                         let infoJSON  = json["info"]
                         guard let attack = infoJSON["attack"].int else {return}
-                        let defense = infoJSON["defense"].intValue
-                        let magic = infoJSON["magic"].intValue
-                        let difficulty = infoJSON["difficulty"].intValue
+                        guard let defense = infoJSON["defense"].int else {return}
+                        guard let magic = infoJSON["magic"].int else {return}
+                        guard let difficulty = infoJSON["difficulty"].int else {return}
                         
                         let infoChamp = InfoDto(attack: attack, defense: defense, difficulty: difficulty, magic: magic)
                         let tagsChamp = self.toString(json["tags"])
                         
                         //---------------------------------------- xong overview
-                        
+                        print(json)
+                        print(json["spells"]["image"])
                         
                         for (key, spellJSON) in json["spells"] {
                             guard let name = spellJSON["name"].string else {return}
                             let costValue = self.toInt(spellJSON["cost"])
-                            guard var cooldownBurnValue = spellJSON["cooldownBurn"].string else {return}
-                            var rangeValue = self.toDouble(spellJSON["range"])
-                            guard var descriptionValue = spellJSON["description"].string else {return}
+                            guard let cooldownBurnValue = spellJSON["cooldownBurn"].string else {return}
+                            let rangeValue = self.toDouble(spellJSON["range"])
+                            guard let descriptionValue = spellJSON["description"].string else {return}
                             
-                            let spellsChamp = ChampionSpellDto(name: name, cost: costValue, cooldownBurn: cooldownBurnValue, range: rangeValue, description: descriptionValue)
+                            
+                            
+//                            let spellsChamp = ChampionSpellDto(name: name, cost: costValue, cooldownBurn: cooldownBurnValue, range: rangeValue, description: descriptionValue)
                             
                             
                             
@@ -187,6 +189,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         
                         
                         self.champ = ChampionDto(title: titleChamp, tags: tagsChamp, info: infoChamp, allytips: allytipsChamp, stats: statsChamp)
+
+                        //---------------------------------------- xong spells
+                        
+                        
+                    
+                        let loreJSON =  json["lore"]
+//                        print(loreJSON)
+                        
                         masterVC.champ = self.champ
                         
                         dispatch_async(dispatch_get_main_queue(), {
@@ -209,8 +219,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 text.append(string)
             }
         }
-        print(text)
-        
         return text
     }
     
@@ -228,9 +236,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func toDouble(des: JSON) -> [Double] {
         var text : [Double] = []
         for i in des {
-            if let douleNum = i.1.double {
-            text.append(i.1.double!)
-        }
+            if let doubleNum = i.1.double {
+                text.append(doubleNum)
+            }
+
         }
         
         return text
