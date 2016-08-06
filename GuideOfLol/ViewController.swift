@@ -103,6 +103,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         getDataOfChampion(champions[indexPath.item].id!, masterVC: v1!)
     }
+
     
     func getDataOfChampion(idChamp : Int, masterVC : MasterTableVC) {
         let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/\(idChamp)?champData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
@@ -199,7 +200,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         
                     
                         let loreJSON =  json["lore"]
-                        
+                        print(loreJSON)
+                        var listSkin = [SkinDto]()
+                        for (key, skillJSON) in json["skins"] {
+                            guard let skillName = skillJSON["name"].string else {return}
+                            guard let skillNum = skillJSON["num"].int else {return}
+                            let skillValue = SkinDto(name: skillName, num: skillNum)
+                            listSkin.append(skillValue)
+                        }
                         masterVC.champ = self.champ
                         
                         dispatch_async(dispatch_get_main_queue(), {

@@ -9,7 +9,12 @@
 
 class SkinDto {
     
+    var name : String?
+    var num	: Int?
     
-    
+    init(name: String, num: Int) {
+        self.name = name
+        self.num = num
+    }
 }
 

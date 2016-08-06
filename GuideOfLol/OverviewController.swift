@@ -25,8 +25,8 @@ class OverviewController: UIViewController {
         
         super.viewDidLoad()
         if  let attackValue     = champ?.info?.attack,      healthValue = champ?.info?.defense,
-                difficultValue  = champ?.info?.difficulty,  spellsValue = champ?.info?.magic,
-                allytipsValue   = champ?.allytips
+            difficultValue  = champ?.info?.difficulty,  spellsValue = champ?.info?.magic,
+            allytipsValue   = champ?.allytips
         {
             lblAttack.text = String(attackValue)
             lblHealth.text = String(healthValue)
