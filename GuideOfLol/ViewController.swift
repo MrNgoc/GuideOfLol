@@ -43,7 +43,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         let json = JSON(data:data!)
                         let data = json["data"]
                         
-                        var nameImage = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
+                        let nameImage = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
                         
                         for (key,subJson):(String, JSON) in data {
                             let idChamp = subJson["id"].intValue
@@ -144,8 +144,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         let tagsChamp = self.toString(json["tags"])
                         
                         //---------------------------------------- xong overview
-                        print(json)
-                        print(json["spells"]["image"])
+                        
+                        var listSpellDts = [ChampionSpellDto]()
                         
                         for (key, spellJSON) in json["spells"] {
                             guard let name = spellJSON["name"].string else {return}
@@ -153,13 +153,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                             guard let cooldownBurnValue = spellJSON["cooldownBurn"].string else {return}
                             let rangeValue = self.toDouble(spellJSON["range"])
                             guard let descriptionValue = spellJSON["description"].string else {return}
+
+                            
+                            guard let fullValue = spellJSON["image"]["full"].string else {return}
+                            
+                            guard let groupValue = spellJSON["image"]["group"].string else {return}
+
+                            let altimages = ImageDto(full: fullValue, group: groupValue)
                             
                             
-                            
-//                            let spellsChamp = ChampionSpellDto(name: name, cost: costValue, cooldownBurn: cooldownBurnValue, range: rangeValue, description: descriptionValue)
-                            
-                            
-                            
+                            let spellsChamp = ChampionSpellDto(name: name, altimages: altimages, cost: costValue, cooldownBurn: cooldownBurnValue, range: rangeValue, description: descriptionValue)
+                            listSpellDts.append(spellsChamp)
                         }
                         
                         
@@ -188,14 +192,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                                                   movespeed: movespeedValue)
                         
                         
-                        self.champ = ChampionDto(title: titleChamp, tags: tagsChamp, info: infoChamp, allytips: allytipsChamp, stats: statsChamp)
+                        self.champ = ChampionDto(title: titleChamp, tags: tagsChamp, info: infoChamp, allytips: allytipsChamp, stats: statsChamp, spells: listSpellDts)
 
                         //---------------------------------------- xong spells
                         
                         
                     
                         let loreJSON =  json["lore"]
-//                        print(loreJSON)
                         
                         masterVC.champ = self.champ
                         

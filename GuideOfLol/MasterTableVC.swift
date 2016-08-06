@@ -80,7 +80,7 @@ class MasterTableVC: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "view0Segue" {
+        if segue.identifier == "overview" {
             let view0 = segue.destinationViewController as? OverviewController
             view0?.champ = champ
         }
@@ -88,8 +88,11 @@ class MasterTableVC: UIViewController {
         if segue.identifier == "stats" {
             let stats = segue.destinationViewController as! StatsViewController
             stats.champ = champ
-            print(stats.champ)
-            
+
+        }
+        if segue.identifier == "spells" {
+            let spells = segue.destinationViewController as! SpellsController
+            spells.champ = champ
             
         }
     }

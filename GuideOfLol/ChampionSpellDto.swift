@@ -9,7 +9,7 @@
 class ChampionSpellDto {
     var name: String?
     
-    var altimages: 	[ImageDto]?
+    var altimages: ImageDto?
     var cost: [Int]?
     var cooldownBurn: String?
     var range: [Double]?
@@ -19,10 +19,9 @@ class ChampionSpellDto {
     //  var tooltip: String?
     
 
-    init(name: String, altimages: [ImageDto], cost: [Int], cooldownBurn: String, range: [Double], description: String) {
+    init(name: String, altimages: ImageDto, cost: [Int], cooldownBurn: String, range: [Double], description: String) {
         self.name = name
         self.altimages = altimages
-
         self.cost = cost
         self.cooldownBurn = cooldownBurn
         self.range = range
