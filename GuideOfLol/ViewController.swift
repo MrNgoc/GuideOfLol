@@ -103,7 +103,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         getDataOfChampion(champions[indexPath.item].id!, masterVC: v1!)
     }
-
+    
     
     func getDataOfChampion(idChamp : Int, masterVC : MasterTableVC) {
         let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/\(idChamp)?champData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
@@ -125,7 +125,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         // lay name + tag
                         guard let name = json["name"].string else { return }
                         
-//                        self.champ = ChampionDto(id: idChamp, name: name, image: name)
+                        //                        self.champ = ChampionDto(id: idChamp, name: name, image: name)
                         
                         
                         // lay title
@@ -154,12 +154,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                             guard let cooldownBurnValue = spellJSON["cooldownBurn"].string else {return}
                             let rangeValue = self.toDouble(spellJSON["range"])
                             guard let descriptionValue = spellJSON["description"].string else {return}
-
+                            
                             
                             guard let fullValue = spellJSON["image"]["full"].string else {return}
                             
                             guard let groupValue = spellJSON["image"]["group"].string else {return}
-
+                            
                             let altimages = ImageDto(full: fullValue, group: groupValue)
                             
                             
@@ -193,12 +193,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                                                   movespeed: movespeedValue)
                         
                         
-                        self.champ = ChampionDto(title: titleChamp, tags: tagsChamp, info: infoChamp, allytips: allytipsChamp, stats: statsChamp, spells: listSpellDts)
-
+                        
+                        
                         //---------------------------------------- xong spells
                         
                         
-                    
+                        
                         let loreJSON =  json["lore"]
                         print(loreJSON)
                         var listSkin = [SkinDto]()
@@ -208,12 +208,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                             let skillValue = SkinDto(name: skillName, num: skillNum)
                             listSkin.append(skillValue)
                         }
+                        
+                        
+                        
+                        self.champ = ChampionDto(name: name, allytips: allytipsChamp, spells: listSpellDts, info: infoChamp, stats: statsChamp, tags: tagsChamp, skins: listSkin, title: titleChamp)
+                        
                         masterVC.champ = self.champ
                         
                         dispatch_async(dispatch_get_main_queue(), {
                             self.navigationController?.pushViewController(masterVC, animated: true)
                         })
-                        
                         
                     }
                 }
@@ -250,7 +254,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             if let doubleNum = i.1.double {
                 text.append(doubleNum)
             }
-
+            
         }
         
         return text

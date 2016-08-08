@@ -15,9 +15,6 @@ class ChampionSpellDto {
     var range: [Double]?
     
     var description: String?
-    
-    //  var tooltip: String?
-    
 
     init(name: String, altimages: ImageDto, cost: [Int], cooldownBurn: String, range: [Double], description: String) {
         self.name = name

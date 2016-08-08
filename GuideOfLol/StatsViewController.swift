@@ -48,8 +48,7 @@ class StatsViewController: UIViewController {
     
     
     @IBOutlet weak var Slider: UISlider!
-//    init(hp : Double, hpperlevel: Double, hpregen: Double, hpregenperlevel: Double, armor: Double,
-//         armorperlevel: Double, attackdamage: Double, attackdamageperlevel: Double, spellblock: Double,spellblockperlevel: Double, movespeed: Double)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,7 +62,7 @@ class StatsViewController: UIViewController {
             attackPerlevel = champ?.stats?.attackdamageperlevel, armorPerlevel = champ?.stats?.armorperlevel,
             spellBlockPerlevel = champ?.stats?.spellblockperlevel, healthPerlevel = champ?.stats?.hpperlevel,
             healthRegenPerlevel = champ?.stats?.hpregenperlevel
-        
+            
             
         {
             let attackValue = Double(value) * attackPerlevel + statsAttackdamage
@@ -80,24 +79,19 @@ class StatsViewController: UIViewController {
             lbl_Amor.text = String(amorValue)
             lbl_MagicSpell.text = String(spellValue)
             
-            
-            
             lbl_Health.text = String(healthValue)
-            
             
             lbl_healthRegen.text = String(healthRegenValue)
             
             lbl_attackPerlevel.text = String(attackPerlevel)
             
-            
             lbl_AmorPerLevel.text = String(armorPerlevel)
             lbl_magicSpellPerlevel.text = String(spellBlockPerlevel)
             lbl_HealthPerlevel.text = String(healthPerlevel)
             lbl_HealthRegenPerLevel.text = String(healthRegenPerlevel)
-            
+
+        }
         
-    }
-    
     }
     
     

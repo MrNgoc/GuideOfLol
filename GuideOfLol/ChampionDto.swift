@@ -22,15 +22,14 @@ class ChampionDto {
     var nameImg : String?
     
     
-    init(id: Int, name: String , allytips: [String],spells: [ChampionSpellDto], info : InfoDto, stats: StatsDto, tags: [String],skins: [SkinDto], image: String, title : String) {
-        self.id = id
+    init(name: String , allytips: [String],spells: [ChampionSpellDto], info : InfoDto, stats: StatsDto, tags: [String],skins: [SkinDto], title : String) {
         self.name = name
         self.info = info
         self.allytips = allytips
         self.stats = stats
         self.tags = tags
         self.spells = spells
-        self.image = image
+
         self.skins  = skins
         self.title = title
         
@@ -42,17 +41,4 @@ class ChampionDto {
         self.name = name
         
     }
-    
-    init(title : String, tags: [String], info : InfoDto, allytips :  [String],stats: StatsDto, spells : [ChampionSpellDto]) {
-        self.title = title
-        self.tags = tags
-        self.info = info
-        self.allytips = allytips
-        self.stats = stats
-        self.spells = spells
-        
-    }
-    
-    
-    
 }

@@ -32,6 +32,17 @@ class MasterTableVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         champName.text = champ?.name
+        champTitle.text = champ?.title
+        champTags.text = String(champ?.tags)
+        //ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/Aatrox.png
+        var a = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
+        let  urlImagefinish = a + (champ?.name)! + ".png"
+//        print(urlImagefinish)
+        
+        let url = NSURL(string: urlImagefinish)
+        let data = NSData(contentsOfURL: url!)
+        champImage.image = UIImage(data: data!)
+        
         overView.hidden = false
         spellsView.hidden = true
         statsView.hidden = true
