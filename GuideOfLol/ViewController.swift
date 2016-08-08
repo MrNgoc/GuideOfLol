@@ -29,7 +29,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func getData() {
         
-        let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=image&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
+        let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?locale=vn_VN&champData=image&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
         
         let session = NSURLSession.sharedSession()
         
@@ -105,8 +105,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     
+    
     func getDataOfChampion(idChamp : Int, masterVC : MasterTableVC) {
-        let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/\(idChamp)?champData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
+        let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/\(idChamp)?locale=vn_VN&champData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
         
         let session = NSURLSession.sharedSession()
         

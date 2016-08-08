@@ -37,7 +37,11 @@ class OverviewController: UIViewController {
             for i in allytipsValue {
                 text += i + " "
             }
+            
+            let attr = try! NSAttributedString(data: text.dataUsingEncoding(NSUnicodeStringEncoding,allowLossyConversion: true)!,options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
             tvAllytips.text = text
+            tvAllytips.attributedText = attr
+
         }
     }
     
