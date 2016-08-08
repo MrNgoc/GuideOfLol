@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e0g-ep-wv1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e0g-ep-wv1">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -53,12 +53,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1068" y="-1945"/>
+            <point key="canvasLocation" x="923" y="-2006"/>
         </scene>
         <!--Master TableVC-->
         <scene sceneID="ta4-nJ-kNC">
             <objects>
-                <viewController storyboardIdentifier="Master" id="Md6-BB-CET" customClass="MasterTableVC" customModule="GuideOfLol" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Master" automaticallyAdjustsScrollViewInsets="NO" id="Md6-BB-CET" customClass="MasterTableVC" customModule="GuideOfLol" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OSy-TW-aK4"/>
                         <viewControllerLayoutGuide type="bottom" id="biQ-qQ-gBi"/>
@@ -299,7 +299,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DHJ-9d-aTT" id="9vg-9P-sGr">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="219.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="219"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PE4-A0-9ne">
@@ -399,7 +399,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zpO-bM-81U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="606" y="-1714"/>
+            <point key="canvasLocation" x="424" y="-2201"/>
         </scene>
         <!--Overview Controller-->
         <scene sceneID="Y8O-Tm-Cub">
@@ -512,7 +512,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPM-p0-m7X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2121" y="-2456"/>
+            <point key="canvasLocation" x="2040" y="-2474"/>
         </scene>
         <!--Stats View Controller-->
         <scene sceneID="EKh-PA-jcf">
@@ -726,10 +726,10 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Bsv-Yk-lNH" customClass="CustomUICollectionViewCell" customModule="GuideOfLol" customModuleProvider="target">
-                                        <rect key="frame" x="25" y="0.0" width="270.5" height="278"/>
+                                        <rect key="frame" x="25" y="0.0" width="271" height="278"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="270.5" height="278"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="271" height="278"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFl-bs-HI6">

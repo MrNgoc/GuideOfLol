@@ -21,6 +21,29 @@ class OverviewController: UIViewController {
     
     @IBOutlet weak var tvAllytips: UITextView!
     
+//    let attackLabel : UILabel =  {
+//    let label = UILabel()
+//    
+//    return label
+//    }()
+    let healthLabel : UILabel =  {
+        let label = UILabel()
+        
+        return label
+    }()
+    let difficultyLabel : UILabel =  {
+        let label = UILabel()
+        
+        return label
+    }()
+    
+    let spellLabel : UILabel =  {
+        let label = UILabel()
+        
+        return label
+    }()
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -32,6 +55,21 @@ class OverviewController: UIViewController {
             lblHealth.text = String(healthValue)
             lblDifficult.text = String(difficultValue)
             lblSpells.text = String(spellsValue)
+            
+            view.addSubview(healthLabel)
+            view.addSubview(difficultyLabel)
+            view.addSubview(spellLabel)
+            let attackLabel = UILabel(frame: CGRectMake(190, 7 , 10 * CGFloat(attackValue), 20))
+            view.addSubview(attackLabel)
+            attackLabel.backgroundColor = UIColor.redColor()
+             healthLabel.backgroundColor = UIColor.yellowColor()
+            difficultyLabel.backgroundColor = UIColor.purpleColor()
+            spellLabel.backgroundColor = UIColor.blueColor()
+            
+            
+            healthLabel.frame = CGRectMake(190, 40, 10 * CGFloat(healthValue), 20)
+            difficultyLabel.frame = CGRectMake(190, 68, 10 * CGFloat(difficultValue), 20)
+            spellLabel.frame = CGRectMake(190, 98, 10 * CGFloat(spellsValue), 20)
             
             var text : String = ""
             for i in allytipsValue {

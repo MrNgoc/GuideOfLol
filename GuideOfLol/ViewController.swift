@@ -21,6 +21,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
+        
         myCollection.backgroundColor = UIColor.whiteColor()
         
     }
@@ -100,13 +101,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let v1 = storyboard?.instantiateViewControllerWithIdentifier("Master") as? MasterTableVC
+        if champions[indexPath.item].id! == 163 {
+            print("eo co")
+            return
+        }
         
         getDataOfChampion(champions[indexPath.item].id!, masterVC: v1!)
+        
+        
     }
     
     
     
     func getDataOfChampion(idChamp : Int, masterVC : MasterTableVC) {
+
+//        let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/\(idChamp)?champData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
+        
         let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/\(idChamp)?locale=vn_VN&champData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
         
         let session = NSURLSession.sharedSession()
