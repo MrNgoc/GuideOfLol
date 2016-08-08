@@ -106,6 +106,12 @@ class MasterTableVC: UIViewController {
             spells.champ = champ
             
         }
+        if segue.identifier == "skins" {
+            let skins = segue.destinationViewController as! SkinsController
+            skins.champ = champ
+            
+        }
+        
     }
     
 }

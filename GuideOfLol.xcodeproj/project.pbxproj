@@ -21,6 +21,8 @@
 		84908A8D1D5585CB00335C90 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84908A8C1D5585CB00335C90 /* StatsViewController.swift */; };
 		84908A8F1D558FE400335C90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84908A8E1D558FE400335C90 /* ViewController.swift */; };
 		84D94DD81D51E79B0012D8C8 /* CellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D94DD71D51E79B0012D8C8 /* CellItem.swift */; };
+		84E6D32F1D58323D002D9F11 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D32E1D58323D002D9F11 /* CustomCollectionViewCell.swift */; };
+		84E6D3311D58329B002D9F11 /* SkinsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D3301D58329B002D9F11 /* SkinsController.swift */; };
 		C784EA9B1D52FDCD003F930C /* MasterTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EA9A1D52FDCD003F930C /* MasterTableVC.swift */; };
 		C79957021D51A9CA00F4615D /* ImageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79957011D51A9CA00F4615D /* ImageDto.swift */; };
 		C79957041D51AA0300F4615D /* InfoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79957031D51AA0300F4615D /* InfoDto.swift */; };
@@ -46,6 +48,8 @@
 		84908A8C1D5585CB00335C90 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		84908A8E1D558FE400335C90 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		84D94DD71D51E79B0012D8C8 /* CellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellItem.swift; sourceTree = "<group>"; };
+		84E6D32E1D58323D002D9F11 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		84E6D3301D58329B002D9F11 /* SkinsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinsController.swift; sourceTree = "<group>"; };
 		B3DBE99A54E304958CE9B541 /* Pods_GuideOfLol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GuideOfLol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C784EA9A1D52FDCD003F930C /* MasterTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableVC.swift; sourceTree = "<group>"; };
 		C79957011D51A9CA00F4615D /* ImageDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDto.swift; sourceTree = "<group>"; };
@@ -100,7 +104,9 @@
 				84908A8C1D5585CB00335C90 /* StatsViewController.swift */,
 				847768031D544562006E6E2B /* OverviewController.swift */,
 				C784EA9A1D52FDCD003F930C /* MasterTableVC.swift */,
+				84E6D3301D58329B002D9F11 /* SkinsController.swift */,
 				842374851D5083F900FFFE04 /* AppDelegate.swift */,
+				84E6D32E1D58323D002D9F11 /* CustomCollectionViewCell.swift */,
 				847768051D545661006E6E2B /* SpellsController.swift */,
 				842374891D5083FA00FFFE04 /* Main.storyboard */,
 				8423748C1D5083FA00FFFE04 /* Assets.xcassets */,
@@ -255,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C784EA9B1D52FDCD003F930C /* MasterTableVC.swift in Sources */,
+				84E6D32F1D58323D002D9F11 /* CustomCollectionViewCell.swift in Sources */,
 				847767FE1D5437D2006E6E2B /* StatsDto.swift in Sources */,
 				847768021D54381E006E6E2B /* SkinDto.swift in Sources */,
 				8475AEA81D5196B900FECC5D /* ChampionDto.swift in Sources */,
@@ -265,6 +272,7 @@
 				84908A8F1D558FE400335C90 /* ViewController.swift in Sources */,
 				847768061D545661006E6E2B /* SpellsController.swift in Sources */,
 				84617E931D55D26B00B4A627 /* CustomTableViewCell.swift in Sources */,
+				84E6D3311D58329B002D9F11 /* SkinsController.swift in Sources */,
 				C79957041D51AA0300F4615D /* InfoDto.swift in Sources */,
 				84D94DD81D51E79B0012D8C8 /* CellItem.swift in Sources */,
 				C79957021D51A9CA00F4615D /* ImageDto.swift in Sources */,

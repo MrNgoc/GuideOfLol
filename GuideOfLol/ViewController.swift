@@ -164,6 +164,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                             
                             
                             let spellsChamp = ChampionSpellDto(name: name, altimages: altimages, cost: costValue, cooldownBurn: cooldownBurnValue, range: rangeValue, description: descriptionValue)
+                            
                             listSpellDts.append(spellsChamp)
                         }
                         
