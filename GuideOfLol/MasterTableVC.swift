@@ -33,7 +33,13 @@ class MasterTableVC: UIViewController {
         super.viewDidLoad()
         champName.text = champ?.name
         champTitle.text = champ?.title
-        champTags.text = String(champ?.tags)
+        
+        guard let tagValues = champ?.tags else {return}
+        var tagValue : String = ""
+        for i in tagValues {
+            tagValue = tagValue + i + ", "
+        }
+        champTags.text = tagValue
         //ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/Aatrox.png
         var a = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
         let  urlImagefinish = a + (champ?.name)! + ".png"
@@ -110,6 +116,11 @@ class MasterTableVC: UIViewController {
             let skins = segue.destinationViewController as! SkinsController
             skins.champ = champ
             
+        }
+        
+        if segue.identifier == "story" {
+            let story = segue.destinationViewController as! StoryViewController
+            story.champ = champ
         }
         
     }

@@ -26,6 +26,7 @@
 		C784EA9B1D52FDCD003F930C /* MasterTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EA9A1D52FDCD003F930C /* MasterTableVC.swift */; };
 		C79957021D51A9CA00F4615D /* ImageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79957011D51A9CA00F4615D /* ImageDto.swift */; };
 		C79957041D51AA0300F4615D /* InfoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79957031D51AA0300F4615D /* InfoDto.swift */; };
+		C7D872DC1D5847C700DCAC5F /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D872DB1D5847C700DCAC5F /* StoryViewController.swift */; };
 		C945F504BB6E7BA6F54609A2 /* Pods_GuideOfLol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DBE99A54E304958CE9B541 /* Pods_GuideOfLol.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		C784EA9A1D52FDCD003F930C /* MasterTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableVC.swift; sourceTree = "<group>"; };
 		C79957011D51A9CA00F4615D /* ImageDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDto.swift; sourceTree = "<group>"; };
 		C79957031D51AA0300F4615D /* InfoDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoDto.swift; sourceTree = "<group>"; };
+		C7D872DB1D5847C700DCAC5F /* StoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				84617E921D55D26B00B4A627 /* CustomTableViewCell.swift */,
 				84908A8E1D558FE400335C90 /* ViewController.swift */,
 				84908A8C1D5585CB00335C90 /* StatsViewController.swift */,
+				C7D872DB1D5847C700DCAC5F /* StoryViewController.swift */,
 				847768031D544562006E6E2B /* OverviewController.swift */,
 				C784EA9A1D52FDCD003F930C /* MasterTableVC.swift */,
 				84E6D3301D58329B002D9F11 /* SkinsController.swift */,
@@ -276,6 +279,7 @@
 				C79957041D51AA0300F4615D /* InfoDto.swift in Sources */,
 				84D94DD81D51E79B0012D8C8 /* CellItem.swift in Sources */,
 				C79957021D51A9CA00F4615D /* ImageDto.swift in Sources */,
+				C7D872DC1D5847C700DCAC5F /* StoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

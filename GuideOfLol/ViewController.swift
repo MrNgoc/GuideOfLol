@@ -125,12 +125,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         // lay name + tag
                         guard let name = json["name"].string else { return }
                         
-                        //                        self.champ = ChampionDto(id: idChamp, name: name, image: name)
-                        
-                        
                         // lay title
                         guard let titleChamp = json["title"].string else {return}
-                        
                         
                         // lay allytips
                         let allytipsChamp = self.toString(json["allytips"])
@@ -200,8 +196,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         
                         
                         
-                        let loreJSON =  json["lore"]
-                        print(loreJSON)
+                        guard let loreValue =  json["lore"].string else {return}
+                        
                         var listSkin = [SkinDto]()
                         for (key, skillJSON) in json["skins"] {
                             guard let skillName = skillJSON["name"].string else {return}
@@ -212,7 +208,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         
                         
                         
-                        self.champ = ChampionDto(name: name, allytips: allytipsChamp, spells: listSpellDts, info: infoChamp, stats: statsChamp, tags: tagsChamp, skins: listSkin, title: titleChamp)
+                        self.champ = ChampionDto(name: name, allytips: allytipsChamp, spells: listSpellDts, info: infoChamp, stats: statsChamp, tags: tagsChamp, skins: listSkin, title: titleChamp, lore: loreValue)
                         
                         masterVC.champ = self.champ
                         

@@ -17,32 +17,21 @@ class StatsViewController: UIViewController {
     
     @IBOutlet weak var lbl_Amor: UILabel!
     
-    
-    
-    
     @IBOutlet weak var lbl_MagicSpell: UILabel!
-    
     
     @IBOutlet weak var lbl_Health: UILabel!
     
     @IBOutlet weak var lbl_healthRegen: UILabel!
     
-    
     @IBOutlet weak var lbl_attackPerlevel: UILabel!
     
     @IBOutlet weak var lbl_AmorPerLevel: UILabel!
-    
-    
-    
-    
     
     @IBOutlet weak var lbl_magicSpellPerlevel: UILabel!
     
     @IBOutlet weak var lbl_HealthPerlevel: UILabel!
     
-    
     @IBOutlet weak var lbl_HealthRegenPerLevel: UILabel!
-    
     
     @IBOutlet weak var lbl_Level: UILabel!
     
@@ -61,9 +50,7 @@ class StatsViewController: UIViewController {
             health = champ?.stats?.hp, healthRegen = champ?.stats?.hpregen,
             attackPerlevel = champ?.stats?.attackdamageperlevel, armorPerlevel = champ?.stats?.armorperlevel,
             spellBlockPerlevel = champ?.stats?.spellblockperlevel, healthPerlevel = champ?.stats?.hpperlevel,
-            healthRegenPerlevel = champ?.stats?.hpregenperlevel
-            
-            
+            healthRegenPerlevel = champ?.stats?.hpregenperlevel   
         {
             let attackValue = Double(value) * attackPerlevel + statsAttackdamage
             let amorValue = Double(value) * armorPerlevel + armor

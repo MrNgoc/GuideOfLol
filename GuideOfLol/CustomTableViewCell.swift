@@ -13,7 +13,6 @@ class CustomTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lbl_nameSkill: UILabel!
 
-
     @IBOutlet weak var lbl_Cost: UILabel!
     
     @IBOutlet weak var lbl_CD: UILabel!
@@ -21,7 +20,6 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var lbl_range: UILabel!
 
     @IBOutlet weak var tv_description: UITextView!
-
 
     @IBOutlet weak var imageSkill: UIImageView!
 }

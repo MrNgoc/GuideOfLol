@@ -39,9 +39,6 @@ class OverviewController: UIViewController {
             }
             tvAllytips.text = text
         }
-        
-        
-        
     }
     
     override func viewWillAppear(animated: Bool) {
