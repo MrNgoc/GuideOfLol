@@ -148,6 +148,12 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
     
     
     
+    @IBAction func actionWeb(sender: AnyObject) {
+        
+        let web = storyboard?.instantiateViewControllerWithIdentifier("webview") as! WebViewController
+        navigationController?.pushViewController(web, animated: true)
+        
+    }
     
     
     @IBAction func ChampionAction(sender: AnyObject) {

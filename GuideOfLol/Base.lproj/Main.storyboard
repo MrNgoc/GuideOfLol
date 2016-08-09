@@ -55,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1330" y="-2508"/>
+            <point key="canvasLocation" x="1486" y="-2551"/>
         </scene>
         <!--Master TableVC-->
         <scene sceneID="ta4-nJ-kNC">
@@ -75,6 +75,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1y6-Mb-fDn">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5i7-u3-upl">
+                                                <rect key="frame" x="0.0" y="-6" width="320" height="137"/>
+                                            </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="badblood" translatesAutoresizingMaskIntoConstraints="NO" id="KKH-ah-S9P">
                                                 <rect key="frame" x="8" y="8" width="60" height="60"/>
                                                 <constraints>
@@ -88,8 +91,8 @@
                                                     <constraint firstAttribute="width" constant="200" id="WsZ-O6-nNB"/>
                                                     <constraint firstAttribute="height" constant="21" id="bA5-FR-2uY"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6f-nw-CjE">
@@ -98,8 +101,8 @@
                                                     <constraint firstAttribute="height" constant="22" id="GCC-WE-c8i"/>
                                                     <constraint firstAttribute="width" constant="200" id="aRH-3x-gBL"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yPH-v4-m5p">
@@ -115,6 +118,7 @@
                                                     <segment title="Story"/>
                                                     <segment title="Skins"/>
                                                 </segments>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="actionSegement:" destination="Md6-BB-CET" eventType="valueChanged" id="fjw-vN-yfW"/>
                                                 </connections>
@@ -125,12 +129,11 @@
                                                     <constraint firstAttribute="width" constant="200" id="EMx-EL-Lw2"/>
                                                     <constraint firstAttribute="height" constant="21" id="VNB-xm-MKJ"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.015124227851629257" green="0.98986715078353882" blue="0.015794899314641953" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.41178262233734131" green="0.20008629560470581" blue="0.077698089182376862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="yPH-v4-m5p" firstAttribute="leading" secondItem="1y6-Mb-fDn" secondAttribute="leading" id="59Y-oz-eRq"/>
@@ -269,6 +272,8 @@
                         <outlet property="champName" destination="zpJ-pz-dxo" id="pPD-R6-OyI"/>
                         <outlet property="champTags" destination="eBk-8K-L0Z" id="Wz6-fT-ahA"/>
                         <outlet property="champTitle" destination="z6f-nw-CjE" id="eZi-sK-Ug5"/>
+                        <outlet property="fullChampImage" destination="1y6-Mb-fDn" id="vpj-BD-r7L"/>
+                        <outlet property="fullchampimage" destination="5i7-u3-upl" id="ERo-jx-WyM"/>
                         <outlet property="overView" destination="MZw-DK-zHP" id="AS7-XK-h0s"/>
                         <outlet property="segmentTitle" destination="yPH-v4-m5p" id="qFK-vs-E2M"/>
                         <outlet property="skinsView" destination="fVx-K7-ieF" id="Eo6-po-11d"/>
@@ -279,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LCw-J6-8yD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2453" y="-2024"/>
+            <point key="canvasLocation" x="2472" y="-2096"/>
         </scene>
         <!--Spells Controller-->
         <scene sceneID="YLA-em-0LP">
@@ -424,7 +429,10 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJn-lD-moR">
                                 <rect key="frame" x="60" y="442" width="68" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="Mastery"/>
+                                <state key="normal" title="LolWeb"/>
+                                <connections>
+                                    <action selector="actionWeb:" destination="9wq-lk-eJl" eventType="touchUpInside" id="HL8-h2-D7H"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5zW-YA-rmc">
                                 <rect key="frame" x="0.0" y="64" width="320" height="125"/>
@@ -477,7 +485,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kf1-Ma-tNI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="-2995"/>
+            <point key="canvasLocation" x="948" y="-3020"/>
         </scene>
         <!--Overview Controller-->
         <scene sceneID="Y8O-Tm-Cub">
@@ -859,7 +867,45 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dga-0Z-oG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="168" y="-2753"/>
+            <point key="canvasLocation" x="166" y="-2861"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="iaa-xR-OZJ">
+            <objects>
+                <viewController storyboardIdentifier="webview" id="13B-t8-2aw" customClass="WebViewController" customModule="GuideOfLol" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="v0s-tJ-cjF"/>
+                        <viewControllerLayoutGuide type="bottom" id="CLF-q6-O4d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8H4-cs-wob">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="JaU-j7-2yb">
+                                <rect key="frame" x="150" y="230" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cmz-aT-ap7">
+                                <rect key="frame" x="0.0" y="11" width="320" height="480"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cmz-aT-ap7" firstAttribute="leading" secondItem="8H4-cs-wob" secondAttribute="leading" id="GCY-Aa-5Uw"/>
+                            <constraint firstItem="CLF-q6-O4d" firstAttribute="top" secondItem="cmz-aT-ap7" secondAttribute="bottom" id="GCs-jq-qkA"/>
+                            <constraint firstAttribute="trailing" secondItem="cmz-aT-ap7" secondAttribute="trailing" id="MNH-jO-Xg2"/>
+                            <constraint firstItem="cmz-aT-ap7" firstAttribute="top" secondItem="8H4-cs-wob" secondAttribute="top" id="lPe-0T-vmJ"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="myIndicator" destination="JaU-j7-2yb" id="ZVJ-9M-hus"/>
+                        <outlet property="myWebview" destination="cmz-aT-ap7" id="5QC-Bn-bRt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y5I-9d-d9m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="474" y="-2453"/>
         </scene>
     </scenes>
     <resources>

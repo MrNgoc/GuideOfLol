@@ -63,6 +63,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }.resume()
         
     }
+           
+    
+    
+    
     func printChampions(champs: [ChampionDto])
     {
         champions = champs

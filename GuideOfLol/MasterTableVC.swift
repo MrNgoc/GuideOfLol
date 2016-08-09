@@ -16,6 +16,10 @@ class MasterTableVC: UIViewController {
     @IBOutlet weak var storyView: UIView!
     @IBOutlet weak var skinsView: UIView!
     
+    @IBOutlet weak var fullchampimage: UIImageView!
+    
+    
+    @IBOutlet weak var fullChampImage: UIView!
     var champ : ChampionDto?
     
     var id: Int?
@@ -43,7 +47,14 @@ class MasterTableVC: UIViewController {
         //ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/Aatrox.png
         var a = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
         let  urlImagefinish = a + (champ?.name)! + ".png"
-//        print(urlImagefinish)
+        var b = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"
+        
+        let urlfinishfullchamp = b + (champ?.name)! + "_1.jpg"
+        let url1 = NSURL(string: urlfinishfullchamp)
+        let data1 = NSData(contentsOfURL: url1!)
+        
+         fullchampimage.image = UIImage(data: data1!)
+        
         
         let url = NSURL(string: urlImagefinish)
         let data = NSData(contentsOfURL: url!)
