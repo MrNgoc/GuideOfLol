@@ -19,7 +19,7 @@ class  CellItem: UICollectionViewCell {
     var imageView: UIImageView!
     var price: UILabel!
     var kPriceLabelHight: CGFloat = 30
-    var kCellWidth: CGFloat = 100
+    var kCellWidth: CGFloat = 80
     var kLabelHeight: CGFloat = 30
     
     override init(frame: CGRect) {
@@ -43,7 +43,7 @@ class  CellItem: UICollectionViewCell {
         
         
         if (nameLabel == nil) {
-            nameLabel = UILabel(frame: CGRectMake(0, 100, kCellWidth, kLabelHeight))
+            nameLabel = UILabel(frame: CGRectMake(0, 80, kCellWidth, kLabelHeight))
             nameLabel.textAlignment = .Center
             nameLabel.textColor = UIColor.blueColor()
             nameLabel.highlightedTextColor = tintColor

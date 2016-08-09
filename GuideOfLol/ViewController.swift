@@ -18,10 +18,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var champions = [ChampionDto]()
     var champ : ChampionDto?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
-        
         myCollection.backgroundColor = UIColor.whiteColor()
         
     }
@@ -38,7 +38,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             if let error = error {
                 print(error.localizedDescription)
             }else{
-                if let responseHTTP = response as? NSHTTPURLResponse{
+                if let responseHTTP = response as? NSHTTPURLResponse {
                     if responseHTTP.statusCode == 200 {
                         
                         let json = JSON(data:data!)
@@ -47,8 +47,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         let nameImage = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
                         
                         for (key,subJson):(String, JSON) in data {
-                            let idChamp = subJson["id"].intValue
-                            let champion =  ChampionDto(id: idChamp, name: key, image: nameImage+String(key)+".png")
+                            let idChamp = subJson["id"].int
+                            let champion =  ChampionDto(id: idChamp!, name: key, image: nameImage+String(key)+".png")
                             self.champions.append(champion)
                             
                         }
