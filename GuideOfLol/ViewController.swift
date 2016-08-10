@@ -28,6 +28,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // lay anh + ten + id
     
+    
+    
+    
+    
+    
+    
     func getData() {
         
         let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?locale=vn_VN&champData=image&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)

@@ -26,6 +26,10 @@
 		84ECB0AB1D597875006FD089 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECB0AA1D597875006FD089 /* MainViewController.swift */; };
 		84ECB0AD1D5978C2006FD089 /* CustomMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECB0AC1D5978C2006FD089 /* CustomMainCell.swift */; };
 		84ECB0AF1D59B4BB006FD089 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECB0AE1D59B4BB006FD089 /* WebViewController.swift */; };
+		84FF44FF1D5AC88F00A391BE /* ItemDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF44FE1D5AC88F00A391BE /* ItemDto.swift */; };
+		84FF45011D5ACDB000A391BE /* GoldDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF45001D5ACDB000A391BE /* GoldDto.swift */; };
+		84FF45041D5AD5EB00A391BE /* CustomItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF45031D5AD5EB00A391BE /* CustomItemCell.swift */; };
+		84FF45061D5AD65000A391BE /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF45051D5AD65000A391BE /* ItemViewController.swift */; };
 		C784EA9B1D52FDCD003F930C /* MasterTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EA9A1D52FDCD003F930C /* MasterTableVC.swift */; };
 		C79957021D51A9CA00F4615D /* ImageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79957011D51A9CA00F4615D /* ImageDto.swift */; };
 		C79957041D51AA0300F4615D /* InfoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79957031D51AA0300F4615D /* InfoDto.swift */; };
@@ -57,6 +61,10 @@
 		84ECB0AA1D597875006FD089 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		84ECB0AC1D5978C2006FD089 /* CustomMainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMainCell.swift; sourceTree = "<group>"; };
 		84ECB0AE1D59B4BB006FD089 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		84FF44FE1D5AC88F00A391BE /* ItemDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDto.swift; sourceTree = "<group>"; };
+		84FF45001D5ACDB000A391BE /* GoldDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoldDto.swift; sourceTree = "<group>"; };
+		84FF45031D5AD5EB00A391BE /* CustomItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomItemCell.swift; sourceTree = "<group>"; };
+		84FF45051D5AD65000A391BE /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		B3DBE99A54E304958CE9B541 /* Pods_GuideOfLol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GuideOfLol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C784EA9A1D52FDCD003F930C /* MasterTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableVC.swift; sourceTree = "<group>"; };
 		C79957011D51A9CA00F4615D /* ImageDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDto.swift; sourceTree = "<group>"; };
@@ -107,9 +115,9 @@
 			children = (
 				8475AEA61D5195DD00FECC5D /* Model */,
 				84D94DD71D51E79B0012D8C8 /* CellItem.swift */,
+				84FF45021D5AD5CA00A391BE /* Customcell */,
 				84ECB0AE1D59B4BB006FD089 /* WebViewController.swift */,
-				84617E921D55D26B00B4A627 /* CustomTableViewCell.swift */,
-				84ECB0AC1D5978C2006FD089 /* CustomMainCell.swift */,
+				84FF45051D5AD65000A391BE /* ItemViewController.swift */,
 				84ECB0AA1D597875006FD089 /* MainViewController.swift */,
 				84908A8E1D558FE400335C90 /* ViewController.swift */,
 				84908A8C1D5585CB00335C90 /* StatsViewController.swift */,
@@ -118,7 +126,6 @@
 				C784EA9A1D52FDCD003F930C /* MasterTableVC.swift */,
 				84E6D3301D58329B002D9F11 /* SkinsController.swift */,
 				842374851D5083F900FFFE04 /* AppDelegate.swift */,
-				84E6D32E1D58323D002D9F11 /* CustomCollectionViewCell.swift */,
 				847768051D545661006E6E2B /* SpellsController.swift */,
 				842374891D5083FA00FFFE04 /* Main.storyboard */,
 				8423748C1D5083FA00FFFE04 /* Assets.xcassets */,
@@ -137,8 +144,21 @@
 				C79957031D51AA0300F4615D /* InfoDto.swift */,
 				C79957011D51A9CA00F4615D /* ImageDto.swift */,
 				847767FD1D5437D2006E6E2B /* StatsDto.swift */,
+				84FF44FE1D5AC88F00A391BE /* ItemDto.swift */,
+				84FF45001D5ACDB000A391BE /* GoldDto.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		84FF45021D5AD5CA00A391BE /* Customcell */ = {
+			isa = PBXGroup;
+			children = (
+				84FF45031D5AD5EB00A391BE /* CustomItemCell.swift */,
+				84ECB0AC1D5978C2006FD089 /* CustomMainCell.swift */,
+				84617E921D55D26B00B4A627 /* CustomTableViewCell.swift */,
+				84E6D32E1D58323D002D9F11 /* CustomCollectionViewCell.swift */,
+			);
+			name = Customcell;
 			sourceTree = "<group>";
 		};
 		9DA86DB6CD77776B22D40821 /* Pods */ = {
@@ -276,6 +296,7 @@
 				C784EA9B1D52FDCD003F930C /* MasterTableVC.swift in Sources */,
 				84E6D32F1D58323D002D9F11 /* CustomCollectionViewCell.swift in Sources */,
 				847767FE1D5437D2006E6E2B /* StatsDto.swift in Sources */,
+				84FF44FF1D5AC88F00A391BE /* ItemDto.swift in Sources */,
 				84ECB0AF1D59B4BB006FD089 /* WebViewController.swift in Sources */,
 				847768021D54381E006E6E2B /* SkinDto.swift in Sources */,
 				84ECB0AD1D5978C2006FD089 /* CustomMainCell.swift in Sources */,
@@ -289,8 +310,11 @@
 				84617E931D55D26B00B4A627 /* CustomTableViewCell.swift in Sources */,
 				84E6D3311D58329B002D9F11 /* SkinsController.swift in Sources */,
 				C79957041D51AA0300F4615D /* InfoDto.swift in Sources */,
+				84FF45061D5AD65000A391BE /* ItemViewController.swift in Sources */,
 				84D94DD81D51E79B0012D8C8 /* CellItem.swift in Sources */,
 				84ECB0AB1D597875006FD089 /* MainViewController.swift in Sources */,
+				84FF45011D5ACDB000A391BE /* GoldDto.swift in Sources */,
+				84FF45041D5AD5EB00A391BE /* CustomItemCell.swift in Sources */,
 				C79957021D51A9CA00F4615D /* ImageDto.swift in Sources */,
 				C7D872DC1D5847C700DCAC5F /* StoryViewController.swift in Sources */,
 			);

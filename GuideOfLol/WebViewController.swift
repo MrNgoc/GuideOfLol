@@ -24,7 +24,7 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     
     func getdata() {
     
-        let url = NSURL(string:"https://www.youtube.com/user/GarenaVietnam")
+        let url = NSURL(string:"https://www.youtube.com/user/seindkr")
         let urlRequest = NSURLRequest(URL: url!)
         self.myWebview.loadRequest(urlRequest)
         myIndicator.startAnimating()

@@ -10,6 +10,7 @@ import UIKit
 
 class SpellsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var myTableview: UITableView!
     var champ : ChampionDto?
     
     var champSpells = [ChampionSpellDto]()
@@ -17,7 +18,9 @@ class SpellsController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         champSpells = (champ?.spells)!
-        
+//        myTableview.rowHeight =  UITableViewAutomaticDimension
+//        
+//        myTableview.estimatedRowHeight = 400
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,6 +34,7 @@ class SpellsController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let champCurr = champSpells[indexPath.row]
         if let nameSkill = champCurr.name, cost = champCurr.cost, cooldown = champCurr.cooldownBurn, range = champCurr.range, description = champCurr.description, urlImage = champCurr.altimages?.full {
             cell.lbl_nameSkill.text = nameSkill
+            //cell.lbl_nameSkill.autoresizingMask = .FlexibleWidth
             
             cell.lbl_CD.text = cooldown
 
@@ -51,6 +55,7 @@ class SpellsController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         return cell
     }
+    
     
     func toString(value: [AnyObject]) -> String {
         var result : String = ""

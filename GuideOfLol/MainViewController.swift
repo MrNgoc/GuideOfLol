@@ -13,7 +13,7 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
     var arrayInt = [Int]()
     var champions = [ChampionDto]()
     var champ : ChampionDto?
-    
+        
     @IBOutlet weak var mycollectionview: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,18 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
         //        getData()
         mycollectionview.backgroundColor = UIColor.whiteColor()
          self.getData()
+        
+       
+        
+        
     }
+        
+    
+    
+    
+    
+    
+    
     
     func getId() {
         let urlRequest = NSMutableURLRequest(URL: NSURL(string:"https://na.api.pvp.net/api/lol/na/v1.2/champion?freeToPlay=true&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
@@ -79,7 +90,7 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
                             
 
                                     let champion = ChampionDto(id: idChamp, name: key, image: nameImage+String(key)+".png")
-                                print(idChamp)
+                               
                                     self.champions.append(champion)
                             }
                             }
@@ -163,7 +174,7 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
     }
     
     @IBAction func ItemAction(sender: UIButton) {
-        print(1)
-        
+        let item = storyboard?.instantiateViewControllerWithIdentifier("item") as!ItemViewController
+        navigationController?.pushViewController(item, animated: true)
     }
 }
