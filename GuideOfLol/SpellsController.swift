@@ -10,7 +10,6 @@ import UIKit
 
 class SpellsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var myTableview: UITableView!
     var champ : ChampionDto?
     
     var champSpells = [ChampionSpellDto]()
@@ -18,9 +17,8 @@ class SpellsController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         champSpells = (champ?.spells)!
-//        myTableview.rowHeight =  UITableViewAutomaticDimension
-//        
-//        myTableview.estimatedRowHeight = 400
+        
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,30 +30,40 @@ class SpellsController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let a = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/spell/"
         
         let champCurr = champSpells[indexPath.row]
-        if let nameSkill = champCurr.name, cost = champCurr.cost, cooldown = champCurr.cooldownBurn, range = champCurr.range, description = champCurr.description, urlImage = champCurr.altimages?.full {
+        if let nameSkill = champCurr.name, cost = champCurr.cost, cooldown = champCurr.cooldownBurn, range = champCurr.range, urlImage = champCurr.altimages?.full, var description = champCurr.description {
             cell.lbl_nameSkill.text = nameSkill
-            //cell.lbl_nameSkill.autoresizingMask = .FlexibleWidth
             
             cell.lbl_CD.text = cooldown
-
+            
             cell.lbl_Cost.text = toString(cost)
             
             cell.lbl_range.text = toString(range)
             
+            description = "<font color=\"white\" size=\"4px\"><b>" + description + "</b></font>"
+            
             let attr = try! NSAttributedString(data: description.dataUsingEncoding(NSUnicodeStringEncoding,allowLossyConversion: true)!,options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
-            cell.tv_description.text = description
-            cell.tv_description.attributedText = attr
+            cell.lbl_description.text = description
+            cell.lbl_description.attributedText = attr
             
             let  urlImagefinish = a+urlImage
-            
             let url = NSURL(string: urlImagefinish)
-            let data = NSData(contentsOfURL: url!)
-            cell.imageSkill.image = UIImage(data: data!)
+           
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+                let data = NSData(contentsOfURL: url!)
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    if let realData = data  {
+                         cell.imageSkill.image = UIImage(data: data!)                    }
+                })
+            }
+
         }
         
+//        tableView.separatorColor = UIColor.whiteColor()
+//        tableView.separatorInset = UIEdgeInsetsZero
+//        tableView.separatorStyle = UITableViewCellSelectionStyle.None
         return cell
     }
-    
     
     func toString(value: [AnyObject]) -> String {
         var result : String = ""
@@ -69,5 +77,16 @@ class SpellsController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         return result;
     }
+    
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return 50
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    
     
 }

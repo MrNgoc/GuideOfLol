@@ -28,7 +28,6 @@ class SkinsController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
     }
     
-    
     override func viewDidLayoutSubviews() {
         if (!first){
             first = true
@@ -37,33 +36,36 @@ class SkinsController: UIViewController, UIScrollViewDelegate {
             scrollView.contentOffset = CGPointMake(CGFloat(currentPage) * scrollView.frame.size.width, 0)
             
             let a = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"
-            
+            var imgView : UIImageView!
             for i in 0 ..< skins.count {
                 if let champname = champ?.name, num = skins[i].num {
                     let urlFinalImage = a+champname+"_"+String(num)+".jpg"
                     let url = NSURL(string: urlFinalImage)
-                    let data = NSData(contentsOfURL: url!)
                     
-                    let imgView = UIImageView(image: UIImage(data: data!))
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+                        let data = NSData(contentsOfURL: url!)
+                        
+                        dispatch_async(dispatch_get_main_queue(), {
+                            imgView = UIImageView(image: UIImage(data: data!))
+                            
+                            imgView.frame = CGRectMake(0, 0, self.scrollView.frame.size.width,
+                                self.scrollView.frame.size.height)
+                            imgView.contentMode = .ScaleAspectFit
+                            let frontScrollView = UIScrollView(frame: CGRectMake(
+                                CGFloat(i) * self.scrollView.frame.size.width, 0, self.scrollView.frame.size.width,
+                                self.scrollView.frame.size.height
+                                ))
+                            
+                            frontScrollView.delegate = self
+                            frontScrollView.contentSize = imgView.bounds.size
+                            frontScrollView.addSubview(imgView)
+                            self.frontScrollViews.append(frontScrollView)
+                            self.scrollView.addSubview(frontScrollView)
+
+                        })
+                    }
                     
-                    imgView.frame = CGRectMake(0, 0, scrollView.frame.size.width,
-                                               scrollView.frame.size.height)
-                    imgView.contentMode = .ScaleAspectFit
-                    
-                    
-                    
-                    let frontScrollView = UIScrollView(frame: CGRectMake(
-                        CGFloat(i) * scrollView.frame.size.width, 0, scrollView.frame.size.width,
-                        scrollView.frame.size.height
-                        ))
-                    
-                    frontScrollView.delegate = self
-                    
-                    
-                    frontScrollView.contentSize = imgView.bounds.size
-                    frontScrollView.addSubview(imgView)
-                    frontScrollViews.append(frontScrollView)
-                    self.scrollView.addSubview(frontScrollView)
+                 
                 }
             }
         }
@@ -86,6 +88,5 @@ class SkinsController: UIViewController, UIScrollViewDelegate {
     @IBAction func onChange(sender: AnyObject) {
         scrollView.contentOffset = CGPointMake(CGFloat(pageControler.currentPage) * scrollView.frame.size.width, 0)
     }
-    
     
 }

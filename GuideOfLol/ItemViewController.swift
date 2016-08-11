@@ -10,18 +10,18 @@ import UIKit
 import SwiftyJSON
 
 class ItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var myTableView: UITableView!
     var items = [ItemDto]()
     var item: ItemDto?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         getDataOfItem()
+        getDataOfItem()
         
     }
-
+    
     func getDataOfItem() {
         
         let urlRequest = NSMutableURLRequest(URL: NSURL(string:"https://global.api.pvp.net/api/lol/static-data/na/v1.2/item?itemListData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
@@ -50,16 +50,14 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                             
                             let imageUrl = ImageDtoItem(full: image)
                             if let id =  Int(id), name = name {
-                            let item = ItemDto(id: id , image: imageUrl, gold: goldValue, name: name)
-                            
-                            self.items.append(item)
+                                let item = ItemDto(id: id , image: imageUrl, gold: goldValue, name: name)
+                                
+                                self.items.append(item)
                             }
                             
                             self.printItems(self.items)
                             
                             dispatch_async(dispatch_get_main_queue(),{self.myTableView.reloadData()})
-                            
-                            
                             
                             
                         }
@@ -68,22 +66,18 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
             }
             }.resume()
-        
-        
-        
-        
     }
-
+    
     
     func printItems(item: [ItemDto])
     {
-      items = item
+        items = item
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
-
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomItemCell
         
@@ -91,26 +85,26 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.goldItem.text = gold
         }
         
-        var a = "http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/"
+        let a = "http://ddragon.leagueoflegends.com/cdn/6.16.2/img/item/"
         
         cell.nameItem.text = items[indexPath.row].name
-       
+        
         if let nameimage = items[indexPath.row].image?.full {
-        
-        
-         let urlImage = a + String(nameimage)
-     
-        
-        let url = NSURL(string: urlImage)
-        let data = NSData(contentsOfURL:url!)
-        
-        cell.imageItem.image = UIImage(data: data!)
-        
+            
+            
+            let urlImage = a + String(nameimage)
+            
+            
+            let url = NSURL(string: urlImage)
+            let data = NSData(contentsOfURL:url!)
+            
+            cell.imageItem.image = UIImage(data: data!)
+            
         }
         
         
         return cell
     }
-
-
+    
+    
 }

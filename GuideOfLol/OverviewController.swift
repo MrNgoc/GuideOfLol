@@ -21,25 +21,37 @@ class OverviewController: UIViewController {
     
     @IBOutlet weak var tvAllytips: UITextView!
     
-//    let attackLabel : UILabel =  {
-//    let label = UILabel()
-//    
-//    return label
-//    }()
-    let healthLabel : UILabel =  {
+    
+    @IBOutlet weak var health_Label: UILabel!
+    
+    @IBOutlet weak var attack_Label: UILabel!
+    
+    @IBOutlet weak var spells_Label: UILabel!
+    
+    @IBOutlet weak var difficulty_Label: UILabel!
+    
+    
+    let attackLabel : UILabel =  {
         let label = UILabel()
-        
+        label.backgroundColor = UIColor.redColor()
         return label
     }()
+    
+    let healthLabel : UILabel =  {
+        let label = UILabel()
+        label.backgroundColor = UIColor.redColor()
+        return label
+    }()
+    
     let difficultyLabel : UILabel =  {
         let label = UILabel()
-        
+        label.backgroundColor = UIColor.redColor()
         return label
     }()
     
     let spellLabel : UILabel =  {
         let label = UILabel()
-        
+        label.backgroundColor = UIColor.redColor()
         return label
     }()
     
@@ -51,39 +63,42 @@ class OverviewController: UIViewController {
             difficultValue  = champ?.info?.difficulty,  spellsValue = champ?.info?.magic,
             allytipsValue   = champ?.allytips
         {
-            lblAttack.text = String(attackValue)
+            
             lblHealth.text = String(healthValue)
             lblDifficult.text = String(difficultValue)
             lblSpells.text = String(spellsValue)
+            lblAttack.text = String(attackValue)
+            let height = view.frame.height * 20 / 408
+//            let height = attack_Label.bounds.height
+            attackLabel.frame = CGRectMake(0, 0 , 14 * CGFloat(attackValue), height )
             
-            view.addSubview(healthLabel)
-            view.addSubview(difficultyLabel)
-            view.addSubview(spellLabel)
-            let attackLabel = UILabel(frame: CGRectMake(190, 7 , 10 * CGFloat(attackValue), 20))
-            view.addSubview(attackLabel)
-            attackLabel.backgroundColor = UIColor.redColor()
-             healthLabel.backgroundColor = UIColor.yellowColor()
-            difficultyLabel.backgroundColor = UIColor.purpleColor()
-            spellLabel.backgroundColor = UIColor.blueColor()
-            
-            
-            healthLabel.frame = CGRectMake(190, 40, 10 * CGFloat(healthValue), 20)
-            difficultyLabel.frame = CGRectMake(190, 68, 10 * CGFloat(difficultValue), 20)
-            spellLabel.frame = CGRectMake(190, 98, 10 * CGFloat(spellsValue), 20)
+            healthLabel.frame = CGRectMake(0, 0, 14 * CGFloat(healthValue), height)
+            difficultyLabel.frame = CGRectMake(0, 0, 14 * CGFloat(difficultValue), height)
+            spellLabel.frame = CGRectMake(0, 0, 14 * CGFloat(spellsValue), height)
             
             var text : String = ""
             for i in allytipsValue {
                 text += i + " "
             }
             
+            text = "<font color=\"white\" size=\"4px\">" + text + "</font>"
             let attr = try! NSAttributedString(data: text.dataUsingEncoding(NSUnicodeStringEncoding,allowLossyConversion: true)!,options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
+            
             tvAllytips.text = text
             tvAllytips.attributedText = attr
-
+            
         }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        health_Label.addSubview(healthLabel)
+        difficulty_Label.addSubview(difficultyLabel)
+        spells_Label.addSubview(spellLabel)
+        attack_Label.addSubview(attackLabel)
     }
 }

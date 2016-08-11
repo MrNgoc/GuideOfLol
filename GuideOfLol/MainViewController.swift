@@ -13,26 +13,14 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
     var arrayInt = [Int]()
     var champions = [ChampionDto]()
     var champ : ChampionDto?
-        
+    
     @IBOutlet weak var mycollectionview: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         getId()
-        //        getData()
         mycollectionview.backgroundColor = UIColor.whiteColor()
-         self.getData()
-        
-       
-        
-        
+        self.getData()
     }
-        
-    
-    
-    
-    
-    
-    
     
     func getId() {
         let urlRequest = NSMutableURLRequest(URL: NSURL(string:"https://na.api.pvp.net/api/lol/na/v1.2/champion?freeToPlay=true&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
@@ -50,7 +38,7 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
                         
                         let jsonid = json["champions"]
                         
-                        for (key, subid) in jsonid {
+                        for (_, subid) in jsonid {
                             let id = subid["id"].intValue
                             
                             self.arrayInt.append(id)
@@ -86,19 +74,18 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
                         
                         for (key,subJson):(String, JSON) in data {
                             if let idChamp = subJson["id"].int {
-                            for ids in self.arrayInt where ids == idChamp {
-                            
-
+                                for ids in self.arrayInt where ids == idChamp {
+                                    
                                     let champion = ChampionDto(id: idChamp, name: key, image: nameImage+String(key)+".png")
-                               
+                                    print(idChamp)
                                     self.champions.append(champion)
-                            }
+                                }
                             }
                         }
-                    
+                        
                         
                         self.printChampions(self.champions)
-                         dispatch_async(dispatch_get_main_queue(),{self.mycollectionview.reloadData()})
+                        dispatch_async(dispatch_get_main_queue(),{self.mycollectionview.reloadData()})
                     }
                 }
             }
@@ -120,11 +107,6 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
     
     
     
-    
-    
-    
-    
-    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print(champions.count)
         return champions.count
@@ -142,16 +124,11 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
             let data = NSData(contentsOfURL: url!)
             
             dispatch_async(dispatch_get_main_queue(), {
-                if let realData = data  {
+//                if let realData = data  {
                     cell.ImageFreeChampion.image = UIImage(data: data!)
-                }
+//                }
             })
         }
-        
-        
-        
-        
-        
         
         
         return cell
@@ -176,5 +153,6 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
     @IBAction func ItemAction(sender: UIButton) {
         let item = storyboard?.instantiateViewControllerWithIdentifier("item") as!ItemViewController
         navigationController?.pushViewController(item, animated: true)
+        
     }
 }

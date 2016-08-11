@@ -10,12 +10,9 @@ import UIKit
 
 class WebViewController: UIViewController, UIWebViewDelegate {
     
-    
     @IBOutlet weak var myWebview: UIWebView!
     
-    
     @IBOutlet weak var myIndicator: UIActivityIndicatorView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +20,12 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     }
     
     func getdata() {
-    
-        let url = NSURL(string:"https://www.youtube.com/user/seindkr")
+        
+        let url = NSURL(string:"https://www.youtube.com/user/GarenaVietnam")
         let urlRequest = NSURLRequest(URL: url!)
         self.myWebview.loadRequest(urlRequest)
         myIndicator.startAnimating()
-    
+        
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
@@ -36,9 +33,4 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         myIndicator.stopAnimating()
     }
     
-    
-    
-    
-    
-
 }

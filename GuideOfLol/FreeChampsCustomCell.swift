@@ -10,10 +10,6 @@ import UIKit
 
 class CustomMainCell: UICollectionViewCell {
     
-    
     @IBOutlet weak var ImageFreeChampion: UIImageView!
-    
-    
-    
 
 }

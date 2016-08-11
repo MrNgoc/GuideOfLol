@@ -18,7 +18,6 @@ class MasterTableVC: UIViewController {
     
     @IBOutlet weak var fullchampimage: UIImageView!
     
-    
     @IBOutlet weak var fullChampImage: UIView!
     var champ : ChampionDto?
     
@@ -45,20 +44,33 @@ class MasterTableVC: UIViewController {
         }
         champTags.text = tagValue
         //ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/Aatrox.png
-        var a = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
-        let  urlImagefinish = a + (champ?.name)! + ".png"
-        var b = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"
+        let a = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
         
+        let b = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"
+        
+        let urlImagefinish = a + (champ?.name)! + ".png"
         let urlfinishfullchamp = b + (champ?.name)! + "_1.jpg"
-        let url1 = NSURL(string: urlfinishfullchamp)
-        let data1 = NSData(contentsOfURL: url1!)
         
-         fullchampimage.image = UIImage(data: data1!)
+        let url1 = NSURL(string: urlfinishfullchamp)
+        
+        
+        
         
         
         let url = NSURL(string: urlImagefinish)
-        let data = NSData(contentsOfURL: url!)
-        champImage.image = UIImage(data: data!)
+        
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+            let data1 = NSData(contentsOfURL: url1!)
+            let data = NSData(contentsOfURL: url!)
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.champImage.image = UIImage(data: data!)
+                self.fullchampimage.image = UIImage(data: data1!)
+                
+            })
+        }
+        
         
         overView.hidden = false
         spellsView.hidden = true
@@ -112,11 +124,11 @@ class MasterTableVC: UIViewController {
             let view0 = segue.destinationViewController as? OverviewController
             view0?.champ = champ
         }
-
+        
         if segue.identifier == "stats" {
             let stats = segue.destinationViewController as! StatsViewController
             stats.champ = champ
-
+            
         }
         if segue.identifier == "spells" {
             let spells = segue.destinationViewController as! SpellsController

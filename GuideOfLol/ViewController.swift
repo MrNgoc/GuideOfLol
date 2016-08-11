@@ -28,12 +28,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // lay anh + ten + id
     
-    
-    
-    
-    
-    
-    
     func getData() {
         
         let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?locale=vn_VN&champData=image&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
@@ -69,7 +63,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }.resume()
         
     }
-           
     
     
     
@@ -118,14 +111,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         getDataOfChampion(champions[indexPath.item].id!, masterVC: v1!)
         
-        
     }
     
     
-    
     func getDataOfChampion(idChamp : Int, masterVC : MasterTableVC) {
-
-//        let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/\(idChamp)?champData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
+        
+        //        let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/\(idChamp)?champData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
         
         let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/\(idChamp)?locale=vn_VN&champData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
         
@@ -165,7 +156,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         
                         var listSpellDts = [ChampionSpellDto]()
                         
-                        for (key, spellJSON) in json["spells"] {
+                        for (_, spellJSON) in json["spells"] {
                             guard let name = spellJSON["name"].string else {return}
                             let costValue = self.toInt(spellJSON["cost"])
                             guard let cooldownBurnValue = spellJSON["cooldownBurn"].string else {return}
@@ -220,7 +211,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         guard let loreValue =  json["lore"].string else {return}
                         
                         var listSkin = [SkinDto]()
-                        for (key, skillJSON) in json["skins"] {
+                        for (_, skillJSON) in json["skins"] {
                             guard let skillName = skillJSON["name"].string else {return}
                             guard let skillNum = skillJSON["num"].int else {return}
                             let skillValue = SkinDto(name: skillName, num: skillNum)

@@ -40,7 +40,6 @@ class StatsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setValue(1)
         
     }
@@ -50,7 +49,7 @@ class StatsViewController: UIViewController {
             health = champ?.stats?.hp, healthRegen = champ?.stats?.hpregen,
             attackPerlevel = champ?.stats?.attackdamageperlevel, armorPerlevel = champ?.stats?.armorperlevel,
             spellBlockPerlevel = champ?.stats?.spellblockperlevel, healthPerlevel = champ?.stats?.hpperlevel,
-            healthRegenPerlevel = champ?.stats?.hpregenperlevel   
+            healthRegenPerlevel = champ?.stats?.hpregenperlevel
         {
             let attackValue = Double(value) * attackPerlevel + statsAttackdamage
             let amorValue = Double(value) * armorPerlevel + armor
@@ -76,7 +75,7 @@ class StatsViewController: UIViewController {
             lbl_magicSpellPerlevel.text = String(spellBlockPerlevel)
             lbl_HealthPerlevel.text = String(healthPerlevel)
             lbl_HealthRegenPerLevel.text = String(healthRegenPerlevel)
-
+            
         }
         
     }
@@ -84,7 +83,7 @@ class StatsViewController: UIViewController {
     
     @IBAction func ActionSlider(sender: UISlider) {
         let value = Int(Slider.value)
-        lbl_Level.text =  "level " + String(value)
+        lbl_Level.text =  "Level " + String(value)
         setValue(value)
     }
     

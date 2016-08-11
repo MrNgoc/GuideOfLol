@@ -17,10 +17,9 @@ import UIKit
 class  CellItem: UICollectionViewCell {
     var nameLabel: UILabel!
     var imageView: UIImageView!
-    var price: UILabel!
-    var kPriceLabelHight: CGFloat = 30
-    var kCellWidth: CGFloat = 80
-    var kLabelHeight: CGFloat = 30
+    var kCellWidth: CGFloat = 65.5
+    var kLabelHeight: CGFloat = 15.5
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,11 +42,11 @@ class  CellItem: UICollectionViewCell {
         
         
         if (nameLabel == nil) {
-            nameLabel = UILabel(frame: CGRectMake(0, 80, kCellWidth, kLabelHeight))
+            nameLabel = UILabel(frame: CGRectMake(0, kCellWidth, kCellWidth, kLabelHeight))
             nameLabel.textAlignment = .Center
             nameLabel.textColor = UIColor.blueColor()
             nameLabel.highlightedTextColor = tintColor
-            nameLabel.font = UIFont.boldSystemFontOfSize(12)
+            nameLabel.font = UIFont.boldSystemFontOfSize(10)
             //nameLabel.numberOfLines = 2
             contentView.addSubview(nameLabel)
             

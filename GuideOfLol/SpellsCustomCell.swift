@@ -18,8 +18,8 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var lbl_CD: UILabel!
 
     @IBOutlet weak var lbl_range: UILabel!
-
-    @IBOutlet weak var tv_description: UITextView!
+    
+    @IBOutlet weak var lbl_description: UILabel!
 
     @IBOutlet weak var imageSkill: UIImageView!
 }

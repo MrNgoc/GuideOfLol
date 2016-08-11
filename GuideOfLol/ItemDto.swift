@@ -10,7 +10,7 @@ import UIKit
 
 
 class ItemDto {
-
+    
     var fromID: [String]?
     var gold: GoldDto?
     var group: String?
@@ -30,8 +30,8 @@ class ItemDto {
         self.name = name
         self.santizedDescription = santizedDescription
         
-    
-    
+        
+        
     }
     init(id: Int, image: ImageDtoItem,gold: GoldDto, name: String) {
         
@@ -39,24 +39,18 @@ class ItemDto {
         self.image = image
         self.gold = gold
         self.name = name
-    
+        
     }
 }
 
 class ImageDtoItem {
     
-    
-    
     var full: String?
     
-    
     init(full: String) {
-    self.full = full
-    
+        self.full = full
+        
     }
-
-
-
-
+    
 }
 
