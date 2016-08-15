@@ -20,6 +20,9 @@
 		847768061D545661006E6E2B /* SpellsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847768051D545661006E6E2B /* SpellsController.swift */; };
 		84908A8D1D5585CB00335C90 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84908A8C1D5585CB00335C90 /* StatsViewController.swift */; };
 		84908A8F1D558FE400335C90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84908A8E1D558FE400335C90 /* ViewController.swift */; };
+		84A9D7271D61A1920052AE91 /* CustomRuneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9D7261D61A1920052AE91 /* CustomRuneCell.swift */; };
+		84A9D7291D61A2000052AE91 /* Runes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9D7281D61A2000052AE91 /* Runes.swift */; };
+		84A9D72B1D61A3C00052AE91 /* RunesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9D72A1D61A3C00052AE91 /* RunesViewController.swift */; };
 		84D94DD81D51E79B0012D8C8 /* ChampsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D94DD71D51E79B0012D8C8 /* ChampsCustomCell.swift */; };
 		84E6D3311D58329B002D9F11 /* SkinsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D3301D58329B002D9F11 /* SkinsController.swift */; };
 		84ECB0AB1D597875006FD089 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECB0AA1D597875006FD089 /* MainViewController.swift */; };
@@ -716,6 +719,9 @@
 		847768051D545661006E6E2B /* SpellsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellsController.swift; sourceTree = "<group>"; };
 		84908A8C1D5585CB00335C90 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		84908A8E1D558FE400335C90 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		84A9D7261D61A1920052AE91 /* CustomRuneCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRuneCell.swift; sourceTree = "<group>"; };
+		84A9D7281D61A2000052AE91 /* Runes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runes.swift; sourceTree = "<group>"; };
+		84A9D72A1D61A3C00052AE91 /* RunesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunesViewController.swift; sourceTree = "<group>"; };
 		84D94DD71D51E79B0012D8C8 /* ChampsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChampsCustomCell.swift; sourceTree = "<group>"; };
 		84E6D3301D58329B002D9F11 /* SkinsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinsController.swift; sourceTree = "<group>"; };
 		84ECB0AA1D597875006FD089 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -1461,6 +1467,7 @@
 				C7473A751D5B35DE00DB9894 /* GoldDto.swift */,
 				C7E0E2821D5D7C1D0063D825 /* DownloadData.swift */,
 				C7173A8B1D6161F100926427 /* BaseViewController.swift */,
+				84A9D7281D61A2000052AE91 /* Runes.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -4257,6 +4264,7 @@
 				84D94DD71D51E79B0012D8C8 /* ChampsCustomCell.swift */,
 				C7473A771D5B35F500DB9894 /* ItemCustomCell.swift */,
 				84617E921D55D26B00B4A627 /* SpellsCustomCell.swift */,
+				84A9D7261D61A1920052AE91 /* CustomRuneCell.swift */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -4274,6 +4282,7 @@
 				847768031D544562006E6E2B /* OverviewController.swift */,
 				84E6D3301D58329B002D9F11 /* SkinsController.swift */,
 				C7473A711D5B35CC00DB9894 /* ItemViewController.swift */,
+				84A9D72A1D61A3C00052AE91 /* RunesViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -5077,6 +5086,8 @@
 				84ECB0AF1D59B4BB006FD089 /* WebViewController.swift in Sources */,
 				847768021D54381E006E6E2B /* SkinDto.swift in Sources */,
 				84ECB0AD1D5978C2006FD089 /* FreeChampsCustomCell.swift in Sources */,
+				84A9D7291D61A2000052AE91 /* Runes.swift in Sources */,
+				84A9D7271D61A1920052AE91 /* CustomRuneCell.swift in Sources */,
 				8475AEA81D5196B900FECC5D /* ChampionDto.swift in Sources */,
 				847768041D544562006E6E2B /* OverviewController.swift in Sources */,
 				847768001D5437F9006E6E2B /* ChampionSpellDto.swift in Sources */,
@@ -5089,6 +5100,7 @@
 				84617E931D55D26B00B4A627 /* SpellsCustomCell.swift in Sources */,
 				C7473A721D5B35CC00DB9894 /* ItemViewController.swift in Sources */,
 				84E6D3311D58329B002D9F11 /* SkinsController.swift in Sources */,
+				84A9D72B1D61A3C00052AE91 /* RunesViewController.swift in Sources */,
 				C79957041D51AA0300F4615D /* InfoDto.swift in Sources */,
 				C7173A8C1D6161F100926427 /* BaseViewController.swift in Sources */,
 				84D94DD81D51E79B0012D8C8 /* ChampsCustomCell.swift in Sources */,

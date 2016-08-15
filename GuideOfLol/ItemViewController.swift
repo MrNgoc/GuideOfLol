@@ -90,7 +90,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.nameItem.text = items[indexPath.row].name
         
         if let nameimage = items[indexPath.row].image?.full {
-            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             
             let urlImage = a + String(nameimage)
             
@@ -101,7 +101,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.imageItem.image = UIImage(data: data!)
             
         }
-        
+        }
         
         return cell
     }

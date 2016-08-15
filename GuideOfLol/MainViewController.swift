@@ -146,9 +146,20 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
         
     }
     
+    
+    
     @IBAction func ItemAction(sender: UIButton) {
         let item = storyboard?.instantiateViewControllerWithIdentifier("item") as!ItemViewController
         navigationController?.pushViewController(item, animated: true)
+        
+    }
+    @IBAction func RunesAction(sender: AnyObject) {
+        
+        let rune = storyboard?.instantiateViewControllerWithIdentifier("rune") as!RunesViewController
+        navigationController?.pushViewController(rune, animated: true)
+        
+        
+        
         
     }
     
