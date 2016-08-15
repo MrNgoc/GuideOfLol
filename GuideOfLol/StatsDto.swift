@@ -17,6 +17,8 @@ class StatsDto {
     var spellblock: Double?
     var spellblockperlevel: Double?
     var movespeed: Double?
+    
+    
     init(hp : Double, hpperlevel: Double, hpregen: Double, hpregenperlevel: Double, armor: Double,
          armorperlevel: Double, attackdamage: Double, attackdamageperlevel: Double, spellblock: Double,spellblockperlevel: Double, movespeed: Double) {
         self.hp = hp

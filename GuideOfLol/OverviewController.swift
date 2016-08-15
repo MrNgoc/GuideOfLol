@@ -59,7 +59,7 @@ class OverviewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        if  let attackValue     = champ?.info?.attack,      healthValue = champ?.info?.defense,
+        if  let attackValue = champ?.info?.attack,      healthValue = champ?.info?.defense,
             difficultValue  = champ?.info?.difficulty,  spellsValue = champ?.info?.magic,
             allytipsValue   = champ?.allytips
         {
@@ -68,8 +68,8 @@ class OverviewController: UIViewController {
             lblDifficult.text = String(difficultValue)
             lblSpells.text = String(spellsValue)
             lblAttack.text = String(attackValue)
-            let height = view.frame.height * 20 / 408
-//            let height = attack_Label.bounds.height
+            
+            let height = (view.frame.height * 51 * 20 / (408 * 71))
             attackLabel.frame = CGRectMake(0, 0 , 14 * CGFloat(attackValue), height )
             
             healthLabel.frame = CGRectMake(0, 0, 14 * CGFloat(healthValue), height)

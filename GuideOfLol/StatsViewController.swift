@@ -63,6 +63,7 @@ class StatsViewController: UIViewController {
             lbl_moveSpeed.text = String(moveSpeed)
             
             lbl_Amor.text = String(amorValue)
+            
             lbl_MagicSpell.text = String(spellValue)
             
             lbl_Health.text = String(healthValue)
@@ -72,8 +73,11 @@ class StatsViewController: UIViewController {
             lbl_attackPerlevel.text = String(attackPerlevel)
             
             lbl_AmorPerLevel.text = String(armorPerlevel)
+            
             lbl_magicSpellPerlevel.text = String(spellBlockPerlevel)
+            
             lbl_HealthPerlevel.text = String(healthPerlevel)
+            
             lbl_HealthRegenPerLevel.text = String(healthRegenPerlevel)
             
         }

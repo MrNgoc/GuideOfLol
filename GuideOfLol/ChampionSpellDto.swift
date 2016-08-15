@@ -7,13 +7,12 @@
 //
 
 class ChampionSpellDto {
-    var name: String?
     
+    var name: String?
     var altimages: ImageDto?
     var cost: [Int]?
     var cooldownBurn: String?
     var range: [Double]?
-    
     var description: String?
 
     init(name: String, altimages: ImageDto, cost: [Int], cooldownBurn: String, range: [Double], description: String) {

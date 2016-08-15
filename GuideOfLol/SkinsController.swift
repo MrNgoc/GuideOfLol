@@ -37,14 +37,23 @@ class SkinsController: UIViewController, UIScrollViewDelegate {
             
             let a = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"
             var imgView : UIImageView!
+            
             for i in 0 ..< skins.count {
-                if let champname = champ?.name, num = skins[i].num {
-                    let urlFinalImage = a+champname+"_"+String(num)+".jpg"
+                if let champKey = champ?.key
+                    , num = skins[i].num , nameSkins = skins[i].name{
+                    let urlFinalImage = a+champKey+"_"+String(num)+".jpg"
                     let url = NSURL(string: urlFinalImage)
+                    let height = (view.frame.height * 51 * 20 / (408 * 71))
+                    
+                    let nameLabel = UILabel(frame : CGRectMake(0, 0, view.frame.width , height))
+                    nameLabel.textColor = UIColor.whiteColor()
+                    nameLabel.textAlignment = NSTextAlignment.Center
+                    nameLabel.text = nameSkins
+
+                    nameLabel.frame = CGRectMake(0, scrollView.frame.height - height, view.frame.width , height)
                     
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
                         let data = NSData(contentsOfURL: url!)
-                        
                         dispatch_async(dispatch_get_main_queue(), {
                             imgView = UIImageView(image: UIImage(data: data!))
                             
@@ -59,13 +68,14 @@ class SkinsController: UIViewController, UIScrollViewDelegate {
                             frontScrollView.delegate = self
                             frontScrollView.contentSize = imgView.bounds.size
                             frontScrollView.addSubview(imgView)
+                            frontScrollView.addSubview(nameLabel)
                             self.frontScrollViews.append(frontScrollView)
                             self.scrollView.addSubview(frontScrollView)
-
+                            
                         })
                     }
                     
-                 
+                    
                 }
             }
         }

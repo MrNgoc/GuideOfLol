@@ -16,25 +16,22 @@ class ItemDto {
     var group: String?
     var id : Int?
     var image: ImageDtoItem?
-    
     var name: String?
     var santizedDescription: String?
     
     init(fromID: [String], gold: GoldDto, group: String, id: Int, image: ImageDtoItem, name: String, santizedDescription: String ) {
-        self.fromID = fromID
         
+        self.fromID = fromID
         self.gold = gold
         self.group = group
         self.id = id
         self.image = image
         self.name = name
         self.santizedDescription = santizedDescription
-        
-        
-        
     }
-    init(id: Int, image: ImageDtoItem,gold: GoldDto, name: String) {
-        
+    
+    
+    init(id: Int, image: ImageDtoItem,gold: GoldDto, name: String) {    
         self.id = id
         self.image = image
         self.gold = gold

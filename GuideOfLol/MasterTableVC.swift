@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class MasterTableVC: UIViewController {
+class MasterTableVC: BaseViewController {
     @IBOutlet weak var overView: UIView!
     @IBOutlet weak var spellsView: UIView!
     @IBOutlet weak var statsView: UIView!
@@ -19,7 +19,7 @@ class MasterTableVC: UIViewController {
     @IBOutlet weak var fullchampimage: UIImageView!
     
     @IBOutlet weak var fullChampImage: UIView!
-    var champ : ChampionDto?
+//    var champ : ChampionDto?
     
     var id: Int?
     var infoChamp : InfoDto?
@@ -34,29 +34,29 @@ class MasterTableVC: UIViewController {
     @IBOutlet weak var segmentTitle: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
+
         champName.text = champ?.name
         champTitle.text = champ?.title
-        
+        self.title = champ?.name
         guard let tagValues = champ?.tags else {return}
         var tagValue : String = ""
         for i in tagValues {
             tagValue = tagValue + i + ", "
         }
         champTags.text = tagValue
-        //ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/Aatrox.png
-        let a = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/"
+        let a = "http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/"
+    
         
         let b = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"
         
-        let urlImagefinish = a + (champ?.name)! + ".png"
-        let urlfinishfullchamp = b + (champ?.name)! + "_1.jpg"
+        guard let keyChamp = champ?.key else {return}
+        
+        let urlImagefinish = a + keyChamp + ".png"
+        let urlfinishfullchamp = b + keyChamp + "_1.jpg"
         
         let url1 = NSURL(string: urlfinishfullchamp)
         
-        
-        
-        
-        
+            
         let url = NSURL(string: urlImagefinish)
         
         
@@ -147,5 +147,6 @@ class MasterTableVC: UIViewController {
         }
         
     }
+    
     
 }

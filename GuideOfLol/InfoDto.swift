@@ -10,6 +10,7 @@
 import UIKit
 
 class InfoDto {
+    
     var attack:	Int?
     var defense: Int?
     var difficulty:	Int?

@@ -7,6 +7,7 @@
 //
 import UIKit
 class ImageDto {
+    
     var full: String?
     var group: String?
     
