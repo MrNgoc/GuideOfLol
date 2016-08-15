@@ -19,7 +19,6 @@ class MasterTableVC: BaseViewController {
     @IBOutlet weak var fullchampimage: UIImageView!
     
     @IBOutlet weak var fullChampImage: UIView!
-//    var champ : ChampionDto?
     
     var id: Int?
     var infoChamp : InfoDto?
@@ -34,6 +33,7 @@ class MasterTableVC: BaseViewController {
     @IBOutlet weak var segmentTitle: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.hidden = false
 
         champName.text = champ?.name
         champTitle.text = champ?.title

@@ -1,0 +1,6 @@
+framework module Pods_GuideOfLol {
+  umbrella header "Pods-GuideOfLol-umbrella.h"
+
+  export *
+  module * { export * }
+}

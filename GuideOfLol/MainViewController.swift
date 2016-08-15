@@ -9,10 +9,10 @@
 import UIKit
 import SwiftyJSON
 
-class MainViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class MainViewController: BaseViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     var arrayInt = [Int]()
-    var champions = [ChampionDto]()
-    var champ : ChampionDto?
+//    var champions = [ChampionDto]()
+//    var champ : ChampionDto?
     
     @IBOutlet weak var mycollectionview: UICollectionView!
     override func viewDidLoad() {
@@ -83,7 +83,7 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
                             }
                         }
                         
-                        self.printChampions(self.champions)
+//                        self.printChampions(self.champions)
                         dispatch_async(dispatch_get_main_queue(),{self.mycollectionview.reloadData()})
                     }
                 }
@@ -92,11 +92,11 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
             }.resume()
         
     }
-    func printChampions(champs: [ChampionDto])
-    {
-        
-        champions = champs
-    }
+//    func printChampions(champs: [ChampionDto])
+//    {
+//        
+//        champions = champs
+//    }
     
     
     override func viewWillAppear(animated: Bool) {
@@ -128,6 +128,9 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         print(champions[indexPath.row].id)
+        let v1 = storyboard?.instantiateViewControllerWithIdentifier("Master") as? MasterTableVC
+        getDataOfChampion(champions[indexPath.item].id!, masterVC: v1!)
+        
     }
     
     @IBAction func actionWeb(sender: AnyObject) {
@@ -149,5 +152,4 @@ class MainViewController: UIViewController,UICollectionViewDelegate,UICollection
         
     }
     
- 
 }
