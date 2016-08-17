@@ -55,10 +55,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                                 self.items.append(item)
                             }
                             
-                            self.printItems(self.items)
-                            
                             dispatch_async(dispatch_get_main_queue(),{self.myTableView.reloadData()})
-                            
                             
                         }
                     }
@@ -68,11 +65,6 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             }.resume()
     }
     
-    
-    func printItems(item: [ItemDto])
-    {
-        items = item
-    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
@@ -90,7 +82,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.nameItem.text = items[indexPath.row].name
         
         if let nameimage = items[indexPath.row].image?.full {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+            
             
             let urlImage = a + String(nameimage)
             
@@ -101,7 +93,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.imageItem.image = UIImage(data: data!)
             
         }
-        }
+        
         
         return cell
     }

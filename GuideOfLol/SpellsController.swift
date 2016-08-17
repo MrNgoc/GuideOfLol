@@ -27,7 +27,6 @@ class SpellsController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell
-        let a = "http://ddragon.leagueoflegends.com/cdn/6.16.2/img/spell/"
         
         let champCurr = champSpells[indexPath.row]
         if let nameSkill = champCurr.name, cost = champCurr.cost, cooldown = champCurr.cooldownBurn, range = champCurr.range, urlImage = champCurr.altimages?.full, var description = champCurr.description {
@@ -38,25 +37,16 @@ class SpellsController: UIViewController, UITableViewDelegate, UITableViewDataSo
             cell.lbl_Cost.text = toString(cost)
             
             cell.lbl_range.text = toString(range)
-            cell.lbl_description.sizeToFit()
             
             description = "<font color=\"white\" size=\"4px\"><b>" + description + "</b></font>"
             
             let attr = try! NSAttributedString(data: description.dataUsingEncoding(NSUnicodeStringEncoding,allowLossyConversion: true)!,options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
+            
             cell.lbl_description.text = description
             cell.lbl_description.attributedText = attr
-
-            let  urlImagefinish = a+urlImage
-            let url = NSURL(string: urlImagefinish)
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-                let data = NSData(contentsOfURL: url!)
-                
-                dispatch_async(dispatch_get_main_queue(), {
-                    cell.imageSkill.image = UIImage(data: data!)
-                })
-            }
-            
+//            cell.imageSkill.image = UIImage(named: urlImage)
+             cell.imageSkill.image =  UIImage(contentsOfFile: NSBundle.mainBundle().pathForResource(urlImage, ofType: "")!)
         }
         
         return cell
@@ -83,7 +73,5 @@ class SpellsController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-    
-    
-    
+
 }

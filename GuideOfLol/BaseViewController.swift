@@ -9,6 +9,27 @@
 import UIKit
 import SwiftyJSON
 
+
+extension UISegmentedControl {
+    func removeBorders() {
+        setBackgroundImage(imageWithColor(backgroundColor!), forState: .Normal, barMetrics: .Default)
+        setBackgroundImage(imageWithColor(tintColor!), forState: .Selected, barMetrics: .Default)
+        setDividerImage(imageWithColor(UIColor.clearColor()), forLeftSegmentState: .Normal, rightSegmentState: .Normal, barMetrics: .Default)
+    }
+    
+    // create a 1x1 image with this color
+    private func imageWithColor(color: UIColor) -> UIImage {
+        let rect = CGRectMake(0.0, 0.0, 1.0, 1.0)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        CGContextSetFillColorWithColor(context, color.CGColor);
+        CGContextFillRect(context, rect);
+        let image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return image
+    }
+}
+
 class BaseViewController : UIViewController {
     
     var champions = [ChampionDto]()
@@ -30,17 +51,15 @@ class BaseViewController : UIViewController {
                         let json = JSON(data:data!)
                         let data = json["data"]
                         
-                        let nameImage = "http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/"
-                        
                         for (key,subJson):(String, JSON) in data {
                             let idChamp = subJson["id"].int
                             
-                            let champion =  ChampionDto(id: idChamp!, name: key, image: nameImage+String(key)+".png")
+                            let champion =  ChampionDto(id: idChamp!, name: key, image: String(key)+".png")
                             
                             self.champions.append(champion)
                             
+                            
                         }
-                        
                         dispatch_async(dispatch_get_main_queue(),{collectionView.reloadData()})
                         
                     }
@@ -50,6 +69,7 @@ class BaseViewController : UIViewController {
             }.resume()
         
     }
+    
     
     func getDataOfChampion(idChamp : Int, masterVC : MasterTableVC) {
         
@@ -151,11 +171,9 @@ class BaseViewController : UIViewController {
                         
                         guard let keyValue = json["key"].string else {return}
                         
-                        self.champ = ChampionDto(id: idValue, name: name, allytips: allytipsChamp, spells: listSpellDts, info: infoChamp, stats: statsChamp, tags: tagsChamp, skins: listSkin, title: titleChamp, lore: loreValue, key: keyValue)
+                        let imageValue = keyValue + ".png"
                         
-                        // download du lieu
-                        
-                        // self.downloadData(self.champ!)
+                        self.champ = ChampionDto(id: idValue, name: name, allytips: allytipsChamp, spells: listSpellDts, info: infoChamp, stats: statsChamp, tags: tagsChamp, skins: listSkin, title: titleChamp, lore: loreValue, key: keyValue,image: imageValue)
                         
                         masterVC.champ = self.champ
                         dispatch_async(dispatch_get_main_queue(), {
@@ -163,24 +181,15 @@ class BaseViewController : UIViewController {
                         })
                         
                     }
+                    
+
                 }
             }
             
             }.resume()
         
     }
-
     
-//    func dispatchAsync(url : NSURL, cell : CellItem ){
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-//            
-//            let data = NSData(contentsOfURL: url)
-//            
-//            dispatch_async(dispatch_get_main_queue(), {
-//                    cell.imageView.image = UIImage(data: data!)
-//            })
-//        }
-//    }
     
     func toString(des: JSON) -> [String] {
         var text : [String] = []
@@ -213,6 +222,5 @@ class BaseViewController : UIViewController {
         
         return text
     }
-    
     
 }

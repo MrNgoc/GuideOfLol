@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 
+
 class MasterTableVC: BaseViewController {
     @IBOutlet weak var overView: UIView!
     @IBOutlet weak var spellsView: UIView!
@@ -29,48 +30,55 @@ class MasterTableVC: BaseViewController {
     
     @IBOutlet weak var champTitle: UILabel!
     @IBOutlet weak var champTags: UILabel!
-    
+
     @IBOutlet weak var segmentTitle: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.hidden = false
+        
+        segmentTitle.removeBorders()
+        segmentTitle.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 12.0)! ],  forState: .Normal)
 
+        
         champName.text = champ?.name
         champTitle.text = champ?.title
         self.title = champ?.name
         guard let tagValues = champ?.tags else {return}
-        var tagValue : String = ""
-        for i in tagValues {
-            tagValue = tagValue + i + ", "
-        }
-        champTags.text = tagValue
-        let a = "http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/"
+
+            var result : String = ""
+            for i in 0..<tagValues.count {
+                if i < (tagValues.count - 1) {
+                    result = result + String(tagValues[i]) + ", "
+                } else {
+                    result = result + String(tagValues[i])
+                }
+            }
+        
+
+        champTags.text = result
     
         
         let b = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"
         
         guard let keyChamp = champ?.key else {return}
         
-        let urlImagefinish = a + keyChamp + ".png"
         let urlfinishfullchamp = b + keyChamp + "_1.jpg"
-        
+
         let url1 = NSURL(string: urlfinishfullchamp)
+
+        self.champImage.image = UIImage(contentsOfFile: NSBundle.mainBundle().pathForResource((champ?.image), ofType: "")!)
         
-            
-        let url = NSURL(string: urlImagefinish)
-        
-        
+
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             let data1 = NSData(contentsOfURL: url1!)
-            let data = NSData(contentsOfURL: url!)
+            
             
             dispatch_async(dispatch_get_main_queue(), {
-                self.champImage.image = UIImage(data: data!)
+                
                 self.fullchampimage.image = UIImage(data: data1!)
                 
             })
         }
-        
         
         overView.hidden = false
         spellsView.hidden = true
@@ -147,6 +155,7 @@ class MasterTableVC: BaseViewController {
         }
         
     }
+    
     
     
 }

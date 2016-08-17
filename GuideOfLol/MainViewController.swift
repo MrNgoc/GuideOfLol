@@ -9,10 +9,13 @@
 import UIKit
 import SwiftyJSON
 
+let kDOCUMENT_DIRECTORY_PATH = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .AllDomainsMask, true).first
+
 class MainViewController: BaseViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     var arrayInt = [Int]()
-//    var champions = [ChampionDto]()
-//    var champ : ChampionDto?
+    
+    var dictData : NSDictionary!
+    var arrayKeys : NSArray!
     
     @IBOutlet weak var mycollectionview: UICollectionView!
     override func viewDidLoad() {
@@ -20,6 +23,7 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
         getId()
         mycollectionview.backgroundColor = UIColor.clearColor()
         self.getData()
+        
         self.navigationController?.navigationBar.hidden = true
     }
     
@@ -46,7 +50,6 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
                             
                         }
                     }
-                    //self.getData()
                 }
                 
             }
@@ -69,21 +72,18 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
                         
                         let json = JSON(data:data!)
                         let data = json["data"]
-                        
-                        let nameImage = "http://ddragon.leagueoflegends.com/cdn/6.16.2/img/champion/"
-                        
+
                         for (key,subJson):(String, JSON) in data {
                             if let idChamp = subJson["id"].int {
                                 for ids in self.arrayInt where ids == idChamp {
                                     
-                                    let champion = ChampionDto(id: idChamp, name: key, image: nameImage+String(key)+".png")
+                                    let champion = ChampionDto(id: idChamp, name: key, image: String(key)+".png")
                                     
                                     self.champions.append(champion)
                                 }
                             }
                         }
                         
-//                        self.printChampions(self.champions)
                         dispatch_async(dispatch_get_main_queue(),{self.mycollectionview.reloadData()})
                     }
                 }
@@ -92,12 +92,6 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
             }.resume()
         
     }
-//    func printChampions(champs: [ChampionDto])
-//    {
-//        
-//        champions = champs
-//    }
-    
     
     override func viewWillAppear(animated: Bool) {
         self.mycollectionview.reloadData()
@@ -111,23 +105,13 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CustomMainCell
         
-        let imageURL = champions[indexPath.item].image
-        
-        let url = NSURL(string: imageURL!)
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-            let data = NSData(contentsOfURL: url!)
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                cell.ImageFreeChampion.image = UIImage(data: data!)
-            })
+        if let imageURL = champions[indexPath.item].image {
+             cell.ImageFreeChampion.image =  UIImage(contentsOfFile: NSBundle.mainBundle().pathForResource(imageURL, ofType: "")!)
         }
-        
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print(champions[indexPath.row].id)
         let v1 = storyboard?.instantiateViewControllerWithIdentifier("Master") as? MasterTableVC
         getDataOfChampion(champions[indexPath.item].id!, masterVC: v1!)
         
@@ -146,20 +130,9 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
         
     }
     
-    
-    
     @IBAction func ItemAction(sender: UIButton) {
         let item = storyboard?.instantiateViewControllerWithIdentifier("item") as!ItemViewController
         navigationController?.pushViewController(item, animated: true)
-        
-    }
-    @IBAction func RunesAction(sender: AnyObject) {
-        
-        let rune = storyboard?.instantiateViewControllerWithIdentifier("rune") as!RunesViewController
-        navigationController?.pushViewController(rune, animated: true)
-        
-        
-        
         
     }
     

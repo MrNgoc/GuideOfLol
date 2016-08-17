@@ -58,7 +58,6 @@ class RunesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     }
                     
                     dispatch_async(dispatch_get_main_queue(),{self.MyTableView.reloadData()})
-                    print(self.runes.count)
             
                 }
                 
