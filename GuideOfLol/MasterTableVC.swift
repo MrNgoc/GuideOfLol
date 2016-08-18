@@ -32,11 +32,11 @@ class MasterTableVC: BaseViewController {
     @IBOutlet weak var champTags: UILabel!
 
     @IBOutlet weak var segmentTitle: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.hidden = false
-        
-        segmentTitle.removeBorders()
+               segmentTitle.removeBorders()
         segmentTitle.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 12.0)! ],  forState: .Normal)
 
         
@@ -87,6 +87,8 @@ class MasterTableVC: BaseViewController {
         skinsView.hidden = true
         
     }
+    
+    
     
     
     @IBAction func actionSegement(sender: AnyObject) {
@@ -155,6 +157,7 @@ class MasterTableVC: BaseViewController {
         }
         
     }
+    
     
     
     

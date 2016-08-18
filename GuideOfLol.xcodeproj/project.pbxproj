@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6EEF495A1D646A0600366B9B /* DariusAxeGrabCone.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EEF49561D646A0600366B9B /* DariusAxeGrabCone.png */; };
+		6EEF495B1D646A0600366B9B /* DariusCleave.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EEF49571D646A0600366B9B /* DariusCleave.png */; };
+		6EEF495C1D646A0600366B9B /* DariusExecute.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EEF49581D646A0600366B9B /* DariusExecute.png */; };
+		6EEF495D1D646A0600366B9B /* DariusNoxianTacticsONH.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EEF49591D646A0600366B9B /* DariusNoxianTacticsONH.png */; };
 		842374861D5083F900FFFE04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842374851D5083F900FFFE04 /* AppDelegate.swift */; };
 		8423748B1D5083FA00FFFE04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842374891D5083FA00FFFE04 /* Main.storyboard */; };
 		8423748D1D5083FA00FFFE04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8423748C1D5083FA00FFFE04 /* Assets.xcassets */; };
@@ -706,6 +710,10 @@
 /* Begin PBXFileReference section */
 		133DFCFB0CFCCB02A0D57EF8 /* Pods-GuideOfLol.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuideOfLol.release.xcconfig"; path = "Pods/Target Support Files/Pods-GuideOfLol/Pods-GuideOfLol.release.xcconfig"; sourceTree = "<group>"; };
 		6C2A01A8180BB4EF966BBF37 /* Pods-GuideOfLol.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuideOfLol.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GuideOfLol/Pods-GuideOfLol.debug.xcconfig"; sourceTree = "<group>"; };
+		6EEF49561D646A0600366B9B /* DariusAxeGrabCone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DariusAxeGrabCone.png; path = ../../../../../../Desktop/DariusAxeGrabCone.png; sourceTree = "<group>"; };
+		6EEF49571D646A0600366B9B /* DariusCleave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DariusCleave.png; path = ../../../../../../Desktop/DariusCleave.png; sourceTree = "<group>"; };
+		6EEF49581D646A0600366B9B /* DariusExecute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DariusExecute.png; path = ../../../../../../Desktop/DariusExecute.png; sourceTree = "<group>"; };
+		6EEF49591D646A0600366B9B /* DariusNoxianTacticsONH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DariusNoxianTacticsONH.png; path = ../../../../../../Desktop/DariusNoxianTacticsONH.png; sourceTree = "<group>"; };
 		842374821D5083F900FFFE04 /* GuideOfLol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuideOfLol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842374851D5083F900FFFE04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8423748A1D5083FA00FFFE04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1997,6 +2005,10 @@
 		C7404B4E1D61799B00EEF3AE /* spells */ = {
 			isa = PBXGroup;
 			children = (
+				6EEF49561D646A0600366B9B /* DariusAxeGrabCone.png */,
+				6EEF49571D646A0600366B9B /* DariusCleave.png */,
+				6EEF49581D646A0600366B9B /* DariusExecute.png */,
+				6EEF49591D646A0600366B9B /* DariusNoxianTacticsONH.png */,
 			);
 			path = spells;
 			sourceTree = "<group>";
@@ -4492,6 +4504,7 @@
 				C7404F061D61799C00EEF3AE /* GnarW.png in Resources */,
 				C7404FE21D61799C00EEF3AE /* IceBlast.png in Resources */,
 				C7404FFD1D61799C00EEF3AE /* DefensiveBallCurl.png in Resources */,
+				6EEF495B1D646A0600366B9B /* DariusCleave.png in Resources */,
 				C7404EB31D61799C00EEF3AE /* CassiopeiaQ.png in Resources */,
 				C7404FF81D61799C00EEF3AE /* QuinnE.png in Resources */,
 				C7404F7C1D61799C00EEF3AE /* LeblancMimic.png in Resources */,
@@ -4706,6 +4719,7 @@
 				C74050B81D61799C00EEF3AE /* ViktorPowerTransfer.png in Resources */,
 				C7404F1E1D61799C00EEF3AE /* IllaoiR.png in Resources */,
 				C74050EE1D61799C00EEF3AE /* ZileanQ.png in Resources */,
+				6EEF495D1D646A0600366B9B /* DariusNoxianTacticsONH.png in Resources */,
 				C74050BF1D61799C00EEF3AE /* VolibearE.png in Resources */,
 				C7404EBC1D61799C00EEF3AE /* CarpetBomb.png in Resources */,
 				C74050511D61799C00EEF3AE /* SwainDecrepify.png in Resources */,
@@ -4754,6 +4768,7 @@
 				C74050CD1D61799C00EEF3AE /* Xerath.png in Resources */,
 				C74050D01D61799C00EEF3AE /* XenZhaoParry.png in Resources */,
 				C7404E741D61799C00EEF3AE /* AkaliSmokeBomb.png in Resources */,
+				6EEF495C1D646A0600366B9B /* DariusExecute.png in Resources */,
 				C7404E7D1D61799C00EEF3AE /* CurseoftheSadMummy.png in Resources */,
 				C7404F4D1D61799C00EEF3AE /* Karthus.png in Resources */,
 				C7404EBF1D61799C00EEF3AE /* PhosphorusBomb.png in Resources */,
@@ -4956,6 +4971,7 @@
 				C7404F651D61799C00EEF3AE /* KennenShurikenStorm.png in Resources */,
 				C7404F9A1D61799C00EEF3AE /* LuxLightStrikeKugel.png in Resources */,
 				C74050641D61799C00EEF3AE /* Taliyah.png in Resources */,
+				6EEF495A1D646A0600366B9B /* DariusAxeGrabCone.png in Resources */,
 				C7404FD01D61799C00EEF3AE /* NautilusAnchorDrag.png in Resources */,
 				C7404F311D61799C00EEF3AE /* JaxEmpowerTwo.png in Resources */,
 				C7404FEA1D61799C00EEF3AE /* OrianaDissonanceCommand.png in Resources */,

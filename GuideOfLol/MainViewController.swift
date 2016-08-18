@@ -136,4 +136,10 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
         
     }
     
+    @IBAction func RunesAction(sender: AnyObject) {
+        let item = storyboard?.instantiateViewControllerWithIdentifier("rune") as! RunesViewController
+        navigationController?.pushViewController(item, animated: true)
+        
+        
+    }
 }

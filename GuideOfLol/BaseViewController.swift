@@ -34,6 +34,8 @@ class BaseViewController : UIViewController {
     
     var champions = [ChampionDto]()
     var champ : ChampionDto?
+    var arrayChampion : NSArray?
+    var array = [String]()
     
     func getData(url: String, collectionView : UICollectionView) {
         
@@ -41,6 +43,7 @@ class BaseViewController : UIViewController {
         
         let session = NSURLSession.sharedSession()
         
+        self.array = [String]()
         session.dataTaskWithRequest(urlRequest) { (data, response, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -57,10 +60,14 @@ class BaseViewController : UIViewController {
                             let champion =  ChampionDto(id: idChamp!, name: key, image: String(key)+".png")
                             
                             self.champions.append(champion)
-                            
+                            self.array.append(key)
                             
                         }
+                        self.champions.sortInPlace({(cham : ChampionDto, cham2 : ChampionDto) -> Bool in return cham.name < cham2.name})
                         dispatch_async(dispatch_get_main_queue(),{collectionView.reloadData()})
+                        self.arrayChampion = self.array
+                       // self.arrayChampion = self.arrayChampion?.sortedArrayUsingSelector("compare:")
+                    
                         
                     }
                 }
@@ -182,7 +189,7 @@ class BaseViewController : UIViewController {
                         
                     }
                     
-
+                    
                 }
             }
             

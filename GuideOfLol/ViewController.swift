@@ -9,31 +9,82 @@
 import UIKit
 import SwiftyJSON
 
-class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
     @IBOutlet weak var myCollection: UICollectionView!
     
-    //    var champ : ChampionDto?
-    var dictData : NSDictionary!
-    var array : NSArray!
+    @IBOutlet weak var searchController: UISearchBar!
+    
+    var searchActive: Bool = false
+    
+    var filtered: [ChampionDto] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.hidden = false
         self.title = "Champions LOL"
-        
-        let path = NSBundle.mainBundle().pathForResource("ListChampion", ofType: "plist")!
-        dictData = NSDictionary(contentsOfFile: path)!
-        array = dictData.allKeys
-        
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(searchFunc))
+        self.navigationItem.rightBarButtonItem = searchButton
+        searchController.delegate = self
+        self.searchController.hidden = true
+//        let path = NSBundle.mainBundle().pathForResource("ListChampion", ofType: "plist")!
         
         let urlString = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?locale=vn_VN&champData=image&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF"
         
         getData(urlString, collectionView: myCollection)
+        
+        
+        
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        searchActive = false
+        
+    }
+   
+    
+    
+    
+    func searchFunc(){
+        UIView.animateWithDuration(0.5) {
+            
+            UIView.transitionWithView(self.searchController, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromTop, animations: {
+                self.searchController.hidden = !self.searchController.hidden
+                }, completion: nil)
+        }
+        
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
+        if (searchBar.text == "")
+        {
+            searchActive = false
+        }
+        else
+        {
+            searchActive = true
+        }
+        filtered = champions.filter({ (champion) -> Bool in
+            let tmp: NSString = champion.name!
+            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            return range.location != NSNotFound
+        })
+        
+        self.myCollection.reloadData()
+    }
+    
+    
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if (searchActive) {
+            return filtered.count
+        }
         return champions.count
     }
     
@@ -42,12 +93,24 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CellItem
-        
-        if let imageName = champions[indexPath.item].image, name = champions[indexPath.item].name {
-            cell.imageView.image =  UIImage(contentsOfFile: NSBundle.mainBundle().pathForResource(imageName, ofType: "")!)
-            cell.nameLabel.text = name
+        if (searchActive) {
+            
+            
+            if let imageName = filtered[indexPath.item].image, name = filtered[indexPath.item].name {
+                
+                cell.imageView.image =  UIImage(contentsOfFile: NSBundle.mainBundle().pathForResource(imageName, ofType: "")!)
+                cell.nameLabel.text = name
+                
+            }
+            
+            
+        } else  {
+            
+            if let imageName = champions[indexPath.item].image, name = champions[indexPath.item].name {
+                cell.imageView.image =  UIImage(contentsOfFile: NSBundle.mainBundle().pathForResource(imageName, ofType: "")!)
+                cell.nameLabel.text = name
+            }
         }
-        
         return cell
     }
     
@@ -57,11 +120,18 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let v1 = storyboard?.instantiateViewControllerWithIdentifier("Master") as? MasterTableVC
-        getDataOfChampion(champions[indexPath.item].id!, masterVC: v1!)
         
-    }
+        let v1 = storyboard?.instantiateViewControllerWithIdentifier("Master") as? MasterTableVC
+        
+            if searchActive {
+                getDataOfChampion(filtered[indexPath.item].id!, masterVC: v1!)
+            }else {
+                
+                getDataOfChampion(champions[indexPath.item].id!, masterVC: v1!)
+                
+            }
+        }
+        
     
-    
-    
+
 }

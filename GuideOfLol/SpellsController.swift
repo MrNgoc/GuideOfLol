@@ -46,6 +46,7 @@ class SpellsController: UIViewController, UITableViewDelegate, UITableViewDataSo
             cell.lbl_description.attributedText = attr
             
 //            cell.imageSkill.image = UIImage(named: urlImage)
+            print(urlImage)
              cell.imageSkill.image =  UIImage(contentsOfFile: NSBundle.mainBundle().pathForResource(urlImage, ofType: "")!)
         }
         
