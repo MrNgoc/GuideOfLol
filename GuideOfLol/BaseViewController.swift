@@ -66,8 +66,8 @@ class BaseViewController : UIViewController {
                         self.champions.sortInPlace({(cham : ChampionDto, cham2 : ChampionDto) -> Bool in return cham.name < cham2.name})
                         dispatch_async(dispatch_get_main_queue(),{collectionView.reloadData()})
                         self.arrayChampion = self.array
-                       // self.arrayChampion = self.arrayChampion?.sortedArrayUsingSelector("compare:")
-                    
+                        // self.arrayChampion = self.arrayChampion?.sortedArrayUsingSelector("compare:")
+                        
                         
                     }
                 }
@@ -180,7 +180,29 @@ class BaseViewController : UIViewController {
                         
                         let imageValue = keyValue + ".png"
                         
-                        self.champ = ChampionDto(id: idValue, name: name, allytips: allytipsChamp, spells: listSpellDts, info: infoChamp, stats: statsChamp, tags: tagsChamp, skins: listSkin, title: titleChamp, lore: loreValue, key: keyValue,image: imageValue)
+                        var recommendedValues = [RecommendedDto]()
+                        for (_, subjson) in json["recommended"] {
+                            guard let mapValue = subjson["map"].string else {return}
+                            
+                            var blockValues = [BlockDto]()
+                    
+                            for (_,subjson1) in subjson["blocks"] {
+
+                                guard let typeValus = subjson1["type"].string else {return}
+                                var idItems = [String]()
+                                for ( _ , subjson2) in subjson1["items"] {
+
+                                    guard let idValues = subjson2["id"].int else {return}
+                                    idItems.append(String(idValues))
+                                }
+                                let blockValue = BlockDto(items: idItems, type: typeValus)
+                                blockValues.append(blockValue)
+                            }
+                            let re = RecommendedDto(blocks: blockValues, map: mapValue)
+                            recommendedValues.append(re)
+                        }
+                        
+                        self.champ = ChampionDto(id: idValue, name: name, allytips: allytipsChamp, spells: listSpellDts, info: infoChamp, stats: statsChamp, tags: tagsChamp, skins: listSkin, title: titleChamp, lore: loreValue, key: keyValue,image: imageValue, recommended: recommendedValues)
                         
                         masterVC.champ = self.champ
                         dispatch_async(dispatch_get_main_queue(), {

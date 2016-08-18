@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6EEF495A1D646A0600366B9B /* DariusAxeGrabCone.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EEF49561D646A0600366B9B /* DariusAxeGrabCone.png */; };
-		6EEF495B1D646A0600366B9B /* DariusCleave.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EEF49571D646A0600366B9B /* DariusCleave.png */; };
-		6EEF495C1D646A0600366B9B /* DariusExecute.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EEF49581D646A0600366B9B /* DariusExecute.png */; };
-		6EEF495D1D646A0600366B9B /* DariusNoxianTacticsONH.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EEF49591D646A0600366B9B /* DariusNoxianTacticsONH.png */; };
 		842374861D5083F900FFFE04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842374851D5083F900FFFE04 /* AppDelegate.swift */; };
 		8423748B1D5083FA00FFFE04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842374891D5083FA00FFFE04 /* Main.storyboard */; };
 		8423748D1D5083FA00FFFE04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8423748C1D5083FA00FFFE04 /* Assets.xcassets */; };
 		842374901D5083FA00FFFE04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8423748E1D5083FA00FFFE04 /* LaunchScreen.storyboard */; };
+		844619901D656B3A004FB31C /* ItemSuggest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446198F1D656B3A004FB31C /* ItemSuggest.swift */; };
+		844619921D657494004FB31C /* RecommendedDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844619911D657494004FB31C /* RecommendedDto.swift */; };
+		844619941D6596B4004FB31C /* CustomSuggestItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844619931D6596B4004FB31C /* CustomSuggestItemCell.swift */; };
+		844619961D65A18B004FB31C /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844619951D65A18B004FB31C /* SectionHeaderView.swift */; };
 		84617E931D55D26B00B4A627 /* SpellsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84617E921D55D26B00B4A627 /* SpellsCustomCell.swift */; };
 		8475AEA81D5196B900FECC5D /* ChampionDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475AEA71D5196B900FECC5D /* ChampionDto.swift */; };
 		847767FE1D5437D2006E6E2B /* StatsDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847767FD1D5437D2006E6E2B /* StatsDto.swift */; };
@@ -710,16 +710,16 @@
 /* Begin PBXFileReference section */
 		133DFCFB0CFCCB02A0D57EF8 /* Pods-GuideOfLol.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuideOfLol.release.xcconfig"; path = "Pods/Target Support Files/Pods-GuideOfLol/Pods-GuideOfLol.release.xcconfig"; sourceTree = "<group>"; };
 		6C2A01A8180BB4EF966BBF37 /* Pods-GuideOfLol.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuideOfLol.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GuideOfLol/Pods-GuideOfLol.debug.xcconfig"; sourceTree = "<group>"; };
-		6EEF49561D646A0600366B9B /* DariusAxeGrabCone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DariusAxeGrabCone.png; path = ../../../../../../Desktop/DariusAxeGrabCone.png; sourceTree = "<group>"; };
-		6EEF49571D646A0600366B9B /* DariusCleave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DariusCleave.png; path = ../../../../../../Desktop/DariusCleave.png; sourceTree = "<group>"; };
-		6EEF49581D646A0600366B9B /* DariusExecute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DariusExecute.png; path = ../../../../../../Desktop/DariusExecute.png; sourceTree = "<group>"; };
-		6EEF49591D646A0600366B9B /* DariusNoxianTacticsONH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DariusNoxianTacticsONH.png; path = ../../../../../../Desktop/DariusNoxianTacticsONH.png; sourceTree = "<group>"; };
 		842374821D5083F900FFFE04 /* GuideOfLol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuideOfLol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842374851D5083F900FFFE04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8423748A1D5083FA00FFFE04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8423748C1D5083FA00FFFE04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8423748F1D5083FA00FFFE04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		842374911D5083FA00FFFE04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8446198F1D656B3A004FB31C /* ItemSuggest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSuggest.swift; sourceTree = "<group>"; };
+		844619911D657494004FB31C /* RecommendedDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedDto.swift; sourceTree = "<group>"; };
+		844619931D6596B4004FB31C /* CustomSuggestItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSuggestItemCell.swift; sourceTree = "<group>"; };
+		844619951D65A18B004FB31C /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		84617E921D55D26B00B4A627 /* SpellsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellsCustomCell.swift; sourceTree = "<group>"; };
 		8475AEA71D5196B900FECC5D /* ChampionDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChampionDto.swift; sourceTree = "<group>"; };
 		847767FD1D5437D2006E6E2B /* StatsDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsDto.swift; sourceTree = "<group>"; };
@@ -1471,6 +1471,7 @@
 			children = (
 				C7473A731D5B35D800DB9894 /* ItemDto.swift */,
 				8475AEA71D5196B900FECC5D /* ChampionDto.swift */,
+				844619911D657494004FB31C /* RecommendedDto.swift */,
 				847768011D54381E006E6E2B /* SkinDto.swift */,
 				847767FF1D5437F9006E6E2B /* ChampionSpellDto.swift */,
 				C79957031D51AA0300F4615D /* InfoDto.swift */,
@@ -1480,6 +1481,7 @@
 				C7E0E2821D5D7C1D0063D825 /* DownloadData.swift */,
 				C7173A8B1D6161F100926427 /* BaseViewController.swift */,
 				C79D8F9C1D61D1710017A18B /* Runes.swift */,
+				8446198F1D656B3A004FB31C /* ItemSuggest.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2005,10 +2007,6 @@
 		C7404B4E1D61799B00EEF3AE /* spells */ = {
 			isa = PBXGroup;
 			children = (
-				6EEF49561D646A0600366B9B /* DariusAxeGrabCone.png */,
-				6EEF49571D646A0600366B9B /* DariusCleave.png */,
-				6EEF49581D646A0600366B9B /* DariusExecute.png */,
-				6EEF49591D646A0600366B9B /* DariusNoxianTacticsONH.png */,
 			);
 			path = spells;
 			sourceTree = "<group>";
@@ -4281,6 +4279,8 @@
 				84D94DD71D51E79B0012D8C8 /* ChampsCustomCell.swift */,
 				C7473A771D5B35F500DB9894 /* ItemCustomCell.swift */,
 				84617E921D55D26B00B4A627 /* SpellsCustomCell.swift */,
+				844619931D6596B4004FB31C /* CustomSuggestItemCell.swift */,
+				844619951D65A18B004FB31C /* SectionHeaderView.swift */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -4504,7 +4504,6 @@
 				C7404F061D61799C00EEF3AE /* GnarW.png in Resources */,
 				C7404FE21D61799C00EEF3AE /* IceBlast.png in Resources */,
 				C7404FFD1D61799C00EEF3AE /* DefensiveBallCurl.png in Resources */,
-				6EEF495B1D646A0600366B9B /* DariusCleave.png in Resources */,
 				C7404EB31D61799C00EEF3AE /* CassiopeiaQ.png in Resources */,
 				C7404FF81D61799C00EEF3AE /* QuinnE.png in Resources */,
 				C7404F7C1D61799C00EEF3AE /* LeblancMimic.png in Resources */,
@@ -4719,7 +4718,6 @@
 				C74050B81D61799C00EEF3AE /* ViktorPowerTransfer.png in Resources */,
 				C7404F1E1D61799C00EEF3AE /* IllaoiR.png in Resources */,
 				C74050EE1D61799C00EEF3AE /* ZileanQ.png in Resources */,
-				6EEF495D1D646A0600366B9B /* DariusNoxianTacticsONH.png in Resources */,
 				C74050BF1D61799C00EEF3AE /* VolibearE.png in Resources */,
 				C7404EBC1D61799C00EEF3AE /* CarpetBomb.png in Resources */,
 				C74050511D61799C00EEF3AE /* SwainDecrepify.png in Resources */,
@@ -4768,7 +4766,6 @@
 				C74050CD1D61799C00EEF3AE /* Xerath.png in Resources */,
 				C74050D01D61799C00EEF3AE /* XenZhaoParry.png in Resources */,
 				C7404E741D61799C00EEF3AE /* AkaliSmokeBomb.png in Resources */,
-				6EEF495C1D646A0600366B9B /* DariusExecute.png in Resources */,
 				C7404E7D1D61799C00EEF3AE /* CurseoftheSadMummy.png in Resources */,
 				C7404F4D1D61799C00EEF3AE /* Karthus.png in Resources */,
 				C7404EBF1D61799C00EEF3AE /* PhosphorusBomb.png in Resources */,
@@ -4971,7 +4968,6 @@
 				C7404F651D61799C00EEF3AE /* KennenShurikenStorm.png in Resources */,
 				C7404F9A1D61799C00EEF3AE /* LuxLightStrikeKugel.png in Resources */,
 				C74050641D61799C00EEF3AE /* Taliyah.png in Resources */,
-				6EEF495A1D646A0600366B9B /* DariusAxeGrabCone.png in Resources */,
 				C7404FD01D61799C00EEF3AE /* NautilusAnchorDrag.png in Resources */,
 				C7404F311D61799C00EEF3AE /* JaxEmpowerTwo.png in Resources */,
 				C7404FEA1D61799C00EEF3AE /* OrianaDissonanceCommand.png in Resources */,
@@ -5109,15 +5105,18 @@
 				847767FE1D5437D2006E6E2B /* StatsDto.swift in Sources */,
 				84ECB0AF1D59B4BB006FD089 /* WebViewController.swift in Sources */,
 				C79D8FA11D61D1830017A18B /* CustomRuneCell.swift in Sources */,
+				844619921D657494004FB31C /* RecommendedDto.swift in Sources */,
 				847768021D54381E006E6E2B /* SkinDto.swift in Sources */,
 				84ECB0AD1D5978C2006FD089 /* FreeChampsCustomCell.swift in Sources */,
 				8475AEA81D5196B900FECC5D /* ChampionDto.swift in Sources */,
 				847768041D544562006E6E2B /* OverviewController.swift in Sources */,
 				847768001D5437F9006E6E2B /* ChampionSpellDto.swift in Sources */,
+				844619961D65A18B004FB31C /* SectionHeaderView.swift in Sources */,
 				C7473A761D5B35DE00DB9894 /* GoldDto.swift in Sources */,
 				842374861D5083F900FFFE04 /* AppDelegate.swift in Sources */,
 				C7473A741D5B35D800DB9894 /* ItemDto.swift in Sources */,
 				84908A8D1D5585CB00335C90 /* StatsViewController.swift in Sources */,
+				844619901D656B3A004FB31C /* ItemSuggest.swift in Sources */,
 				C79D8F9D1D61D1710017A18B /* Runes.swift in Sources */,
 				84908A8F1D558FE400335C90 /* ViewController.swift in Sources */,
 				847768061D545661006E6E2B /* SpellsController.swift in Sources */,
@@ -5128,6 +5127,7 @@
 				C7173A8C1D6161F100926427 /* BaseViewController.swift in Sources */,
 				C79D8F9F1D61D1760017A18B /* RunesViewController.swift in Sources */,
 				84D94DD81D51E79B0012D8C8 /* ChampsCustomCell.swift in Sources */,
+				844619941D6596B4004FB31C /* CustomSuggestItemCell.swift in Sources */,
 				84ECB0AB1D597875006FD089 /* MainViewController.swift in Sources */,
 				C79957021D51A9CA00F4615D /* ImageDto.swift in Sources */,
 				C7D872DC1D5847C700DCAC5F /* StoryViewController.swift in Sources */,

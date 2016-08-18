@@ -90,11 +90,33 @@ class MasterTableVC: BaseViewController {
     
     
     
+    @IBAction func segmentneeded(sender: AnyObject)
+    {
+        
+        if(segmentTitle.selectedSegmentIndex==0)
+        {
+            self.view.backgroundColor=UIColor.purpleColor()
+            segmentTitle.selectedSegmentIndex=UISegmentedControlNoSegment
+        }
+        else if(segmentTitle.selectedSegmentIndex==1)
+        {
+            self.view.backgroundColor=UIColor.yellowColor()
+            segmentTitle.selectedSegmentIndex=UISegmentedControlNoSegment
+        }
+        else
+        {
+            self.view.backgroundColor=UIColor.grayColor()
+            segmentTitle.selectedSegmentIndex=UISegmentedControlNoSegment
+        }
+    }
     
-    @IBAction func actionSegement(sender: AnyObject) {
-        sender.selected
+    
+    
+    @IBAction func actionSegement(sender: UISegmentedControl) {
+        
         switch sender.selectedSegmentIndex {
         case 0:
+            
             overView.hidden = false
             spellsView.hidden = true
             statsView.hidden = true

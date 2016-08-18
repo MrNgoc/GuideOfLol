@@ -22,9 +22,10 @@ class ChampionDto {
     var nameImg : String?
     var lore : String?
     var key : String?
+    var recommended : [RecommendedDto]?
+        
     
-    
-    init(id : Int, name: String , allytips: [String],spells: [ChampionSpellDto], info : InfoDto, stats: StatsDto, tags: [String],skins: [SkinDto], title : String, lore : String, key : String, image: String) {
+    init(id : Int, name: String , allytips: [String],spells: [ChampionSpellDto], info : InfoDto, stats: StatsDto, tags: [String],skins: [SkinDto], title : String, lore : String, key : String, image: String, recommended : [RecommendedDto]) {
         self.id = id
         self.name = name
         self.info = info
@@ -38,6 +39,7 @@ class ChampionDto {
         self.lore = lore
         self.key = key
         self.image = image
+        self.recommended = recommended
         
     }
     
