@@ -110,22 +110,6 @@
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="160" translatesAutoresizingMaskIntoConstraints="NO" id="5i7-u3-upl">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
                                                     </imageView>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CUB-v6-KhH">
-                                                        <rect key="frame" x="0.0" y="120" width="320" height="41"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <segments>
-                                                            <segment title="OVERVIEW"/>
-                                                            <segment title="SPELLS"/>
-                                                            <segment title="STATS"/>
-                                                            <segment title="STORY"/>
-                                                            <segment title="SKINS"/>
-                                                        </segments>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <connections>
-                                                            <action selector="actionSegement:" destination="Md6-BB-CET" eventType="valueChanged" id="YHb-sp-lJJ"/>
-                                                            <action selector="segmentneeded:" destination="Md6-BB-CET" eventType="valueChanged" id="qpU-5w-YfY"/>
-                                                        </connections>
-                                                    </segmentedControl>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dKl-Vb-iry">
                                                         <rect key="frame" x="10" y="40" width="190" height="72"/>
                                                         <subviews>
@@ -195,6 +179,21 @@
                                                             <constraint firstItem="z6f-nw-CjE" firstAttribute="leading" secondItem="KKH-ah-S9P" secondAttribute="trailing" constant="3" id="zdA-wQ-uZa"/>
                                                         </constraints>
                                                     </view>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CUB-v6-KhH">
+                                                        <rect key="frame" x="0.0" y="120" width="320" height="41"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <segments>
+                                                            <segment title="OVERVIEW"/>
+                                                            <segment title="SPELLS"/>
+                                                            <segment title="STATS"/>
+                                                            <segment title="STORY"/>
+                                                            <segment title="SKINS"/>
+                                                        </segments>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <connections>
+                                                            <action selector="actionSegement:" destination="Md6-BB-CET" eventType="valueChanged" id="YHb-sp-lJJ"/>
+                                                        </connections>
+                                                    </segmentedControl>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="tintColor" red="0.41178262233734131" green="0.20008629560470581" blue="0.077698089182376862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1119,7 +1118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7g-lT-vpZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="936" y="-1645"/>
+            <point key="canvasLocation" x="752" y="-1591"/>
         </scene>
         <!--Skins Controller-->
         <scene sceneID="JFZ-oZ-vJo">

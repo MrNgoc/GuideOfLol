@@ -36,9 +36,9 @@ class MasterTableVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.hidden = false
-               segmentTitle.removeBorders()
+             //  segmentTitle.removeBorders()
         segmentTitle.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 12.0)! ],  forState: .Normal)
-
+        
         
         champName.text = champ?.name
         champTitle.text = champ?.title
@@ -90,32 +90,22 @@ class MasterTableVC: BaseViewController {
     
     
     
-    @IBAction func segmentneeded(sender: AnyObject)
-    {
         
-        if(segmentTitle.selectedSegmentIndex==0)
-        {
-            self.view.backgroundColor=UIColor.purpleColor()
-            segmentTitle.selectedSegmentIndex=UISegmentedControlNoSegment
-        }
-        else if(segmentTitle.selectedSegmentIndex==1)
-        {
-            self.view.backgroundColor=UIColor.yellowColor()
-            segmentTitle.selectedSegmentIndex=UISegmentedControlNoSegment
-        }
-        else
-        {
-            self.view.backgroundColor=UIColor.grayColor()
-            segmentTitle.selectedSegmentIndex=UISegmentedControlNoSegment
-        }
-    }
-    
     
     
     @IBAction func actionSegement(sender: UISegmentedControl) {
         
         switch sender.selectedSegmentIndex {
+            
+             //var subViewOfSegment: UIView = segmentTitle.subviews[sender.selectedSegmentIndex] as UIView
+            
+            
         case 0:
+            
+           
+            
+            
+            segmentTitle.subviews[sender.selectedSegmentIndex].tintColor = UIColor.blueColor()
             
             overView.hidden = false
             spellsView.hidden = true
@@ -129,25 +119,32 @@ class MasterTableVC: BaseViewController {
             statsView.hidden = true
             storyView.hidden = true
             skinsView.hidden = true
+            
+              segmentTitle.subviews[sender.selectedSegmentIndex].tintColor = UIColor.blueColor()
         case 2:
             overView.hidden = true
             spellsView.hidden = true
             statsView.hidden = false
             storyView.hidden = true
             skinsView.hidden = true
-            
+              segmentTitle.subviews[sender.selectedSegmentIndex].tintColor = UIColor.blueColor()
         case 3:
             overView.hidden = true
             spellsView.hidden = true
             statsView.hidden = true
             storyView.hidden = false
             skinsView.hidden = true
-        default:
+              segmentTitle.subviews[sender.selectedSegmentIndex].tintColor = UIColor.blueColor()
+        case 4 :
             overView.hidden = true
             spellsView.hidden = true
             statsView.hidden = true
             storyView.hidden = true
             skinsView.hidden = false
+            
+              segmentTitle.subviews[sender.selectedSegmentIndex].tintColor = UIColor.blueColor()
+            
+            default: break
         }
     }
     
