@@ -11,6 +11,7 @@
 		8423748B1D5083FA00FFFE04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842374891D5083FA00FFFE04 /* Main.storyboard */; };
 		8423748D1D5083FA00FFFE04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8423748C1D5083FA00FFFE04 /* Assets.xcassets */; };
 		842374901D5083FA00FFFE04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8423748E1D5083FA00FFFE04 /* LaunchScreen.storyboard */; };
+		8440FC561D6B0A640073921A /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440FC551D6B0A640073921A /* Video.swift */; };
 		8448F9351D684A8600F82832 /* DetailOfItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448F9341D684A8600F82832 /* DetailOfItem.swift */; };
 		84617E931D55D26B00B4A627 /* SpellsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84617E921D55D26B00B4A627 /* SpellsCustomCell.swift */; };
 		8475AEA81D5196B900FECC5D /* ChampionDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475AEA71D5196B900FECC5D /* ChampionDto.swift */; };
@@ -21,9 +22,13 @@
 		847768061D545661006E6E2B /* SpellsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847768051D545661006E6E2B /* SpellsController.swift */; };
 		84908A8D1D5585CB00335C90 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84908A8C1D5585CB00335C90 /* StatsViewController.swift */; };
 		84908A8F1D558FE400335C90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84908A8E1D558FE400335C90 /* ViewController.swift */; };
+		84CAFC111D6C038500757B52 /* CustomYoutubeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CAFC101D6C038500757B52 /* CustomYoutubeCell.swift */; };
+		84CAFC131D6C299600757B52 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CAFC121D6C299600757B52 /* VideoController.swift */; };
 		84D1D01A1D6A993800A503B4 /* ItemInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1D0191D6A993800A503B4 /* ItemInformation.swift */; };
 		84D94DD81D51E79B0012D8C8 /* ChampsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D94DD71D51E79B0012D8C8 /* ChampsCustomCell.swift */; };
 		84E6D3311D58329B002D9F11 /* SkinsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D3301D58329B002D9F11 /* SkinsController.swift */; };
+		84EBFFA01D6D3D1F00A86B22 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBFF9F1D6D3D1F00A86B22 /* Comment.swift */; };
+		84EBFFA21D6D451A00A86B22 /* CustomCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBFFA11D6D451A00A86B22 /* CustomCommentCell.swift */; };
 		84ECB0AB1D597875006FD089 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECB0AA1D597875006FD089 /* MainViewController.swift */; };
 		84ECB0AD1D5978C2006FD089 /* FreeChampsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECB0AC1D5978C2006FD089 /* FreeChampsCustomCell.swift */; };
 		84ECB0AF1D59B4BB006FD089 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECB0AE1D59B4BB006FD089 /* WebViewController.swift */; };
@@ -1026,6 +1031,7 @@
 		8423748C1D5083FA00FFFE04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8423748F1D5083FA00FFFE04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		842374911D5083FA00FFFE04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8440FC551D6B0A640073921A /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		8448F9341D684A8600F82832 /* DetailOfItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailOfItem.swift; sourceTree = "<group>"; };
 		84617E921D55D26B00B4A627 /* SpellsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellsCustomCell.swift; sourceTree = "<group>"; };
 		8475AEA71D5196B900FECC5D /* ChampionDto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChampionDto.swift; sourceTree = "<group>"; };
@@ -1036,9 +1042,13 @@
 		847768051D545661006E6E2B /* SpellsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellsController.swift; sourceTree = "<group>"; };
 		84908A8C1D5585CB00335C90 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		84908A8E1D558FE400335C90 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		84CAFC101D6C038500757B52 /* CustomYoutubeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomYoutubeCell.swift; sourceTree = "<group>"; };
+		84CAFC121D6C299600757B52 /* VideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
 		84D1D0191D6A993800A503B4 /* ItemInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInformation.swift; sourceTree = "<group>"; };
 		84D94DD71D51E79B0012D8C8 /* ChampsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChampsCustomCell.swift; sourceTree = "<group>"; };
 		84E6D3301D58329B002D9F11 /* SkinsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinsController.swift; sourceTree = "<group>"; };
+		84EBFF9F1D6D3D1F00A86B22 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		84EBFFA11D6D451A00A86B22 /* CustomCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCommentCell.swift; sourceTree = "<group>"; };
 		84ECB0AA1D597875006FD089 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		84ECB0AC1D5978C2006FD089 /* FreeChampsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeChampsCustomCell.swift; sourceTree = "<group>"; };
 		84ECB0AE1D59B4BB006FD089 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -2103,6 +2113,8 @@
 				C79D8F9C1D61D1710017A18B /* Runes.swift */,
 				C7F233991D66D78B003C5D3E /* ItemSuggest.swift */,
 				84D1D0191D6A993800A503B4 /* ItemInformation.swift */,
+				8440FC551D6B0A640073921A /* Video.swift */,
+				84EBFF9F1D6D3D1F00A86B22 /* Comment.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2128,6 +2140,8 @@
 				C73098AD1D65A3670005E760 /* CustomButton.swift */,
 				C7F2339D1D66D7C3003C5D3E /* CustomSuggestItemCell.swift */,
 				C7F2339B1D66D7BC003C5D3E /* SectionHeaderView.swift */,
+				84CAFC101D6C038500757B52 /* CustomYoutubeCell.swift */,
+				84EBFFA11D6D451A00A86B22 /* CustomCommentCell.swift */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -2147,6 +2161,7 @@
 				C7473A711D5B35CC00DB9894 /* ItemViewController.swift */,
 				C79D8F9E1D61D1760017A18B /* RunesViewController.swift */,
 				8448F9341D684A8600F82832 /* DetailOfItem.swift */,
+				84CAFC121D6C299600757B52 /* VideoController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -4243,11 +4258,13 @@
 			files = (
 				C784EA9B1D52FDCD003F930C /* MasterTableVC.swift in Sources */,
 				84D1D01A1D6A993800A503B4 /* ItemInformation.swift in Sources */,
+				8440FC561D6B0A640073921A /* Video.swift in Sources */,
 				C7473A781D5B35F500DB9894 /* ItemCustomCell.swift in Sources */,
 				847767FE1D5437D2006E6E2B /* StatsDto.swift in Sources */,
 				84ECB0AF1D59B4BB006FD089 /* WebViewController.swift in Sources */,
 				C79D8FA11D61D1830017A18B /* CustomRuneCell.swift in Sources */,
 				847768021D54381E006E6E2B /* SkinDto.swift in Sources */,
+				84EBFFA21D6D451A00A86B22 /* CustomCommentCell.swift in Sources */,
 				84ECB0AD1D5978C2006FD089 /* FreeChampsCustomCell.swift in Sources */,
 				C7F233981D66D776003C5D3E /* RecommendedDto.swift in Sources */,
 				8475AEA81D5196B900FECC5D /* ChampionDto.swift in Sources */,
@@ -4265,14 +4282,17 @@
 				84617E931D55D26B00B4A627 /* SpellsCustomCell.swift in Sources */,
 				C7473A721D5B35CC00DB9894 /* ItemViewController.swift in Sources */,
 				84E6D3311D58329B002D9F11 /* SkinsController.swift in Sources */,
+				84CAFC131D6C299600757B52 /* VideoController.swift in Sources */,
 				C7F2339C1D66D7BC003C5D3E /* SectionHeaderView.swift in Sources */,
 				C79957041D51AA0300F4615D /* InfoDto.swift in Sources */,
 				C7A9EC931D656251000C1C5B /* CustomImageView.swift in Sources */,
 				C7173A8C1D6161F100926427 /* BaseViewController.swift in Sources */,
 				C79D8F9F1D61D1760017A18B /* RunesViewController.swift in Sources */,
+				84CAFC111D6C038500757B52 /* CustomYoutubeCell.swift in Sources */,
 				84D94DD81D51E79B0012D8C8 /* ChampsCustomCell.swift in Sources */,
 				84ECB0AB1D597875006FD089 /* MainViewController.swift in Sources */,
 				C79957021D51A9CA00F4615D /* ImageDto.swift in Sources */,
+				84EBFFA01D6D3D1F00A86B22 /* Comment.swift in Sources */,
 				C7F2339A1D66D78B003C5D3E /* ItemSuggest.swift in Sources */,
 				C7D872DC1D5847C700DCAC5F /* StoryViewController.swift in Sources */,
 				C7F2339E1D66D7C3003C5D3E /* CustomSuggestItemCell.swift in Sources */,

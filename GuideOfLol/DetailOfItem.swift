@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftyJSON
+
 class DetailOfItem: UIViewController {
     var id: String!
     var information: ItemInformation?

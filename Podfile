@@ -7,4 +7,5 @@ target 'GuideOfLol' do
 
   # Pods for GuideOfLol
 	pod 'SwiftyJSON'
+	pod 'YouTubePlayer'
 end
