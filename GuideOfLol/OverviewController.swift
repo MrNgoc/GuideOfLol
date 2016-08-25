@@ -26,9 +26,6 @@ class OverviewController: UIViewController {
     
     @IBOutlet weak var lblDifficulty: UILabel!
     
-    @IBOutlet weak var lblLore: UILabel!
-    
-    @IBOutlet weak var lblAllytips: UILabel!
     
     @IBOutlet weak var attack_Label: UILabel!
     
@@ -38,6 +35,7 @@ class OverviewController: UIViewController {
     
     @IBOutlet weak var difficulty_Label: UILabel!
     
+    @IBOutlet weak var storyTextView: UITextView!
     
     
     let attackLabel : UILabel =  {
@@ -76,9 +74,12 @@ class OverviewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        automaticallyAdjustsScrollViewInsets = false
+        
         if  let attackValue = champ?.info?.attack,      defenceValue = champ?.info?.defense,
             difficultyValue  = champ?.info?.difficulty,  magicValue = champ?.info?.magic,
-            allytipsValue   = champ?.allytips ,var storyValue = champ?.lore{
+            allytipsValue   = champ?.allytips , storyValue = champ?.lore{
             
             lblAttack.text = String(attackValue)
             lblDefence.text = String(defenceValue)
@@ -113,19 +114,17 @@ class OverviewController: UIViewController {
                 text += i + " "
             }
             
-            text = "<font color=\"white\" size=\"4px\">" + text + "</font>"
+            var e = "<b><font color=\"#CFBA6B\" size=\"6px\">LORE</font></b><br>"
+            text = e + "<font color=\"white\" size=\"4px\">" + text + "</font><br><br>"
+            
+            
+            e = "<b><font color=\"#CFBA6B\" size=\"6px\">STORY</font></b><br>"
+            text = text + e + "<font color=\"white\" size=\"4px\">" + storyValue + "</font>"
+            
+            storyTextView.text = text
+            
             let attr = try! NSAttributedString(data: text.dataUsingEncoding(NSUnicodeStringEncoding,allowLossyConversion: true)!,options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
-            
-            lblAllytips.text = text
-            lblAttack.sizeToFit()
-            //            print(text)
-            lblAllytips.attributedText = attr
-            
-            storyValue = "<font color=\"white\" size=\"4px\">" + storyValue + "</font>"
-            let attr1 = try! NSAttributedString(data: storyValue.dataUsingEncoding(NSUnicodeStringEncoding,allowLossyConversion: true)!,options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
-            lblLore.text = storyValue
-            lblLore.sizeToFit()
-            lblLore.attributedText = attr1
+            storyTextView.attributedText = attr
         }
     }
     

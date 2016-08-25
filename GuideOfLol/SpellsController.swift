@@ -27,15 +27,17 @@ class SpellsController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell
+        cell.backgroundColor = UIColor.clearColor()
         
         let champCurr = champSpells[indexPath.row]
-        if let nameSkill = champCurr.name, cost = champCurr.cost, cooldown = champCurr.cooldownBurn, range = champCurr.range, urlImage = champCurr.altimages?.full, var description = champCurr.description {
+        if let nameSkill = champCurr.name,
+            cooldown = champCurr.cooldownBurn, urlImage = champCurr.altimages?.full, var description = champCurr.description, var cost = champCurr.cost, range = champCurr.range {
             cell.lbl_nameSkill.text = nameSkill
             
             cell.lbl_CD.text = cooldown
-            
+            cost = checkValue(cost)
             cell.lbl_Cost.text = toString(cost)
-            
+            range = checkValue(range)
             cell.lbl_range.text = toString(range)
             
             description = "<font color=\"white\" size=\"4px\"><b>" + description + "</b></font>"
@@ -49,6 +51,21 @@ class SpellsController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         
         return cell
+    }
+    
+    func checkValue(cost : [Double]) -> [Double]{
+        
+        var temp = [Double]()
+        for i in 1..<cost.count {
+            if cost[0] != cost[i] {
+                return cost
+            }
+            
+        }
+        temp.append(cost[0])
+        
+        return temp
+        
     }
     
     func toString(value: [AnyObject]) -> String {

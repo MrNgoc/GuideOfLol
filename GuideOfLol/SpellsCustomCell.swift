@@ -22,4 +22,5 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var lbl_description: UILabel!
 
     @IBOutlet weak var imageSkill: UIImageView!
+
 }

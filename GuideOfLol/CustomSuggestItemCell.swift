@@ -12,5 +12,12 @@ class CustomSuggestedItemCell: UICollectionViewCell {
 
 
     @IBOutlet weak var ImageItem: UIImageView!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        layer.borderWidth = 1
+        layer.borderColor =  UIColor.yellowColor().CGColor
+        
+    }
 
 }

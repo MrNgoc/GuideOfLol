@@ -11,8 +11,14 @@ class CustomRuneCell: UITableViewCell {
 
     @IBOutlet weak var nameRune: UILabel!
 
+    @IBOutlet weak var tierLabel: UILabel!
     @IBOutlet weak var Description: UILabel!
 
     @IBOutlet weak var ImageRune: UIImageView!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+    }
 
 }

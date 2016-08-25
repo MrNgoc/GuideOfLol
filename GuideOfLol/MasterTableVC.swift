@@ -8,6 +8,28 @@
 
 import UIKit
 
+extension UISegmentedControl {
+    func removeBorders() {
+        setBackgroundImage(imageWithColor(backgroundColor!), forState: .Normal, barMetrics: .Default)
+        setBackgroundImage(imageWithColor(tintColor!), forState: UIControlState.Selected , barMetrics: .Default)
+        setDividerImage(imageWithColor(UIColor.clearColor()), forLeftSegmentState: .Normal, rightSegmentState: .Normal, barMetrics: .Default)
+    }
+    
+    
+    // create a 1x1 image with this color
+    private func imageWithColor(color: UIColor) -> UIImage {
+        let rect = CGRectMake(0.0, 0.0, 1.0, 1.0)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        CGContextSetFillColorWithColor(context, color.CGColor)
+        CGContextFillRect(context, rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+}
+
+
 class MasterTableVC: BaseViewController {
     @IBOutlet weak var overView: UIView!
     @IBOutlet weak var spellsView: UIView!
@@ -19,6 +41,7 @@ class MasterTableVC: BaseViewController {
     
     @IBOutlet weak var fullChampImage: UIView!
     
+    @IBOutlet weak var loadIndicator: UIActivityIndicatorView!
     var id: Int?
     var infoChamp : InfoDto?
     
@@ -34,21 +57,17 @@ class MasterTableVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.hidden = false
+        loadIndicator.hidden = false
+        loadIndicator.startAnimating()
+        
+        
         segmentTitle.removeBorders()
-        
+    
         segmentTitle.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 12.0)! ],  forState: .Normal)
-        
+         self.view.backgroundColor =  UIColor.blackColor()
         champName.text = champ?.name
         champTitle.text = champ?.title
-        
-        navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
-//        tabBarController?.tabBar.barTintColor = UIColor.brownColor()
 
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        navigationItem.backBarButtonItem = backButton
-        
-        
         guard let tagValues = champ?.tags else {return}
         
         var result : String = ""
@@ -61,7 +80,6 @@ class MasterTableVC: BaseViewController {
         }
         
         champTags.text = result
-        
         
         let b = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"
         
@@ -79,7 +97,8 @@ class MasterTableVC: BaseViewController {
             
             
             dispatch_async(dispatch_get_main_queue(), {
-                
+                self.loadIndicator.hidden = true
+                self.loadIndicator.startAnimating()
                 self.fullchampimage.image = UIImage(data: data1!)
                 
             })
@@ -94,9 +113,16 @@ class MasterTableVC: BaseViewController {
     }
     
     
-    @IBAction func actionSegement(sender: AnyObject) {
+    @IBAction func actionSegement(sender: UISegmentedControl) {
+        
+        let underlineAttribute = [NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
+        
+        sender.setTitleTextAttributes(underlineAttribute, forState: .Highlighted)
+        
         switch sender.selectedSegmentIndex {
         case 0:
+            self.view.backgroundColor =  UIColor.blackColor()
+            
             overView.hidden = false
             spellsView.hidden = true
             statsView.hidden = true
@@ -123,6 +149,7 @@ class MasterTableVC: BaseViewController {
             storyView.hidden = false
             skinsView.hidden = true
         default:
+
             overView.hidden = true
             spellsView.hidden = true
             statsView.hidden = true

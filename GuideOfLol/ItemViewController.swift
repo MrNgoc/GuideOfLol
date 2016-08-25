@@ -17,7 +17,8 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "Items"
+         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         getDataOfItem()
         
     }
@@ -40,17 +41,22 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                         
                         
                         for (id, subjson) in jsonData {
-                            
-                            let name = subjson["name"].string
-                            let image = id+".png"
+                            let fromValue = self.toString(subjson["from"])
                             
                             let gold = subjson["gold"]["total"].stringValue
-                            
                             let goldValue = GoldDto(total: gold, sell: "0")
                             
+                            let groupValue = subjson["group"].stringValue
+                            
+                            let image = id+".png"
                             let imageUrl = ImageDtoItem(full: image)
+                            
+                            let name = subjson["name"].string
+                            
+                            let santizedDescriptionValue = subjson["santizedDescription"].stringValue
+                            
                             if let id =  Int(id), name = name {
-                                let item = ItemDto(id: id , image: imageUrl, gold: goldValue, name: name)
+                                let item = ItemDto(from: fromValue, gold: goldValue, group: groupValue, id: id, image: imageUrl, name: name, santizedDescription: santizedDescriptionValue)
                                 
                                 self.items.append(item)
                             }
@@ -89,6 +95,16 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         return cell
+    }
+    
+    func toString(des: JSON) -> [String] {
+        var text : [String] = []
+        for i in des {
+            if let string = i.1.string {
+                text.append(string)
+            }
+        }
+        return text
     }
     
     

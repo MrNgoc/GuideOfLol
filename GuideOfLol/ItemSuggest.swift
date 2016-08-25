@@ -21,12 +21,5 @@ class ItemSugggest {
     self.map = map
     self.type = type
     
-    
     }
-
-
-
-
-
-
 }

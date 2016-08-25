@@ -9,32 +9,34 @@
 import UIKit
 import SwiftyJSON
 
-let kDOCUMENT_DIRECTORY_PATH = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .AllDomainsMask, true).first
-
-
 class MainViewController: BaseViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+    
+    @IBOutlet weak var loadFreeChamp: UIActivityIndicatorView!
+    
     var arrayInt = [Int]()
-
+    
     @IBOutlet weak var mycollectionview: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setTranparentForUINavigationBar()
-
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red:0.81, green:0.73, blue:0.42, alpha:1.0), NSFontAttributeName : UIFont(name : "HelveticaNeue-Bold" , size : 18)!]
+        self.navigationController?.navigationBar.tintColor = UIColor.clearColor()
         
-        getId()
-        mycollectionview.backgroundColor = UIColor.clearColor()
-        self.getData()
-        mycollectionview.reloadData()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.yellowColor(), NSFontAttributeName : UIFont(name : "HelveticaNeue-Bold" , size : 19)!]
+        //        UINavigationBar.appearance().barTintColor = UIColor.whiteColor()
+    
+        
+        getId { 
+            self.getData()
+        }
+        
     }
-    // lay tuong mien phi
     
+
     
-    func getId() {
+    func getId(completionHandle: (() -> Void)) {
         let urlRequest = NSMutableURLRequest(URL: NSURL(string:"https://na.api.pvp.net/api/lol/na/v1.2/champion?freeToPlay=true&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
         
         let session = NSURLSession.sharedSession()
-        
         session.dataTaskWithRequest(urlRequest) { (data, response, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -43,21 +45,24 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
                     if responseHTTP.statusCode == 200 {
                         
                         let json = JSON(data:data!)
-                        
                         let jsonid = json["champions"]
                         
                         for (_, subid) in jsonid {
                             let id = subid["id"].intValue
-                            
                             self.arrayInt.append(id)
-                            
                         }
+                        
                     }
                 }
                 
+               completionHandle()
+                
+                
+                
             }
-            
             }.resume()
+        
+        
         
     }
     
@@ -76,28 +81,28 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
                         let json = JSON(data:data!)
                         let data = json["data"]
                         
-                        for (key,subJson):(String, JSON) in data {
-                            if let idChamp = subJson["id"].int {
-                                for ids in self.arrayInt where ids == idChamp {
-                                    
-                                    let champion = ChampionDto(id: idChamp, name: key, image: String(key)+".png")
-                                    
-                                    self.champions.append(champion)
-                                }
+                        for (key, subJson) in data {
+                            for i in self.arrayInt where i == subJson["id"].intValue
+                            {
+                                let champion = ChampionDto(id: i, name: key, image: String(key)+".png")
+                                self.champions.append(champion)
                             }
                         }
                         
-                        dispatch_async(dispatch_get_main_queue(),{self.mycollectionview.reloadData()})
+                        dispatch_async(dispatch_get_main_queue(),{
+                            self.mycollectionview.reloadData()
+                            self.loadFreeChamp.hidden = true
+                            self.loadFreeChamp.stopAnimating()})
+
                     }
+                    //                    self.champions.sortInPlace({(cham : ChampionDto, cham2 : ChampionDto) -> Bool in return cham.name < cham2.name})
+   
+                    
                 }
             }
             
             }.resume()
         
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-//        self.mycollectionview.reloadData()
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

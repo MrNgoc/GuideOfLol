@@ -1,15 +1,18 @@
 PODS:
+  - BTNavigationDropdownMenu (0.4.1)
   - SwiftyJSON (2.3.2)
   - YouTubePlayer (0.3.0)
 
 DEPENDENCIES:
+  - BTNavigationDropdownMenu
   - SwiftyJSON
   - YouTubePlayer
 
 SPEC CHECKSUMS:
+  BTNavigationDropdownMenu: 093f3cbfad1572f2c222bdf8d17584d1e13380d4
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   YouTubePlayer: 88713a96c356f2c88da8925eb61438eda88bcd57
 
-PODFILE CHECKSUM: f64af7b5a83124f0c9230819767763c32138ae5a
+PODFILE CHECKSUM: 838960a9aa7b357768869352ae8720cef31e31ba
 
 COCOAPODS: 1.0.1

@@ -11,11 +11,10 @@ import SwiftyJSON
 
 class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
+    @IBOutlet weak var loadDataIndicator: UIActivityIndicatorView!
     @IBOutlet weak var myCollection: UICollectionView!
     
     @IBOutlet weak var searchController: UISearchBar!
-    
-    //    lazy   var searchBar:UISearchBar = UISearchBar(frame: CGRectMake(0, 0, 20, 20))
     
     var searchActive: Bool = false
     
@@ -23,21 +22,23 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadDataIndicator.hidden = false
+    
         self.navigationController?.navigationBar.hidden = false
         self.title = "Champions LOL"
         
+        
         let searchButton = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(searchFunc))
         self.navigationItem.rightBarButtonItem = searchButton
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
         searchController.delegate = self
         searchController.hidden = true
         
         
         let urlString = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?locale=vn_VN&champData=image&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF"
         
-        getData(urlString, collectionView: myCollection)
-        
-        
+        getData(urlString, collectionView: myCollection, loadIndicator: loadDataIndicator)
+ 
         
     }
     override func viewWillAppear(animated: Bool) {

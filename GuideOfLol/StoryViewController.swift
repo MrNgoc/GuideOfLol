@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class  StoryViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIPickerViewDataSource,UIPickerViewDelegate {
     var typeArray = [String]()
-
+    
     @IBOutlet weak var MycollectionView: UICollectionView!
     
     @IBOutlet weak var pickerView: UIPickerView!
@@ -31,7 +31,7 @@ class  StoryViewController: BaseViewController, UICollectionViewDelegate, UIColl
         if var typeValue = champ?.recommended![mapIndex].blocks![indexPath.section].type {
             
             switch typeValue {
-            case "starting", "beginner_Starter", "beginner_starter":
+            case "starting", "beginner_Starter", "beginner_starter", "1)buystarteritems":
                 typeValue = "Trang bị khởi đầu"
             case "early":
                 typeValue = "Trang bị lên đầu tiên"
@@ -51,14 +51,15 @@ class  StoryViewController: BaseViewController, UICollectionViewDelegate, UIColl
                 typeValue = "Khí cụ phòng ngự"
             case "siegeOffense":
                 typeValue = "Khí cụ tấn công"
-                
+            case "standard":
+                typeValue = "Đồ chuẩn"
             case "beginner_Advanced", "beginner_advanced":
                 typeValue = "Trang bị tiếp theo"
-            case "beginner_MovementSpeed", "beginner_movementSpeed":
+            case "beginner_MovementSpeed", "beginner_movementSpeed", "beginner_movementspeed":
                 typeValue = "Trang bị tăng tốc"
-            case "beginner_LegendaryItem", "beginner_legendaryItem":
+            case "beginner_LegendaryItem", "beginner_legendaryItem", "beginner_legendaryitem":
                 typeValue = "Trang bị trấn phái"
-            case "beginner_MoreLegendaryItems", "beginner_moreLegendaryItems":
+            case "beginner_MoreLegendaryItems", "beginner_moreLegendaryItems", "beginner_morelegendaryitems" :
                 typeValue = "Trang bị cuối cùng"
             default:
                 break
@@ -108,14 +109,10 @@ class  StoryViewController: BaseViewController, UICollectionViewDelegate, UIColl
                                 let json = JSON(data: data!)
                                 guard  let name = json["name"].string  else {return}
                                 
-                                
-                                
                                 guard let description = json["sanitizedDescription"].string else{return}
                                 
-                                
-                                
                                 let gold = json["gold"]["total"].stringValue
-           
+                                
                                 let information = ItemInformation(id: id, description: description, name: name, gold: gold)
                                 
                                 self.itemsInfo.append(information)
@@ -132,20 +129,20 @@ class  StoryViewController: BaseViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-       
+        
         if let id = self.champ?.recommended![mapIndex].blocks![indexPath.section].items![indexPath.item] {
             for i in itemsInfo {
                 if i.id == id {
-                     let detail = self.storyboard?.instantiateViewControllerWithIdentifier("detail") as! DetailOfItem
+                    let detail = self.storyboard?.instantiateViewControllerWithIdentifier("detail") as! DetailOfItem
                     detail.information = i
-                     self.navigationController?.pushViewController(detail, animated: true)
+                    self.navigationController?.pushViewController(detail, animated: true)
                 }
             }
         }
-       
+        
     }
     
-
+    
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1

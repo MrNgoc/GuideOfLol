@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '598F0FE557AC010FDDD0C318E62BC8EC'
-               BlueprintName = 'YouTubePlayer'
+               BlueprintIdentifier = 'FD23F1DA220A44C7E84F356B64871271'
+               BlueprintName = 'BTNavigationDropdownMenu'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'YouTubePlayer.framework'>
+               BuildableName = 'BTNavigationDropdownMenu.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

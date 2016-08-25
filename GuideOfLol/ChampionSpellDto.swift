@@ -10,12 +10,12 @@ class ChampionSpellDto {
     
     var name: String?
     var altimages: ImageDto?
-    var cost: [Int]?
+    var cost: [Double]?
     var cooldownBurn: String?
     var range: [Double]?
     var description: String?
 
-    init(name: String, altimages: ImageDto, cost: [Int], cooldownBurn: String, range: [Double], description: String) {
+    init(name: String, altimages: ImageDto, cost: [Double], cooldownBurn: String, range: [Double], description: String) {
         self.name = name
         self.altimages = altimages
         self.cost = cost

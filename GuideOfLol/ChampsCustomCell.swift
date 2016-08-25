@@ -27,8 +27,8 @@ class  CellItem: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         addSubviews()
-        layer.borderWidth = 1
-        layer.borderColor =  UIColor.yellowColor().CGColor
+        layer.borderWidth = 0.8
+        layer.borderColor =  UIColor.orangeColor().CGColor
         
     }
     

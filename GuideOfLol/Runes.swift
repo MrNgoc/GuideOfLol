@@ -11,17 +11,28 @@ import UIKit
 class Runes{
     var name: String?
     var description: String?
-    
     var id: String?
-    
     var image: String?
+    var rune: MetaDataDto?
     
-    init(name: String, description: String, id: String, image: String ) {
+    init(name: String, description: String, id: String, image: String, rune: MetaDataDto ) {
         self.name = name
         self.description = description
         self.id = id
         self.image = image
+        self.rune = rune
            
     }
 
+}
+
+
+class MetaDataDto {
+    var tier: String?
+    var type: String?
+    
+    init(tier: String, type : String) {
+        self.tier = tier
+        self.type = type
+    }
 }

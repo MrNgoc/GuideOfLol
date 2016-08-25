@@ -50,16 +50,15 @@ class  VideoController: UIViewController, UITableViewDelegate, UITableViewDataSo
                             
                             let json = JSON(data:data!)
                             
-                            for(key,subjson) in json["items"] {
+                            for(_,subjson) in json["items"] {
                                 
-                                guard let description = (subjson["snippet"]["topLevelComment"]["snippet"]["textDisplay"].string) else {return}
-                                guard  let name = subjson["snippet"]["topLevelComment"]["snippet"]["authorDisplayName"].string else {return}
+                                let description = subjson["snippet"]["topLevelComment"]["snippet"]["textDisplay"].stringValue
+                                let name = subjson["snippet"]["topLevelComment"]["snippet"]["authorDisplayName"].stringValue
                                 
-                                guard  let image = subjson["snippet"]["topLevelComment"]["snippet"]["authorProfileImageUrl"].string else {return}
+                                let image = subjson["snippet"]["topLevelComment"]["snippet"]["authorProfileImageUrl"].stringValue
                                 
                                 
-                                let comment = Comment(name: name, image: image
-                                    , description: description, title: "")
+                                let comment = Comment(name: name, image: image, description: description, title: "")
                                 
                                 
                                 self.comments.append(comment)
@@ -68,7 +67,6 @@ class  VideoController: UIViewController, UITableViewDelegate, UITableViewDataSo
                         }
                         dispatch_async(dispatch_get_main_queue(),{
                             self.MyTableView.reloadData()
-                            print(self.comments.count)
                         })
                         
                     }
@@ -83,7 +81,6 @@ class  VideoController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(comments.count)
         return comments.count
         
         
@@ -93,19 +90,15 @@ class  VideoController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
             as! CustomCommentCell
-        if let name = comments[indexPath.row].name {
+        if let name = comments[indexPath.row].name, url = comments[indexPath.row].image, let description = comments[indexPath.row].description  {
             cell.name.text = name
             
-        }
-        if let description = comments[indexPath.row].description {
-            cell.description1.text = description
-            
-        }
-        if let url = comments[indexPath.row].image {
             let url = NSURL(string: url)
             
             let data = NSData(contentsOfURL: url!)
             cell.imageprofile.image = UIImage(data: data!)
+
+            cell.description1.text = description
             
         }
         

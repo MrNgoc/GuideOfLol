@@ -24,10 +24,11 @@ class CustomMainCell: UICollectionViewCell {
             ImageFreeChampion = UIImageView(frame: CGRectMake(0, 0, kCellWidth, kCellWidth))
             ImageFreeChampion.contentMode = .ScaleAspectFill
             contentView.addSubview(ImageFreeChampion)
+
+            let image = UIImageView(frame: CGRectMake(0, 0, kCellWidth, kCellWidth))
+            image.image = UIImage(named: "frame3")
+            image.contentMode = .ScaleAspectFill
+            contentView.addSubview(image)
         }
-        
-        layer.borderWidth = 1
-        layer.borderColor =  UIColor.yellowColor().CGColor
-        
     }
 }

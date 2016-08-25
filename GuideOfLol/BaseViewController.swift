@@ -9,41 +9,6 @@
 import UIKit
 import SwiftyJSON
 
-
-extension UISegmentedControl {
-    func removeBorders() {
-        setBackgroundImage(imageWithColor(backgroundColor!), forState: .Normal, barMetrics: .Default)
-        setBackgroundImage(imageWithColor(tintColor!), forState: .Selected, barMetrics: .Default)
-        setDividerImage(imageWithColor(UIColor.clearColor()), forLeftSegmentState: .Normal, rightSegmentState: .Normal, barMetrics: .Default)
-    }
-    
-    
-    // create a 1x1 image with this color
-    private func imageWithColor(color: UIColor) -> UIImage {
-        let rect = CGRectMake(0.0, 0.0, 1.0, 1.0)
-        UIGraphicsBeginImageContext(rect.size)
-        let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, color.CGColor)
-        CGContextFillRect(context, rect);
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image
-    }
-    
-    private func imageWithColor1(color: UIColor) -> UIImage {
-        let rect = CGRectMake(0.0, 0.0, 1.0, 1.0)
-        UIGraphicsBeginImageContext(rect.size)
-        
-        let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, UIColor.redColor().CGColor);
-        
-        CGContextFillRect(context, rect);
-        let image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        return image
-    }
-}
-
 class BaseViewController : UIViewController {
     
     var champions = [ChampionDto]()
@@ -51,7 +16,7 @@ class BaseViewController : UIViewController {
     var arrayChampion : NSArray?
     var array = [String]()
     
-    func getData(url: String, collectionView : UICollectionView) {
+    func getData(url: String, collectionView : UICollectionView, loadIndicator : UIActivityIndicatorView ) {
         
         let urlRequest = NSMutableURLRequest(URL: NSURL(string: url)!)
         
@@ -69,17 +34,23 @@ class BaseViewController : UIViewController {
                         let data = json["data"]
                         
                         for (key,subJson):(String, JSON) in data {
-                            let idChamp = subJson["id"].int
+                            let idChamp = subJson["id"].intValue
                             
-                            let champion =  ChampionDto(id: idChamp!, name: key, image: String(key)+".png")
+                            let champion =  ChampionDto(id: idChamp, name: key, image: String(key)+".png")
                             
                             self.champions.append(champion)
                             self.array.append(key)
                             
                         }
                         self.champions.sortInPlace({(cham : ChampionDto, cham2 : ChampionDto) -> Bool in return cham.name < cham2.name})
-                        dispatch_async(dispatch_get_main_queue(),{collectionView.reloadData()})
+                        dispatch_async(dispatch_get_main_queue(),{
+                            collectionView.reloadData()
+                            loadIndicator.hidden = true
+                            loadIndicator.startAnimating()
+                            
+                        })
                         self.arrayChampion = self.array
+                        
                     }
                 }
             }
@@ -108,20 +79,20 @@ class BaseViewController : UIViewController {
                         let json = JSON(data:data!)
                         
                         // lay name + tag
-                        guard let idValue = json["id"].int else {return}
-                        guard let name = json["name"].string else { return }
+                        let idValue = json["id"].intValue
+                        let name = json["name"].stringValue
                         
                         // lay title
-                        guard let titleChamp = json["title"].string else {return}
+                        let titleChamp = json["title"].stringValue
                         
                         // lay allytips
                         let allytipsChamp = self.toString(json["allytips"])
                         let infoJSON  = json["info"]
                         
-                        guard let attack = infoJSON["attack"].int else {return}
-                        guard let defense = infoJSON["defense"].int else {return}
-                        guard let magic = infoJSON["magic"].int else {return}
-                        guard let difficulty = infoJSON["difficulty"].int else {return}
+                        let attack = infoJSON["attack"].intValue
+                        let defense = infoJSON["defense"].intValue
+                        let magic = infoJSON["magic"].intValue
+                        let difficulty = infoJSON["difficulty"].intValue
                         
                         let infoChamp = InfoDto(attack: attack, defense: defense, difficulty: difficulty, magic: magic)
                         let tagsChamp = self.toString(json["tags"])
@@ -131,15 +102,15 @@ class BaseViewController : UIViewController {
                         var listSpellDts = [ChampionSpellDto]()
                         
                         for (_, spellJSON) in json["spells"] {
-                            guard let name = spellJSON["name"].string else {return}
-                            let costValue = self.toInt(spellJSON["cost"])
+                            let name = spellJSON["name"].stringValue
+                            let costValue = self.toDouble(spellJSON["cost"])
                             
-                            guard let cooldownBurnValue = spellJSON["cooldownBurn"].string else {return}
+                            let cooldownBurnValue = spellJSON["cooldownBurn"].stringValue
                             let rangeValue = self.toDouble(spellJSON["range"])
                             
-                            guard let descriptionValue = spellJSON["description"].string else {return}
-                            guard let fullValue = spellJSON["image"]["full"].string else {return}
-                            guard let groupValue = spellJSON["image"]["group"].string else {return}
+                            let descriptionValue = spellJSON["description"].stringValue
+                            let fullValue = spellJSON["image"]["full"].stringValue
+                            let groupValue = spellJSON["image"]["group"].stringValue
                             
                             let altimages = ImageDto(full: fullValue, group: groupValue)
                             
@@ -154,17 +125,17 @@ class BaseViewController : UIViewController {
                         
                         let statsJSON = json["stats"]
                         
-                        guard let hpValue = statsJSON["hp"].double else {return}
-                        guard let hpperlevelValue = statsJSON["hpperlevel"].double else {return}
-                        guard let hpregenValue = statsJSON["hpregen"].double else {return}
-                        guard let hpregenperlevelValue = statsJSON["hpregenperlevel"].double else {return}
-                        guard let armorValue = statsJSON["armor"].double else {return}
-                        guard let armorperlevelValue = statsJSON["armorperlevel"].double else {return}
-                        guard let attackdamageValue = statsJSON["attackdamage"].double else {return}
-                        guard let attackdamageperlevelValue = statsJSON["attackdamageperlevel"].double else {return}
-                        guard let spellblockValue = statsJSON["spellblock"].double else {return}
-                        guard let spellblockperlevelValue = statsJSON["spellblockperlevel"].double else {return}
-                        guard let movespeedValue = statsJSON["movespeed"].double else {return}
+                        let hpValue = statsJSON["hp"].doubleValue
+                        let hpperlevelValue = statsJSON["hpperlevel"].doubleValue
+                        let hpregenValue = statsJSON["hpregen"].doubleValue
+                        let hpregenperlevelValue = statsJSON["hpregenperlevel"].doubleValue
+                        let armorValue = statsJSON["armor"].doubleValue
+                        let armorperlevelValue = statsJSON["armorperlevel"].doubleValue
+                        let attackdamageValue = statsJSON["attackdamage"].doubleValue
+                        let attackdamageperlevelValue = statsJSON["attackdamageperlevel"].doubleValue
+                        let spellblockValue = statsJSON["spellblock"].doubleValue
+                        let spellblockperlevelValue = statsJSON["spellblockperlevel"].doubleValue
+                        let movespeedValue = statsJSON["movespeed"].doubleValue
                         
                         let statsChamp = StatsDto(hp: hpValue, hpperlevel: hpperlevelValue,
                                                   hpregen: hpregenValue, hpregenperlevel: hpregenperlevelValue,
@@ -177,33 +148,33 @@ class BaseViewController : UIViewController {
                         //---------------------------------------- xong spells
                         
                         
-                        guard let loreValue =  json["lore"].string else {return}
+                        let loreValue =  json["lore"].stringValue
                         
                         var listSkin = [SkinDto]()
                         for (_, skillJSON) in json["skins"] {
-                            guard let skillName = skillJSON["name"].string else {return}
-                            guard let skillNum = skillJSON["num"].int else {return}
+                            let skillName = skillJSON["name"].stringValue
+                            let skillNum = skillJSON["num"].intValue
                             let skillValue = SkinDto(name: skillName, num: skillNum)
                             listSkin.append(skillValue)
                         }
                         
-                        guard let keyValue = json["key"].string else {return}
+                        let keyValue = json["key"].stringValue
                         
                         let imageValue = keyValue + ".png"
                         
                         var recommendedValues = [RecommendedDto]()
                         for (_, subjson) in json["recommended"] {
-                            guard let mapValue = subjson["map"].string else {return}
+                            let mapValue = subjson["map"].stringValue
                             
                             var blockValues = [BlockDto]()
                             
                             for (_,subjson1) in subjson["blocks"] {
                                 
-                                guard let typeValus = subjson1["type"].string else {return}
+                                let typeValus = subjson1["type"].stringValue
                                 var idItems = [String]()
                                 for ( _ , subjson2) in subjson1["items"] {
                                     
-                                    guard let idValues = subjson2["id"].int else {return}
+                                    let idValues = subjson2["id"].intValue
                                     idItems.append(String(idValues))
                                 }
                                 let blockValue = BlockDto(items: idItems, type: typeValus)
@@ -240,16 +211,6 @@ class BaseViewController : UIViewController {
         return text
     }
     
-    func toInt(des: JSON) -> [Int] {
-        var numbers : [Int] = []
-        for i in des {
-            if let num = i.1.int {
-                numbers.append(num)
-            }
-        }
-        
-        return numbers
-    }
     
     func toDouble(des: JSON) -> [Double] {
         var text : [Double] = []
@@ -268,5 +229,8 @@ class BaseViewController : UIViewController {
         
     }
     
+    //    func borderImage(image: UIImage) {
+    //        image
+    //    }
     
 }

@@ -58,27 +58,29 @@ class StatsViewController: UIViewController {
             let healthRegenValue = Double(value) * healthRegenPerlevel + healthRegen
             
             
-            lbl_Attack.text = String(attackValue)
+            lbl_Attack.text = String(format: "%4.1f", attackValue)
             
             lbl_moveSpeed.text = String(moveSpeed)
             
-            lbl_Amor.text = String(amorValue)
+            lbl_Amor.text = String(format: "%4.1f",amorValue)
             
-            lbl_MagicSpell.text = String(spellValue)
+            lbl_MagicSpell.text = String(format: "%4.1f",spellValue)
             
-            lbl_Health.text = String(healthValue)
+        
             
-            lbl_healthRegen.text = String(healthRegenValue)
+            lbl_Health.text = String(format: "%4.0f", healthValue)
             
-            lbl_attackPerlevel.text = String(attackPerlevel)
+            lbl_healthRegen.text = String(format: "%4.1f",healthRegenValue)
             
-            lbl_AmorPerLevel.text = String(armorPerlevel)
+            lbl_attackPerlevel.text = String(format: "%4.1f",attackPerlevel)
             
-            lbl_magicSpellPerlevel.text = String(spellBlockPerlevel)
+            lbl_AmorPerLevel.text = String(format: "%4.1f",armorPerlevel)
             
-            lbl_HealthPerlevel.text = String(healthPerlevel)
+            lbl_magicSpellPerlevel.text = String(format: "%4.1f",spellBlockPerlevel)
             
-            lbl_HealthRegenPerLevel.text = String(healthRegenPerlevel)
+            lbl_HealthPerlevel.text = String(format: "%4.1f",healthPerlevel)
+            
+            lbl_HealthRegenPerLevel.text = String(format: "%4.1f",healthRegenPerlevel)
             
         }
         
