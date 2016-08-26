@@ -16,6 +16,9 @@ class WebViewController: UIViewController, UITableViewDelegate,UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         getdata()
+        createGrandient()
+        self.title = "Video mới cập nhật"
+        
     }
     
     func getdata() {
@@ -37,30 +40,23 @@ class WebViewController: UIViewController, UITableViewDelegate,UITableViewDataSo
                         let json = JSON(data:data!)
                         
                         let jsonItem = json["items"]
-        
-        
+                        print(jsonItem)
                         for (_ ,jsonSnippet) in jsonItem {
-                            guard let title = jsonSnippet["snippet"]["title"].string else{return}
+                            let title = jsonSnippet["snippet"]["title"].stringValue
                             
-                            guard let urlImage = jsonSnippet["snippet"]["thumbnails"]["standard"]["url"].string else {return}
-                      guard  let videoId = jsonSnippet["snippet"]["resourceId"]["videoId"].string
-                        else{return}
-                       
-                        
+                            let urlImage = jsonSnippet["snippet"]["thumbnails"]["high"]["url"].stringValue
+                            let videoId = jsonSnippet["snippet"]["resourceId"]["videoId"].stringValue
+                            
                             let video = Video(title: title, image: urlImage, videoId: videoId)
                             self.videos.append(video)
-                           
+                            
                         }
-                        
-        
-        
+  
                     }
-                 dispatch_async(dispatch_get_main_queue(),{self.MyTableView.reloadData()})
-                
-                
+                    dispatch_async(dispatch_get_main_queue(),{self.MyTableView.reloadData()})
                 }}
-        
-        }.resume()
+            
+            }.resume()
         
         
     }
@@ -68,28 +64,43 @@ class WebViewController: UIViewController, UITableViewDelegate,UITableViewDataSo
         return videos.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("youtube", forIndexPath: indexPath) as! CustomYoutubeCell
+        cell.backgroundColor = UIColor.clearColor()
         if let title = videos[indexPath.row].title {
-        cell.titlleVideo.text = title
+            cell.titlleVideo.text = title
         }
         if let url = videos[indexPath.row].image {
-        let url = NSURL(string: url)
+            let url = NSURL(string: url)
             let data = NSData(contentsOfURL: url!)
-            
+            cell.imageVideo.contentMode = .ScaleAspectFit
             cell.imageVideo.image = UIImage(data: data!)
             
         }
-        
-        
-        
-        
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let video1 = storyboard?.instantiateViewControllerWithIdentifier("video") as! VideoController
         video1.id = videos[indexPath.row].videoId
-        
-        
         navigationController?.pushViewController(video1, animated: true)
     }
+    
+    func createGrandient(){
+        let bgGragdient = CAGradientLayer()
+        bgGragdient.frame = view.frame
+        
+        bgGragdient.colors = [
+            UIColor(red:0.51, green:0.64, blue:0.83, alpha:1.0).CGColor,
+            UIColor(red:0.71, green:0.98, blue:1.00, alpha:1.0).CGColor]
+        
+        let startPoint = CGPoint.init(x: 0, y: 0)
+        let endPoint =  CGPoint.init(x: 0.5, y: 0.5)
+        
+        bgGragdient.startPoint = startPoint
+        bgGragdient.endPoint = endPoint
+        
+        view.layer.insertSublayer(bgGragdient,  atIndex: 0)
+    }
+
+    
 }

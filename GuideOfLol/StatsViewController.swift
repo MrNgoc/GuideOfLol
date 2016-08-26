@@ -14,7 +14,6 @@ class StatsViewController: UIViewController {
     
     @IBOutlet weak var lbl_moveSpeed: UILabel!
     
-    
     @IBOutlet weak var lbl_Amor: UILabel!
     
     @IBOutlet weak var lbl_MagicSpell: UILabel!
@@ -34,8 +33,7 @@ class StatsViewController: UIViewController {
     @IBOutlet weak var lbl_HealthRegenPerLevel: UILabel!
     
     @IBOutlet weak var lbl_Level: UILabel!
-    
-    
+
     @IBOutlet weak var Slider: UISlider!
     
     override func viewDidLoad() {
@@ -65,9 +63,7 @@ class StatsViewController: UIViewController {
             lbl_Amor.text = String(format: "%4.1f",amorValue)
             
             lbl_MagicSpell.text = String(format: "%4.1f",spellValue)
-            
-        
-            
+
             lbl_Health.text = String(format: "%4.0f", healthValue)
             
             lbl_healthRegen.text = String(format: "%4.1f",healthRegenValue)

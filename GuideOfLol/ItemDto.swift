@@ -16,6 +16,7 @@ class ItemDto {
 //    var depth : Int?
     
     var from: [String]
+    var into: [String]
     var id : Int?
     var gold: GoldDto?
     var group: String?
@@ -23,8 +24,9 @@ class ItemDto {
     var image: ImageDtoItem?
     var name: String?
     var santizedDescription: String?
+    var tags: [String]?
     
-    init(from: [String], gold: GoldDto, group: String, id: Int, image: ImageDtoItem, name: String, santizedDescription: String ) {
+    init(from: [String], gold: GoldDto, group: String, id: Int, image: ImageDtoItem, name: String, santizedDescription: String, tags: [String], into: [String] ) {
         
         self.from = from
         self.gold = gold
@@ -33,15 +35,10 @@ class ItemDto {
         self.image = image
         self.name = name
         self.santizedDescription = santizedDescription
+        self.tags = tags
+        self.into = into
     }
     
-    
-//    init(id: Int, image: ImageDtoItem, gold: GoldDto, name: String) {
-//        self.id = id
-//        self.image = image
-//        self.gold = gold
-//        self.name = name
-//    }
 }
 
 class ImageDtoItem {

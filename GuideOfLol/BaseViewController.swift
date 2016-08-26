@@ -16,6 +16,10 @@ class BaseViewController : UIViewController {
     var arrayChampion : NSArray?
     var array = [String]()
     
+    
+    var items = [ItemDto]()
+    var item : ItemDto?
+    
     func getData(url: String, collectionView : UICollectionView, loadIndicator : UIActivityIndicatorView ) {
         
         let urlRequest = NSMutableURLRequest(URL: NSURL(string: url)!)
@@ -46,7 +50,7 @@ class BaseViewController : UIViewController {
                         dispatch_async(dispatch_get_main_queue(),{
                             collectionView.reloadData()
                             loadIndicator.hidden = true
-                            loadIndicator.startAnimating()
+
                             
                         })
                         self.arrayChampion = self.array
@@ -201,6 +205,135 @@ class BaseViewController : UIViewController {
     }
     
     
+    func getDataItems(myTableView : UITableView, load : UIActivityIndicatorView){
+        
+        let urlRequest = NSMutableURLRequest(URL: NSURL(string:"https://global.api.pvp.net/api/lol/static-data/na/v1.2/item?locale=vn_VN&itemListData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
+        let session = NSURLSession.sharedSession()
+        
+        session.dataTaskWithRequest(urlRequest) { (data, response, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                
+            } else {
+                if let responseHTTP = response as? NSHTTPURLResponse {
+                    if responseHTTP.statusCode == 200
+                    {
+                        let json = JSON(data: data!)
+                        
+                        let jsonData = json["data"]
+                        
+                        
+                        for (key, subjson) in jsonData {
+                            let fromValue = self.toString(subjson["from"])
+                            let intoValue = self.toString(subjson["into"])
+                            
+                            let gold = subjson["gold"]["total"].intValue
+                            let sell = subjson["gold"]["sell"].intValue
+                            let goldValue = GoldDto(total: gold, sell: sell)
+                            
+                            let groupValue = subjson["group"].stringValue
+                            var image : String?
+                            if key == "3717" || key == "3718" {
+                                 image = "3632.png"
+                            } else {
+                                image = key + ".png"
+                            }
+                            let imageUrl = ImageDtoItem(full: image!)
+                            
+                            let nameValue = subjson["name"].stringValue
+                            
+                            
+                            let sanitizedDescriptionValue = subjson["sanitizedDescription"].stringValue
+                            
+                            
+                            
+                            let tagsValue = self.toString(subjson["tags"])
+                            
+                            if let idValue = Int(key)  {
+                                let item = ItemDto(from: fromValue, gold: goldValue, group: groupValue, id: idValue, image: imageUrl, name: nameValue, santizedDescription: sanitizedDescriptionValue, tags: tagsValue, into: intoValue)
+                                
+                                self.items.append(item)
+                            }
+                            
+                        }
+                        self.items.sortInPlace({(item1 : ItemDto, item2 : ItemDto) -> Bool in return item1.name < item2.name})
+                        dispatch_async(dispatch_get_main_queue(),{myTableView.reloadData()
+                            load.stopAnimating()
+
+                            
+                        })
+                    }
+                }
+                
+            }
+            }.resume()
+        
+    }
+    
+    func getDataItems(){
+        
+        let urlRequest = NSMutableURLRequest(URL: NSURL(string:"https://global.api.pvp.net/api/lol/static-data/na/v1.2/item?locale=vn_VN&itemListData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
+        let session = NSURLSession.sharedSession()
+        
+        session.dataTaskWithRequest(urlRequest) { (data, response, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                
+            } else {
+                if let responseHTTP = response as? NSHTTPURLResponse {
+                    if responseHTTP.statusCode == 200
+                    {
+                        let json = JSON(data: data!)
+                        
+                        let jsonData = json["data"]
+                        
+                        
+                        for (key, subjson) in jsonData {
+                            let fromValue = self.toString(subjson["from"])
+                            let intoValue = self.toString(subjson["into"])
+                            
+                            let gold = subjson["gold"]["total"].intValue
+                            let sell = subjson["gold"]["sell"].intValue
+                            let goldValue = GoldDto(total: gold, sell: sell)
+                            
+                            let groupValue = subjson["group"].stringValue
+                            var image : String?
+                            if key == "3717" || key == "3718" {
+                                image = "3632.png"
+                            } else {
+                                image = key + ".png"
+                            }
+                            let imageUrl = ImageDtoItem(full: image!)
+                            
+                            let nameValue = subjson["name"].stringValue
+                            
+                            
+                            let sanitizedDescriptionValue = subjson["sanitizedDescription"].stringValue
+                            
+                            
+                            
+                            let tagsValue = self.toString(subjson["tags"])
+                            
+                            if let idValue = Int(key)  {
+                                let item = ItemDto(from: fromValue, gold: goldValue, group: groupValue, id: idValue, image: imageUrl, name: nameValue, santizedDescription: sanitizedDescriptionValue, tags: tagsValue, into: intoValue)
+                                
+                                self.items.append(item)
+                            }
+                            
+                        }
+                        self.items.sortInPlace({(item1 : ItemDto, item2 : ItemDto) -> Bool in return item1.name < item2.name})
+                    }
+                }
+                
+            }
+            }.resume()
+        
+    }
+
+    
+    
+    
+    
     func toString(des: JSON) -> [String] {
         var text : [String] = []
         for i in des {
@@ -228,9 +361,5 @@ class BaseViewController : UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         
     }
-    
-    //    func borderImage(image: UIImage) {
-    //        image
-    //    }
     
 }

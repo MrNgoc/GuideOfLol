@@ -9,66 +9,31 @@
 import UIKit
 import SwiftyJSON
 
-class ItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ItemViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var myTableView: UITableView!
-    var items = [ItemDto]()
-    var item: ItemDto?
+    
+    @IBOutlet weak var loadData: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Items"
-         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        getDataOfItem()
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        getDataItems(myTableView, load: loadData)
         
+        self.navigationItem.hidesBackButton = true
+        loadData.hidden = false
+        loadData.startAnimating()
+    
+        
+        let newBackButton = UIBarButtonItem(image: UIImage(named: "BackIcon"), style: UIBarButtonItemStyle.Bordered, target: self, action: #selector(ItemViewController.back(_:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
     }
     
-    func getDataOfItem() {
+    func back(sender: UIBarButtonItem) {
+        let main = storyboard?.instantiateViewControllerWithIdentifier("main") as!MainViewController
+        navigationController?.pushViewController(main, animated: false)
         
-        let urlRequest = NSMutableURLRequest(URL: NSURL(string:"https://global.api.pvp.net/api/lol/static-data/na/v1.2/item?locale=vn_VN&itemListData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
-        let session = NSURLSession.sharedSession()
-        
-        session.dataTaskWithRequest(urlRequest) { (data, response, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                
-            } else {
-                if let responseHTTP = response as? NSHTTPURLResponse {
-                    if responseHTTP.statusCode == 200 {
-                        let json = JSON(data: data!)
-                        
-                        let jsonData = json["data"]
-                        
-                        
-                        for (id, subjson) in jsonData {
-                            let fromValue = self.toString(subjson["from"])
-                            
-                            let gold = subjson["gold"]["total"].stringValue
-                            let goldValue = GoldDto(total: gold, sell: "0")
-                            
-                            let groupValue = subjson["group"].stringValue
-                            
-                            let image = id+".png"
-                            let imageUrl = ImageDtoItem(full: image)
-                            
-                            let name = subjson["name"].string
-                            
-                            let santizedDescriptionValue = subjson["santizedDescription"].stringValue
-                            
-                            if let id =  Int(id), name = name {
-                                let item = ItemDto(from: fromValue, gold: goldValue, group: groupValue, id: id, image: imageUrl, name: name, santizedDescription: santizedDescriptionValue)
-                                
-                                self.items.append(item)
-                            }
-                            
-                        }
-                        self.items.sortInPlace({(item1 : ItemDto, item2 : ItemDto) -> Bool in return item1.name < item2.name})
-                        dispatch_async(dispatch_get_main_queue(),{self.myTableView.reloadData()})
-                    }
-                }
-                
-            }
-            }.resume()
     }
     
     
@@ -80,13 +45,9 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomItemCell
         
-        if let nameimage = items[indexPath.row].image?.full , var gold = (items[indexPath.row].gold?.total) {
+        if let nameimage = items[indexPath.row].image?.full , gold = (items[indexPath.row].gold?.total) {
             
-            if gold == "\0" && gold == ""{
-                gold = "0"
-            }
-            
-            cell.goldItem.text = gold
+            cell.goldItem.text = String(gold)
             
             cell.nameItem.text = items[indexPath.row].name
             
@@ -97,14 +58,14 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-    func toString(des: JSON) -> [String] {
-        var text : [String] = []
-        for i in des {
-            if let string = i.1.string {
-                text.append(string)
-            }
-        }
-        return text
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let detail = self.storyboard?.instantiateViewControllerWithIdentifier("detail") as! DetailOfItem
+        detail.items = items
+        detail.item = items[indexPath.item]
+        detail.check = 2
+        self.navigationController?.pushViewController(detail, animated: true)
+        
     }
     
     

@@ -60,7 +60,6 @@ class MasterTableVC: BaseViewController {
         loadIndicator.hidden = false
         loadIndicator.startAnimating()
         
-        
         segmentTitle.removeBorders()
     
         segmentTitle.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 12.0)! ],  forState: .Normal)
@@ -183,6 +182,7 @@ class MasterTableVC: BaseViewController {
         if segue.identifier == "story" {
             let story = segue.destinationViewController as! StoryViewController
             story.champ = champ
+            story.items = items
         }
         
     }

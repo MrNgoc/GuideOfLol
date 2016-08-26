@@ -9,11 +9,11 @@
 import UIKit
 class GoldDto {
     
-    var total: String?
-    var sell: String?
+    var total: Int?
+    var sell: Int?
     
     
-    init(total: String, sell: String) {
+    init(total: Int, sell: Int) {
         self.total = total
         self.sell = sell
     }

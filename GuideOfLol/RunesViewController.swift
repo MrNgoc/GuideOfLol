@@ -13,6 +13,10 @@ import BTNavigationDropdownMenu
 class RunesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var MyTableView: UITableView!
+    
+    
+    @IBOutlet weak var load: UIActivityIndicatorView!
+    
     var runes = [Runes]()
     var rune: Runes?
     var filtered = [Runes]()
@@ -31,12 +35,12 @@ class RunesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
         menuView.cellSeparatorColor = UIColor.cyanColor()
-        
+        menuView.cellHeight = 40
         menuView.cellTextLabelColor = UIColor.whiteColor()
         self.navigationItem.titleView = menuView
         
         menuView.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
-    
+            
             switch indexPath {
             case 1, 2, 3:
                 self?.indexValue = 1
@@ -54,7 +58,7 @@ class RunesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     let range = tmp.rangeOfString(type, options: NSStringCompareOptions.CaseInsensitiveSearch)
                     return range.location != NSNotFound
                 })
-
+                
             default:
                 break
                 
@@ -135,28 +139,29 @@ class RunesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 cell.Description.text = description
                 cell.tierLabel.text = "Bậc \(tierValue)"
-
+                
                 cell.ImageRune.image =  UIImage(contentsOfFile: NSBundle.mainBundle().pathForResource(image, ofType: "")!)
                 
             }
         } else {
-                        if let name = filtered[indexPath.row].name, description = filtered[indexPath.row].description, image = self.filtered[indexPath.row].image,  tierValue = filtered[indexPath.row].rune?.tier {
+            if let name = filtered[indexPath.row].name, description = filtered[indexPath.row].description, image = self.filtered[indexPath.row].image,  tierValue = filtered[indexPath.row].rune?.tier {
                 
                 cell.nameRune.text = name
                 
                 cell.Description.text = description
-                   cell.tierLabel.text = "Bậc \(tierValue)"
+                cell.tierLabel.text = "Bậc \(tierValue)"
                 cell.ImageRune.image =  UIImage(contentsOfFile: NSBundle.mainBundle().pathForResource(image, ofType: "")!)
                 
             }
-
+            
         }
-        
+//        load.hidden = true
+        load.stopAnimating()
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print(runes[indexPath.row].rune!.type)
+//        print(runes[indexPath.row].rune!.type)
     }
     
     

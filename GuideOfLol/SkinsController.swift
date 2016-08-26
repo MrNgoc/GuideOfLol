@@ -30,7 +30,7 @@ class SkinsController: UIViewController, UIScrollViewDelegate {
     
     func createGrandient(){
         let bgGragdient = CAGradientLayer()
-//        bgGragdient.frame = self.frame
+        //        bgGragdient.frame = self.frame
         
         bgGragdient.colors =  [ UIColor.init(red: 57/255, green: 120/255, blue: 127/255, alpha: 1.0).CGColor,
                                 UIColor.init(red: 77/255, green: 188/255, blue: 201/255, alpha: 1.0).CGColor ]
@@ -41,9 +41,9 @@ class SkinsController: UIViewController, UIScrollViewDelegate {
         bgGragdient.startPoint = startPoint
         bgGragdient.endPoint = endPoint
         
-//        self.layer.insertSublayer(bgGragdient,  atIndex: 0)
+        //        self.layer.insertSublayer(bgGragdient,  atIndex: 0)
     }
-
+    
     
     override func viewDidLayoutSubviews() {
         if (!first){
@@ -69,7 +69,7 @@ class SkinsController: UIViewController, UIScrollViewDelegate {
                         nameSkins = "Default"
                     }
                     nameLabel.text = nameSkins
-
+                    
                     nameLabel.frame = CGRectMake(0, scrollView.frame.height - height, view.frame.width , height)
                     
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
@@ -94,8 +94,6 @@ class SkinsController: UIViewController, UIScrollViewDelegate {
                             
                         })
                     }
-                    
-                    
                 }
             }
         }

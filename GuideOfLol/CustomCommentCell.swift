@@ -15,6 +15,5 @@ class CustomCommentCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
 
-
     @IBOutlet weak var description1: UILabel!
 }

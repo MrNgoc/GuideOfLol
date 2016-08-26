@@ -23,7 +23,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDataIndicator.hidden = false
-    
+        
         self.navigationController?.navigationBar.hidden = false
         self.title = "Champions LOL"
         
@@ -34,11 +34,12 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         searchController.delegate = self
         searchController.hidden = true
         
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.whiteColor()
+        
         
         let urlString = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?locale=vn_VN&champData=image&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF"
         
         getData(urlString, collectionView: myCollection, loadIndicator: loadDataIndicator)
- 
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -127,6 +128,8 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
                 }
             }
         }
+        loadDataIndicator.hidden = true
+        loadDataIndicator.stopAnimating()
         return cell
     }
     
@@ -146,6 +149,8 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
             getDataOfChampion(champions[indexPath.item].id!, masterVC: v1!)
             
         }
+        
+        v1?.items = items
     }
     
     

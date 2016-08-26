@@ -20,18 +20,20 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
         super.viewDidLoad()
         setTranparentForUINavigationBar()
         self.navigationController?.navigationBar.tintColor = UIColor.clearColor()
-        
+        self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.yellowColor(), NSFontAttributeName : UIFont(name : "HelveticaNeue-Bold" , size : 19)!]
-        //        UINavigationBar.appearance().barTintColor = UIColor.whiteColor()
-    
         
-        getId { 
+        
+        getId {
             self.getData()
         }
         
+        getDataItems()
+        
+        
     }
     
-
+    
     
     func getId(completionHandle: (() -> Void)) {
         let urlRequest = NSMutableURLRequest(URL: NSURL(string:"https://na.api.pvp.net/api/lol/na/v1.2/champion?freeToPlay=true&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
@@ -55,7 +57,7 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
                     }
                 }
                 
-               completionHandle()
+                completionHandle()
                 
                 
                 
@@ -93,10 +95,10 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
                             self.mycollectionview.reloadData()
                             self.loadFreeChamp.hidden = true
                             self.loadFreeChamp.stopAnimating()})
-
+                        
                     }
                     //                    self.champions.sortInPlace({(cham : ChampionDto, cham2 : ChampionDto) -> Bool in return cham.name < cham2.name})
-   
+                    
                     
                 }
             }
@@ -121,6 +123,7 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let v1 = storyboard?.instantiateViewControllerWithIdentifier("Master") as? MasterTableVC
+        v1?.items = items
         getDataOfChampion(champions[indexPath.item].id!, masterVC: v1!)
         
     }
@@ -134,6 +137,7 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
     
     @IBAction func ChampionAction(sender: AnyObject) {
         let champion = storyboard?.instantiateViewControllerWithIdentifier("champion") as!ViewController
+        champion.items = items
         navigationController?.pushViewController(champion, animated: true)
         
     }

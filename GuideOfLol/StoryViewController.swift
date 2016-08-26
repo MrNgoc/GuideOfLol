@@ -129,17 +129,20 @@ class  StoryViewController: BaseViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
+
         if let id = self.champ?.recommended![mapIndex].blocks![indexPath.section].items![indexPath.item] {
-            for i in itemsInfo {
-                if i.id == id {
-                    let detail = self.storyboard?.instantiateViewControllerWithIdentifier("detail") as! DetailOfItem
-                    detail.information = i
-                    self.navigationController?.pushViewController(detail, animated: true)
-                }
+        for i in items {
+            if i.id == Int(id) {
+                let detail = self.storyboard?.instantiateViewControllerWithIdentifier("detail") as! DetailOfItem
+                detail.items = items
+                detail.item = i
+                detail.check = 1
+                self.navigationController?.pushViewController(detail, animated: true)
+                
             }
         }
-        
+        }
+ 
     }
     
     

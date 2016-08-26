@@ -23,6 +23,8 @@ class  VideoController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createGrandient()
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.clearColor()
         if let videoId = id {
             videoPlayer.loadVideoID(videoId)
             
@@ -57,10 +59,8 @@ class  VideoController: UIViewController, UITableViewDelegate, UITableViewDataSo
                                 
                                 let image = subjson["snippet"]["topLevelComment"]["snippet"]["authorProfileImageUrl"].stringValue
                                 
-                                
                                 let comment = Comment(name: name, image: image, description: description, title: "")
-                                
-                                
+
                                 self.comments.append(comment)
                             }
                             
@@ -70,13 +70,8 @@ class  VideoController: UIViewController, UITableViewDelegate, UITableViewDataSo
                         })
                         
                     }
-                    
-                    
-                    
                 }
-                
                 }.resume()
-            
         }
         
     }
@@ -92,7 +87,7 @@ class  VideoController: UIViewController, UITableViewDelegate, UITableViewDataSo
             as! CustomCommentCell
         if let name = comments[indexPath.row].name, url = comments[indexPath.row].image, let description = comments[indexPath.row].description  {
             cell.name.text = name
-            
+            cell.backgroundColor = UIColor.clearColor()
             let url = NSURL(string: url)
             
             let data = NSData(contentsOfURL: url!)
@@ -115,4 +110,23 @@ class  VideoController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
+    func createGrandient(){
+        let bgGragdient = CAGradientLayer()
+        bgGragdient.frame = view.frame
+        
+        bgGragdient.colors = [
+            UIColor(red:0.51, green:0.64, blue:0.83, alpha:1.0).CGColor,
+            UIColor(red:0.71, green:0.98, blue:1.00, alpha:1.0).CGColor]
+        
+        let startPoint = CGPoint.init(x: 0, y: 0)
+        let endPoint =  CGPoint.init(x: 0.5, y: 0.5)
+        
+        bgGragdient.startPoint = startPoint
+        bgGragdient.endPoint = endPoint
+        
+        view.layer.insertSublayer(bgGragdient,  atIndex: 0)
+    }
+    
+
 }
