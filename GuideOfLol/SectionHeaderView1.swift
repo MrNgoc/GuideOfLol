@@ -15,7 +15,6 @@ class SectionHeaderView1 : UICollectionReusableView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        
     }
     
     override init(frame: CGRect) {

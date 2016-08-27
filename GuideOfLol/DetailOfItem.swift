@@ -52,7 +52,7 @@ class DetailOfItem: BaseViewController, UICollectionViewDelegate, UICollectionVi
         }
         if check == 2 {
             self.navigationItem.hidesBackButton = true
-            let newBackButton = UIBarButtonItem(image: UIImage(named: "BackIcon"), style: UIBarButtonItemStyle.Bordered, target: self, action: #selector(ItemViewController.back(_:)))
+            let newBackButton = UIBarButtonItem(image: UIImage(named: "BackIcon"), style: UIBarButtonItemStyle.Bordered, target: self, action: #selector(back))
             self.navigationItem.leftBarButtonItem = newBackButton
         }
     }
@@ -134,9 +134,6 @@ class DetailOfItem: BaseViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        
-        
-        
         
         let sectionHeaderView = myCollectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "sectionHeader", forIndexPath: indexPath) as! SectionHeaderView1
         var text = ""

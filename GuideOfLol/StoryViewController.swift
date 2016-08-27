@@ -84,65 +84,64 @@ class  StoryViewController: BaseViewController, UICollectionViewDelegate, UIColl
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CustomSuggestedItemCell
         
-        if let nameimage = self.champ?.recommended![mapIndex].blocks![indexPath.section].items![indexPath.item] {
-            
+        if var nameimage = self.champ?.recommended![mapIndex].blocks![indexPath.section].items![indexPath.item] {
+            switch nameimage {
+            case "2044":
+                nameimage = "3632"
+            default:
+                break
+            }
             let urlImage = String(nameimage) + ".png"
-            cell.ImageItem.layer.borderWidth = 1
-            cell.ImageItem.layer.borderColor = UIColor.yellowColor().CGColor
-            
             
             cell.ImageItem.image =  UIImage(contentsOfFile: NSBundle.mainBundle().pathForResource(urlImage, ofType: "")!)
             
+
+            let urlRequest = NSMutableURLRequest(URL: NSURL(string:"https://global.api.pvp.net/api/lol/static-data/na/v1.2/item/\(nameimage)?locale=vn_VN&itemData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
+            let session = NSURLSession.sharedSession()
             
-            if let id = self.champ?.recommended![mapIndex].blocks![indexPath.section].items![indexPath.item] {
-                
-                let urlRequest = NSMutableURLRequest(URL: NSURL(string:"https://global.api.pvp.net/api/lol/static-data/na/v1.2/item/\(id)?locale=vn_VN&itemData=all&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
-                let session = NSURLSession.sharedSession()
-                
-                session.dataTaskWithRequest(urlRequest) { (data, response, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                        
-                    } else {
-                        if let responseHTTP = response as? NSHTTPURLResponse {
-                            if responseHTTP.statusCode == 200 {
-                                let json = JSON(data: data!)
-                                guard  let name = json["name"].string  else {return}
-                                
-                                guard let description = json["sanitizedDescription"].string else{return}
-                                
-                                let gold = json["gold"]["total"].stringValue
-                                
-                                let information = ItemInformation(id: id, description: description, name: name, gold: gold)
-                                
-                                self.itemsInfo.append(information)
-                            }
+            session.dataTaskWithRequest(urlRequest) { (data, response, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    
+                } else {
+                    if let responseHTTP = response as? NSHTTPURLResponse {
+                        if responseHTTP.statusCode == 200 {
+                            let json = JSON(data: data!)
+                            let name = json["name"].stringValue
+                            
+                            let description = json["sanitizedDescription"].stringValue
+                            
+                            let gold = json["gold"]["total"].stringValue
+                            
+                            let information = ItemInformation(id: nameimage, description: description, name: name, gold: gold)
+                            
+                            self.itemsInfo.append(information)
                         }
                     }
-                    
-                    
-                    }.resume()
+                }
                 
-            }
+                
+                }.resume()
+
         }
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-
+        
         if let id = self.champ?.recommended![mapIndex].blocks![indexPath.section].items![indexPath.item] {
-        for i in items {
-            if i.id == Int(id) {
-                let detail = self.storyboard?.instantiateViewControllerWithIdentifier("detail") as! DetailOfItem
-                detail.items = items
-                detail.item = i
-                detail.check = 1
-                self.navigationController?.pushViewController(detail, animated: true)
-                
+            for i in items {
+                if i.id == Int(id) {
+                    let detail = self.storyboard?.instantiateViewControllerWithIdentifier("detail") as! DetailOfItem
+                    detail.items = items
+                    detail.item = i
+                    detail.check = 1
+                    self.navigationController?.pushViewController(detail, animated: true)
+                    
+                }
             }
         }
-        }
- 
+        
     }
     
     

@@ -33,7 +33,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="WNm-WN-cgC">
-                                    <rect key="frame" x="132" y="210" width="37" height="37"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="458"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </activityIndicatorView>
@@ -133,13 +133,20 @@
                                                                     <constraint firstAttribute="width" secondItem="KKH-ah-S9P" secondAttribute="height" multiplier="1:1" id="1RH-ji-Bkx"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thành" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpJ-pz-dxo">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpJ-pz-dxo">
                                                                 <rect key="frame" x="62" y="0.0" width="118" height="24"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="zpJ-pz-dxo" secondAttribute="height" multiplier="59:12" id="OO5-UZ-INk"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                                <color key="textColor" red="0.81176470590000005" green="0.72941176470000002" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <attributedString key="attributedText">
+                                                                    <fragment content="Thành">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="1" green="0.72941176470000002" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <font key="NSFont" size="18" name="Baskerville-Bold"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                </attributedString>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Superman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBk-8K-L0Z">
@@ -1299,11 +1306,11 @@
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="50" height="39"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="1" minY="3" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="9kd-Mv-ywI" customClass="CustomSuggestedItemCell" customModule="GuideOfLol" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="39" width="50" height="50"/>
+                                        <rect key="frame" x="1" y="42" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -1577,7 +1584,7 @@
                                     <outlet property="delegate" destination="300-jp-4i3" id="Pdl-2i-tij"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="MBt-vl-5M2">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="MBt-vl-5M2">
                                 <rect key="frame" x="142" y="221" width="37" height="37"/>
                                 <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
@@ -1587,6 +1594,8 @@
                             <constraint firstAttribute="trailing" secondItem="lTt-E7-G7i" secondAttribute="trailing" id="8zW-11-3c9"/>
                             <constraint firstItem="xk5-qT-O8S" firstAttribute="top" secondItem="Rcr-QX-oJ2" secondAttribute="bottom" id="BFM-Iq-7Fc"/>
                             <constraint firstItem="Rcr-QX-oJ2" firstAttribute="leading" secondItem="TKC-9E-lzD" secondAttribute="leading" id="C7F-Xb-Aos"/>
+                            <constraint firstItem="MBt-vl-5M2" firstAttribute="centerX" secondItem="TKC-9E-lzD" secondAttribute="centerX" id="Dm4-uQ-yAU"/>
+                            <constraint firstItem="MBt-vl-5M2" firstAttribute="centerY" secondItem="TKC-9E-lzD" secondAttribute="centerY" id="H1g-xB-Ldx"/>
                             <constraint firstAttribute="trailing" secondItem="Rcr-QX-oJ2" secondAttribute="trailing" id="NK9-9s-h8d"/>
                             <constraint firstItem="lTt-E7-G7i" firstAttribute="top" secondItem="UdO-uP-ZLP" secondAttribute="bottom" constant="21" id="fox-o5-gLS"/>
                             <constraint firstItem="Rcr-QX-oJ2" firstAttribute="top" secondItem="TKC-9E-lzD" secondAttribute="top" id="gJs-Up-iUc"/>

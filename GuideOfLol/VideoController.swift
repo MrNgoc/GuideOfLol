@@ -60,7 +60,7 @@ class  VideoController: UIViewController, UITableViewDelegate, UITableViewDataSo
                                 let image = subjson["snippet"]["topLevelComment"]["snippet"]["authorProfileImageUrl"].stringValue
                                 
                                 let comment = Comment(name: name, image: image, description: description, title: "")
-
+                                
                                 self.comments.append(comment)
                             }
                             
@@ -90,10 +90,13 @@ class  VideoController: UIViewController, UITableViewDelegate, UITableViewDataSo
             cell.backgroundColor = UIColor.clearColor()
             let url = NSURL(string: url)
             
-            let data = NSData(contentsOfURL: url!)
-            cell.imageprofile.image = UIImage(data: data!)
-
             cell.description1.text = description
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+                let data = NSData(contentsOfURL: url!)
+                cell.imageprofile.image = UIImage(data: data!)
+                
+            }
             
         }
         
@@ -128,5 +131,5 @@ class  VideoController: UIViewController, UITableViewDelegate, UITableViewDataSo
         view.layer.insertSublayer(bgGragdient,  atIndex: 0)
     }
     
-
+    
 }

@@ -1,5 +1,5 @@
 //
-//  123.swift
+//  ChampionSpellDto.swift
 //  GuideOfLol
 //
 //  Created by Admin on 8/5/16.

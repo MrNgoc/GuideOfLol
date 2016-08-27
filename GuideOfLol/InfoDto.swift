@@ -2,7 +2,7 @@
 //  InfoDto.swift
 //  GuideOfLol
 //
-//  Created by Le Ha Thanh on 8/3/16.
+//  Created by Admin on 8/3/16.
 //  Copyright © 2016 MrNgoc. All rights reserved.
 //
 

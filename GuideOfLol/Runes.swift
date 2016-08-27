@@ -25,14 +25,3 @@ class Runes{
     }
 
 }
-
-
-class MetaDataDto {
-    var tier: String?
-    var type: String?
-    
-    init(tier: String, type : String) {
-        self.tier = tier
-        self.type = type
-    }
-}

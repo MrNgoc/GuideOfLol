@@ -40,7 +40,7 @@ class WebViewController: UIViewController, UITableViewDelegate,UITableViewDataSo
                         let json = JSON(data:data!)
                         
                         let jsonItem = json["items"]
-                        print(jsonItem)
+    
                         for (_ ,jsonSnippet) in jsonItem {
                             let title = jsonSnippet["snippet"]["title"].stringValue
                             
@@ -67,18 +67,17 @@ class WebViewController: UIViewController, UITableViewDelegate,UITableViewDataSo
         
         let cell = tableView.dequeueReusableCellWithIdentifier("youtube", forIndexPath: indexPath) as! CustomYoutubeCell
         cell.backgroundColor = UIColor.clearColor()
-        if let title = videos[indexPath.row].title {
+        if let title = videos[indexPath.row].title, urlValue = videos[indexPath.row].image  {
             cell.titlleVideo.text = title
-        }
-        if let url = videos[indexPath.row].image {
-            let url = NSURL(string: url)
-            let data = NSData(contentsOfURL: url!)
+
+            let data = NSData(contentsOfURL: NSURL(string: urlValue)!)
             cell.imageVideo.contentMode = .ScaleAspectFit
             cell.imageVideo.image = UIImage(data: data!)
             
         }
         return cell
     }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let video1 = storyboard?.instantiateViewControllerWithIdentifier("video") as! VideoController
         video1.id = videos[indexPath.row].videoId

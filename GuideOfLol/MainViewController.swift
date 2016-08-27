@@ -23,18 +23,14 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.yellowColor(), NSFontAttributeName : UIFont(name : "HelveticaNeue-Bold" , size : 19)!]
         
-        
         getId {
             self.getData()
         }
         
         getDataItems()
         
-        
     }
-    
-    
-    
+
     func getId(completionHandle: (() -> Void)) {
         let urlRequest = NSMutableURLRequest(URL: NSURL(string:"https://na.api.pvp.net/api/lol/na/v1.2/champion?freeToPlay=true&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF")!)
         
@@ -58,9 +54,7 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
                 }
                 
                 completionHandle()
-                
-                
-                
+ 
             }
             }.resume()
         
@@ -97,8 +91,6 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
                             self.loadFreeChamp.stopAnimating()})
                         
                     }
-                    //                    self.champions.sortInPlace({(cham : ChampionDto, cham2 : ChampionDto) -> Bool in return cham.name < cham2.name})
-                    
                     
                 }
             }
@@ -129,7 +121,6 @@ class MainViewController: BaseViewController,UICollectionViewDelegate,UICollecti
     }
     
     @IBAction func actionWeb(sender: AnyObject) {
-        
         let web = storyboard?.instantiateViewControllerWithIdentifier("webview") as! WebViewController
         navigationController?.pushViewController(web, animated: true)
         

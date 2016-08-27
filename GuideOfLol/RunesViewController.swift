@@ -51,7 +51,7 @@ class RunesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 })
                 self!.MyTableView.reloadData()
             case 4, 5, 6, 7:
-                var type = indexPath == 4 ? "blue" : indexPath == 5 ? "yellow" : indexPath == 6 ? "black" : "red"
+                let type = indexPath == 4 ? "blue" : indexPath == 5 ? "yellow" : indexPath == 6 ? "black" : "red"
                 self?.indexValue = 1
                 self!.filtered = self!.runes.filter({ (rune) -> Bool in
                     let tmp: NSString = (rune.rune?.type)!

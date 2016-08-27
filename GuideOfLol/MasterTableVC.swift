@@ -36,23 +36,17 @@ class MasterTableVC: BaseViewController {
     @IBOutlet weak var statsView: UIView!
     @IBOutlet weak var storyView: UIView!
     @IBOutlet weak var skinsView: UIView!
-    
     @IBOutlet weak var fullchampimage: UIImageView!
-    
     @IBOutlet weak var fullChampImage: UIView!
-    
     @IBOutlet weak var loadIndicator: UIActivityIndicatorView!
-    var id: Int?
-    var infoChamp : InfoDto?
-    
-    
     @IBOutlet weak var champImage: UIImageView!
     @IBOutlet weak var champName: UILabel!
-    
     @IBOutlet weak var champTitle: UILabel!
     @IBOutlet weak var champTags: UILabel!
-    
     @IBOutlet weak var segmentTitle: UISegmentedControl!
+    
+    var id: Int?
+    var infoChamp : InfoDto?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +56,7 @@ class MasterTableVC: BaseViewController {
         
         segmentTitle.removeBorders()
     
-        segmentTitle.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 12.0)! ],  forState: .Normal)
+        segmentTitle.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Baskerville-Bold", size: 14.0)! ],  forState: .Normal)
          self.view.backgroundColor =  UIColor.blackColor()
         champName.text = champ?.name
         champTitle.text = champ?.title

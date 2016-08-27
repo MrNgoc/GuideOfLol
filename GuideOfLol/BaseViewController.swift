@@ -307,11 +307,8 @@ class BaseViewController : UIViewController {
                             
                             let nameValue = subjson["name"].stringValue
                             
-                            
                             let sanitizedDescriptionValue = subjson["sanitizedDescription"].stringValue
-                            
-                            
-                            
+
                             let tagsValue = self.toString(subjson["tags"])
                             
                             if let idValue = Int(key)  {
@@ -329,10 +326,6 @@ class BaseViewController : UIViewController {
             }.resume()
         
     }
-
-    
-    
-    
     
     func toString(des: JSON) -> [String] {
         var text : [String] = []
@@ -358,8 +351,7 @@ class BaseViewController : UIViewController {
     
     func setTranparentForUINavigationBar(){
         navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        
+        navigationController?.navigationBar.shadowImage = UIImage()   
     }
     
 }

@@ -26,7 +26,8 @@ class ItemViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         loadData.startAnimating()
     
         
-        let newBackButton = UIBarButtonItem(image: UIImage(named: "BackIcon"), style: UIBarButtonItemStyle.Bordered, target: self, action: #selector(ItemViewController.back(_:)))
+        let newBackButton = UIBarButtonItem(image: UIImage(named: "BackIcon"), style: UIBarButtonItemStyle.Bordered, target: self, action: #selector(back))
+        
         self.navigationItem.leftBarButtonItem = newBackButton
     }
     

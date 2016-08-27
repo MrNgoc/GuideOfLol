@@ -26,27 +26,22 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         
         self.navigationController?.navigationBar.hidden = false
         self.title = "Champions LOL"
-        
-        
         let searchButton = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(searchFunc))
         self.navigationItem.rightBarButtonItem = searchButton
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.whiteColor()
+        
         searchController.delegate = self
         searchController.hidden = true
         
-        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.whiteColor()
-        
         
         let urlString = "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion?locale=vn_VN&champData=image&api_key=RGAPI-905251DD-5545-48D0-9598-0E601CA5E9AF"
-        
         getData(urlString, collectionView: myCollection, loadIndicator: loadDataIndicator)
         
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         searchActive = false
-        
-        
     }
     
     func searchFunc(){
@@ -63,12 +58,9 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if (searchBar.text == "")
-        {
+        if (searchBar.text == ""){
             searchActive = false
-        }
-        else
-        {
+        } else {
             searchActive = true
         }
         filtered = champions.filter({ (champion) -> Bool in
@@ -81,15 +73,12 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     
     
-    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (searchActive) {
             return filtered.count
         }
         return champions.count
     }
-    
-    
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -99,8 +88,6 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
             
             
             if let imageName = filtered[indexPath.item].image, name = filtered[indexPath.item].name {
-                
-                
                 cell.nameLabel.text = name
                 
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
